@@ -1,8 +1,8 @@
 //
 //  VicinityApp.swift
-//  Vicinity
+//  Shared
 //
-//  Created by Kyle Grosman on 7/27/22.
+//  Created by Kyle Grosman on 7/6/22.
 //
 
 import SwiftUI
