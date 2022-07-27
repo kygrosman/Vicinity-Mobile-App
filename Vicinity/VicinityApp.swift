@@ -15,7 +15,7 @@ struct VicinityApp: App {
     
     init() {
         FirebaseApp.configure()
-        viewModel.signOut()
+        //viewModel.signOut()
     }
     
     var body: some Scene {

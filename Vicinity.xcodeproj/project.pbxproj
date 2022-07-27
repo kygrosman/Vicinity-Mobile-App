@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41CEBA452891D69700AB1A1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41CEBA442891D69700AB1A1E /* GoogleService-Info.plist */; };
 		4EAA49F12891B81A008CECAE /* VicinityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F02891B81A008CECAE /* VicinityApp.swift */; };
 		4EAA49F32891B81A008CECAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F22891B81A008CECAE /* ContentView.swift */; };
 		4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA49F42891B81B008CECAE /* Assets.xcassets */; };
@@ -63,7 +64,6 @@
 		4EAA4AED2891C888008CECAE /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4EAA4AEC2891C888008CECAE /* FirebaseRemoteConfigSwift */; };
 		4EAA4AEF2891C888008CECAE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4EAA4AEE2891C888008CECAE /* FirebaseStorage */; };
 		4EAA4AF12891C888008CECAE /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 4EAA4AF02891C888008CECAE /* FirebaseStorageCombine-Community */; };
-		4EAA4AF32891CC7F008CECAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA4AF22891CC7E008CECAE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41CEBA442891D69700AB1A1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		41CEBA462891D69900AB1A1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4EAA49ED2891B81A008CECAE /* Vicinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vicinity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA49F02891B81A008CECAE /* VicinityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityApp.swift; sourceTree = "<group>"; };
 		4EAA49F22891B81A008CECAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,7 +116,6 @@
 		4EAA4A462891BAEE008CECAE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4EAA4A492891BAEE008CECAE /* ImageUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		4EAA4A4A2891BAEE008CECAE /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		4EAA4AF22891CC7E008CECAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +175,7 @@
 		4EAA49E42891B819008CECAE = {
 			isa = PBXGroup;
 			children = (
-				4EAA4AF22891CC7E008CECAE /* GoogleService-Info.plist */,
+				41CEBA462891D69900AB1A1E /* GoogleService-Info.plist */,
 				4EAA49EF2891B81A008CECAE /* Vicinity */,
 				4EAA4A002891B81B008CECAE /* VicinityTests */,
 				4EAA4A0A2891B81C008CECAE /* VicinityUITests */,
@@ -195,6 +196,7 @@
 		4EAA49EF2891B81A008CECAE /* Vicinity */ = {
 			isa = PBXGroup;
 			children = (
+				41CEBA442891D69700AB1A1E /* GoogleService-Info.plist */,
 				4EAA4A1C2891BAEE008CECAE /* Core */,
 				4EAA49F02891B81A008CECAE /* VicinityApp.swift */,
 				4EAA49F22891B81A008CECAE /* ContentView.swift */,
@@ -523,7 +525,7 @@
 			files = (
 				4EAA4A4D2891BAEE008CECAE /* LaunchScreen.storyboard in Resources */,
 				4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */,
-				4EAA4AF32891CC7F008CECAE /* GoogleService-Info.plist in Resources */,
+				41CEBA452891D69700AB1A1E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
