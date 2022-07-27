@@ -8,28 +8,33 @@
 import SwiftUI
 
 struct HomeView: View {
-        
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
-        TabView {
-            HomePageView().tabItem{
-                Text("Home")
-                Image(systemName: "house")
+        if let user = authViewModel.currentUser {
+            TabView {
+                HomePageView().tabItem{
+                    Text("Home")
+                    Image(systemName: "house")
+                }
+                
+                PostPageView().tabItem{
+                    Text("Post")
+                    Image(systemName: "plus")
+                }
+                
+                ProfilePageView(user: user).tabItem{
+                    Text("Profile")
+                    Image(systemName: "person")
+                }
+            }.onAppear{
+                let tabBarAppearance = UITabBarAppearance()
+                tabBarAppearance.configureWithOpaqueBackground()
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             }
-            
-            PostPageView().tabItem{
-                Text("Post")
-                Image(systemName: "plus")
-            }
-            
-            ProfilePageView().tabItem{
-                Text("Profile")
-                Image(systemName: "person")
-            }
-        }.onAppear{
-            let tabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.configureWithOpaqueBackground()
-            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+
         }
+    
     }
 }
 
