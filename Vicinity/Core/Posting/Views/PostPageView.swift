@@ -28,10 +28,10 @@ struct PostPageView: View {
             //enter in text body
             //buttons represent tags
             VStack() {
-                Text("Recommendation")
-                    .font(.custom("YesevaOne-Regular",size:30))
-                    .foregroundColor(Color("VicinityNavy"))
-                    .offset(y:20).padding(.bottom)
+                Text("Recommend")
+                    .font(Font.custom("Inter-Regular", size:33))
+                    //.foregroundColor(Color("VicinityNavy"))
+                   // .offset(y:20).padding(.bottom)
                 TextField("What's in your vicinity...", text: $postBody).offset(x:30 , y:0).padding(.top)
                 Spacer()
                     .frame(height:400)
@@ -68,7 +68,7 @@ struct PostPageView: View {
                     }, label: {
                         Text("Post").fontWeight(.heavy).foregroundColor(.black)
                             .frame(width: 300, height: 32)
-                            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color("VicinityNavy"),lineWidth:3))
+                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color("VicinityNavy"),lineWidth:3))
                         
                     }).padding(.top)
                 /*} */
@@ -101,7 +101,7 @@ struct CheckboxFieldViewSale: View {
 
         }.padding()
             .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(.red,lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.red,lineWidth: 2))
            
 
     }
@@ -120,7 +120,7 @@ struct CheckboxFieldViewPlus21: View {
 
         }.padding()
             .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(.black,lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
 
 
     }
@@ -177,7 +177,7 @@ struct eventTypeDropdown: View {
             }
         }.padding()
             .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(.orange,lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.orange,lineWidth: 2))
     }
     
     func returnText() -> String {
@@ -221,7 +221,7 @@ struct costDropdown: View {
             }
         }.padding()
             .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(.green,lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.green,lineWidth: 2))
 
     }
 }
@@ -264,7 +264,7 @@ struct distanceDropdown: View {
         }.padding()
             //.background(expand ? Color("VicinityBlue"): Color("VicinityBlue"))
             .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(.blue,lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.blue,lineWidth: 2))
 
     }
 }

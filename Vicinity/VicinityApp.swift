@@ -16,6 +16,12 @@ struct VicinityApp: App {
     init() {
         FirebaseApp.configure()
         //viewModel.signOut()
+        
+        for fontFamily in UIFont.familyNames {
+            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
+                print("\(fontName)")
+            }
+        }
     }
     
     var body: some Scene {
