@@ -18,7 +18,7 @@ class AuthViewModel: ObservableObject {
     
     init() {
         self.userSession = Auth.auth().currentUser
-        print("DEBUG -- User Session: \(self.userSession)")
+        print("DEBUG -- User Session: \(String(describing: self.userSession))")
     }
     
     
@@ -39,7 +39,18 @@ class AuthViewModel: ObservableObject {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("DEBUG -- Failed to log in user with error: \(error.localizedDescription)")
-                descrip = error.localizedDescription
+                
+                switch error.localizedDescription {
+                case "The password is invalid or the user does not have a password.":
+                    descrip = "Invalid password"
+                case "The email address is badly formatted.":
+                    descrip = "Email is invalid"
+                case "There is no user record corresponding to this identifier. The user may have been deleted.":
+                    descrip = "No user with that email"
+                default:
+                    descrip = "Error logging in"
+                }
+                
                 err = true
                 return
             }
@@ -67,6 +78,7 @@ class AuthViewModel: ObservableObject {
             return [false, "Fill in all fields"]
         }
         
+        /*
         //check if email is a JHU emial
         let grabbedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -79,6 +91,7 @@ class AuthViewModel: ObservableObject {
             // Email is not a valid JHU email
             return [false, "Email is not a vlid JHU email"]
         }
+         */
         
         /*
         let phoneNumTest = NSPredicate(format: "SELF MATCHES %@", "^\\d{3}\\d{3}\\d{4}$")

@@ -17,8 +17,8 @@ struct VicinityApp: App {
     init() {
         FirebaseApp.configure()
         
-        print("DEBUG -- User Session UID: \(String(describing: viewModel.userSession?.uid))")
-        print("DEBUG -- Email Verification: \(String(describing: viewModel.userSession?.isEmailVerified))")
+        print("<<<< DEBUG -- User Session UID: \(String(describing: viewModel.userSession?.uid))")
+        print("<<<< DEBUG -- Email Verification: \(String(describing: viewModel.userSession?.isEmailVerified))")
         
         //viewModel.signOut()
     }
@@ -27,7 +27,7 @@ struct VicinityApp: App {
         WindowGroup {
             NavigationView{
 
-                if (viewModel.userSession == nil && viewModel.userSession?.isEmailVerified == true)
+                if (viewModel.userSession == nil)
                 {
                     OpenAppView()
                 }
