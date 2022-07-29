@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import NavigationStack
 
 @main
 struct VicinityApp: App {
@@ -15,18 +16,26 @@ struct VicinityApp: App {
     
     init() {
         FirebaseApp.configure()
-        viewModel.signOut()
+
+        
+        print("DEBUG -- User Session UID: \(String(describing: viewModel.userSession?.uid))")
+        print("DEBUG -- Email Verification: \(String(describing: viewModel.userSession?.isEmailVerified))")
     }
     
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                
-                if (viewModel.userSession != nil)
+
+                if (viewModel.userSession == nil && viewModel.userSession?.isEmailVerified == true)
                 {
-                    HomeView()
-                } else {
                     OpenAppView()
+                }
+                else if (viewModel.userSession?.isEmailVerified == false)
+                {
+                    ConfirmEmailView()
+                }
+                else {
+                    HomeView()
                 }
             }
             .environmentObject(viewModel)

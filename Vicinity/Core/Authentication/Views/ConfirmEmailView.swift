@@ -13,9 +13,10 @@ import SwiftEmailValidator
 struct ConfirmEmailView: View {
     // do a bunch of email validation stuff or phone num validation
     @State private var code = ""
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
-        NavigationView {
+
             VStack {
                 // navigation links
                 VStack(alignment: .leading) {
@@ -25,32 +26,26 @@ struct ConfirmEmailView: View {
                         .fontWeight(.heavy)
                         .foregroundColor(Color("VicinityNavy"))
                         .multilineTextAlignment(.leading)
-                        .padding([.bottom], 70.0)
-                    
-                    // email text field
-                    Group {
-                        TextField("code", text: $code)
-                            .padding(.bottom, 20)
-                            
-                    }
-                    .disableAutocorrection(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xxxLarge/*@END_MENU_TOKEN@*/)
-                    .font(.headline.weight(.bold))
-                }.padding(.leading, 50)
+                        .padding(.bottom, 40)
+                        .padding(.leading, 35)
+                    Text("Check your JHU email for a verification link. If you haven't received one, you can resend the email.")
+                        .padding([.leading, .trailing], 35)
+                        .foregroundColor(Color("VicinityNavy"))
+                        
+                }
                 .navigationBarHidden(true)
                 .padding(.bottom, 20)
                 
                 VStack(alignment: .center) {
                     
-                    
                     Button(action: {
-                        
+                        print("DEBUG -- Sent New Email Verifiction")
                         // validate code
                         // go to home
-                        
+                        viewModel.confirmEmail()
         
                     }, label: {
-                        Text("Enter").fontWeight(.heavy)
+                        Text("Send New Email").fontWeight(.heavy)
                     })
                     .foregroundColor(.white)
                     .frame(width: 256, height: 40, alignment: .center)
@@ -58,12 +53,21 @@ struct ConfirmEmailView: View {
                     .cornerRadius(30)
                     .padding(.bottom, 20)
                     
+                    Button(action: {
+                        print("DEBUG -- Signing out from user \(String(describing: viewModel.userSession?.email))")
+                        
+                        viewModel.signOut()
+                    }, label: {
+                        Text("Email sent to \(viewModel.userSession?.email ?? "NO EMAIL RECOGNIZED")")
+                            .fontWeight(.bold)
+                    }).foregroundColor(Color("Vicinity Navy"))
+                    
                 }
                 .navigationBarHidden(true)
             }
             .offset(x: 0, y: -100)
+            .navigationBarHidden(true)
         }
-    }
 }
 
 struct ConfirmEmailView_Previews: PreviewProvider {

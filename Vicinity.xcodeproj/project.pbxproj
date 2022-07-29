@@ -290,8 +290,8 @@
 		4EAA4A292891BAEE008CECAE /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				4EAA4A2A2891BAEE008CECAE /* ViewModels */,
 				4EAA4A2C2891BAEE008CECAE /* Components */,
+				4EAA4A2A2891BAEE008CECAE /* ViewModels */,
 				4EAA4A2E2891BAEE008CECAE /* Views */,
 			);
 			path = Authentication;
