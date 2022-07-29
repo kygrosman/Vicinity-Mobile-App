@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import NavigationStack
 
 struct ForgotPassView: View {
     
+    @State private var action: Int? = 0
     @State private var email = ""
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        
+            
             VStack {
                 // navigation links
                 VStack(alignment: .leading) {
@@ -35,7 +37,6 @@ struct ForgotPassView: View {
                     .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xxxLarge/*@END_MENU_TOKEN@*/)
                     .font(.headline.weight(.bold))
                 }.padding(.leading, 50)
-                .navigationBarHidden(true)
                 .padding(.bottom, 20)
                 
                 VStack(alignment: .center) {
@@ -54,12 +55,10 @@ struct ForgotPassView: View {
                     .padding(.bottom, 20)
                     
                 }
-                .navigationBarHidden(true)
             }
             .offset(x: 0, y: -100)
-        
+        }
     }
-}
 
 struct ForgotPassView_Previews: PreviewProvider {
     static var previews: some View {
