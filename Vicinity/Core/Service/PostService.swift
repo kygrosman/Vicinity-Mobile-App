@@ -33,11 +33,20 @@ struct PostService {
     }
     
     func fetchPosts(completion: @escaping([Post]) -> Void) {
-        Firestore.firestore().collection("posts").getDocuments { snapshot, error in
-            guard let documents = snapshot?.documents else {return}
-            let posts = documents.compactMap({ try? $0.data(as: Post.self)} )
-            print(posts)
-            completion(posts)
-        }
+        Firestore.firestore().collection("posts").order(by: "timestamp", descending: true)
+            .getDocuments { snapshot, error in
+                guard let documents = snapshot?.documents else {return}
+                let posts = documents.compactMap({ try? $0.data(as: Post.self)} )
+                completion(posts)
+            }
+    }
+    
+    func fetchPostsForUser(forUid uid: String, completion: @escaping([Post]) -> Void) {
+        Firestore.firestore().collection("posts").whereField("uid", isEqualTo: uid)
+            .getDocuments { snapshot, error in
+                guard let documents = snapshot?.documents else {return}
+                let posts = documents.compactMap({ try? $0.data(as: Post.self)} )
+                completion(posts.sorted(by: {$0.timestamp.dateValue() > $1.timestamp.dateValue() }))
+            }
     }
 }

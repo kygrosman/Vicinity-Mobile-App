@@ -24,8 +24,7 @@ struct VicinityApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                HomeView()
-                /*if (viewModel.userSession == nil)
+                if (viewModel.userSession == nil)
                 {
                     OpenAppView()
                 }
@@ -35,10 +34,9 @@ struct VicinityApp: App {
                 }
                 else {
                     HomeView()
-                }*/
+                }
             }
             .environmentObject(viewModel)
         }
     }
 }
-

@@ -15,7 +15,7 @@ struct IndividualPostView: View {
             HStack {
                 //photo and username are across the top, horizontally
                 Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
-                Text("Maddy Sukhdeo")
+                Text(post.user?.username ?? "anon")
                 Text("2w").font(.caption).foregroundColor(Color.gray)
                 Spacer()
                 VStack {
