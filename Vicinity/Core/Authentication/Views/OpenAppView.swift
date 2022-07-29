@@ -10,37 +10,38 @@ import FirebaseAuth
 import SwiftEmailValidator
 
 struct OpenAppView: View {
-    
+
     @State private var action: Int? = 0
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        NavigationView {
+        
             ZStack {
-                NavigationLink(destination: LoginView(), tag: 1, selection: $action) {
-                    EmptyView()
-                }
-                NavigationLink(destination: SignUpView(), tag: 2, selection: $action) {
-                    EmptyView()
-                }
+                
+                NavigationLink(destination: LoginView(), tag: 1, selection: $action) { EmptyView() }
+                NavigationLink(destination: SignUpView(), tag: 2, selection: $action) { EmptyView() }
+                
                 Color.white
                     .ignoresSafeArea()
-                VStack {
+                VStack(alignment: .center) {
                     Image("VicinityMapBackground")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 1500)
+                        .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight, alignment: .center)
                         .ignoresSafeArea()
                         .overlay(
                             Image("VicinityLogo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 226, height: 69)
+                                .frame(width: 226, height: 69, alignment: .center)
                         )
                 }
+                .position(x: UIScreen.screenWidth / 2, y: UIScreen.screenHeight / 2.15)
+                
+                
                 VStack {
                     Button(action: {
-                        action = 1
-                            
+                        self.action = 1
                     }, label: {
                         Text("Login").fontWeight(.heavy)
                     })
@@ -48,10 +49,9 @@ struct OpenAppView: View {
                     .frame(width: 256, height: 40)
                     .background(Color("VicinityNavy"))
                     .cornerRadius(30)
-                    .padding([.top],450)
                     
                     Button(action: {
-                        action = 2
+                        self.action = 2
                     }, label: {
                         Text("Sign Up").fontWeight(.heavy)
                     })
@@ -60,11 +60,13 @@ struct OpenAppView: View {
                     .background(Color("VicinityNavy"))
                     .cornerRadius(30)
                 }
+                .position(x: UIScreen.screenWidth / 2, y: UIScreen.screenHeight * 0.73)
                 
             }
             .navigationBarHidden(true)
+            .edgesIgnoringSafeArea(.bottom)
         }
-    }
+    
 }
 
 struct OpenAppView_Previews: PreviewProvider {

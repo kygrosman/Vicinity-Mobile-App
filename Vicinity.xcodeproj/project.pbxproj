@@ -15,13 +15,13 @@
 		41CEBA592894634000AB1A1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41CEBA49289302FC00AB1A1E /* GoogleService-Info.plist */; };
 		41CEBA5E28946ABF00AB1A1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41CEBA49289302FC00AB1A1E /* GoogleService-Info.plist */; };
 		41CEBA6028946BB500AB1A1E /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41CEBA5F28946BB500AB1A1E /* Inter-Regular.otf */; };
+		4E70BFBC2894685800FCA03D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E70BFBB2894685800FCA03D /* GoogleService-Info.plist */; };
 		4EAA49F12891B81A008CECAE /* VicinityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F02891B81A008CECAE /* VicinityApp.swift */; };
 		4EAA49F32891B81A008CECAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F22891B81A008CECAE /* ContentView.swift */; };
 		4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA49F42891B81B008CECAE /* Assets.xcassets */; };
 		4EAA4A022891B81B008CECAE /* VicinityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A012891B81B008CECAE /* VicinityTests.swift */; };
 		4EAA4A0C2891B81C008CECAE /* VicinityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A0B2891B81C008CECAE /* VicinityUITests.swift */; };
 		4EAA4A0E2891B81C008CECAE /* VicinityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A0D2891B81C008CECAE /* VicinityUITestsLaunchTests.swift */; };
-		4EAA4A4D2891BAEE008CECAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA4A1B2891BAEE008CECAE /* LaunchScreen.storyboard */; };
 		4EAA4A4E2891BAEE008CECAE /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A1F2891BAEE008CECAE /* HomePageViewModel.swift */; };
 		4EAA4A4F2891BAEE008CECAE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A212891BAEE008CECAE /* HomeView.swift */; };
 		4EAA4A502891BAEE008CECAE /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A222891BAEE008CECAE /* HomePageView.swift */; };
@@ -94,6 +94,7 @@
 		41CEBA49289302FC00AB1A1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41CEBA532894627F00AB1A1E /* YesevaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YesevaOne-Regular.ttf"; sourceTree = "<group>"; };
 		41CEBA5F28946BB500AB1A1E /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Regular.otf"; path = "../Inter-Regular.otf"; sourceTree = "<group>"; };
+		4E70BFBB2894685800FCA03D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4EAA49ED2891B81A008CECAE /* Vicinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vicinity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA49F02891B81A008CECAE /* VicinityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityApp.swift; sourceTree = "<group>"; };
 		4EAA49F22891B81A008CECAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,7 +104,6 @@
 		4EAA4A072891B81C008CECAE /* VicinityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VicinityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA4A0B2891B81C008CECAE /* VicinityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityUITests.swift; sourceTree = "<group>"; };
 		4EAA4A0D2891B81C008CECAE /* VicinityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4EAA4A1B2891BAEE008CECAE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EAA4A1F2891BAEE008CECAE /* HomePageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		4EAA4A212891BAEE008CECAE /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4EAA4A222891BAEE008CECAE /* HomePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
@@ -210,8 +210,8 @@
 				4EAA49F02891B81A008CECAE /* VicinityApp.swift */,
 				4EAA49F22891B81A008CECAE /* ContentView.swift */,
 				4EAA4A462891BAEE008CECAE /* Extensions.swift */,
-				4EAA4A1B2891BAEE008CECAE /* LaunchScreen.storyboard */,
 				4EAA49F42891B81B008CECAE /* Assets.xcassets */,
+				4E70BFB9289467E600FCA03D /* LaunchScreen.storyboard */,
 			);
 			path = Vicinity;
 			sourceTree = "<group>";
@@ -301,8 +301,8 @@
 		4EAA4A292891BAEE008CECAE /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				4EAA4A2A2891BAEE008CECAE /* ViewModels */,
 				4EAA4A2C2891BAEE008CECAE /* Components */,
+				4EAA4A2A2891BAEE008CECAE /* ViewModels */,
 				4EAA4A2E2891BAEE008CECAE /* Views */,
 			);
 			path = Authentication;
@@ -772,6 +772,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -801,6 +802,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

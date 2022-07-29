@@ -18,7 +18,6 @@ class AuthViewModel: ObservableObject {
     
     init() {
         self.userSession = Auth.auth().currentUser
-        self.fetchUserData()
         print("DEBUG -- User Session: \(self.userSession)")
     }
     
@@ -54,7 +53,7 @@ class AuthViewModel: ObservableObject {
     }
     
     // -- SINGUP FUNCTION
-    func signup(email: String, password: String, username: String, phoneNum: String) -> Array<Any> {
+    func signup(email: String, password: String, username: String, fullname: String) -> Array<Any> {
     
         print("DEBUG: Checking fields")
         
@@ -62,7 +61,7 @@ class AuthViewModel: ObservableObject {
         if (email.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             password.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             username.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            phoneNum.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+            fullname.trimmingCharacters(in: .whitespacesAndNewlines) == "")
         {
             // Fill in all cases
             return [false, "Fill in all fields"]
@@ -81,6 +80,7 @@ class AuthViewModel: ObservableObject {
             return [false, "Email is not a vlid JHU email"]
         }
         
+        /*
         let phoneNumTest = NSPredicate(format: "SELF MATCHES %@", "^\\d{3}\\d{3}\\d{4}$")
         let grabbedPN = phoneNum.trimmingCharacters(in: .whitespacesAndNewlines)
         let phoneNumBool = phoneNumTest.evaluate(with: grabbedPN)
@@ -91,7 +91,6 @@ class AuthViewModel: ObservableObject {
             return [false, "Phone number form is invalid"]
         }
         
-        /*
         //check if password is valid
         let pwTest = NSPredicate(format: "SELF MATCHES %@",
             "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
@@ -109,9 +108,10 @@ class AuthViewModel: ObservableObject {
         print("DEBUG -- Signing up")
         var err = false
         var descrip = ""
+    
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
-                print("DEBUG -- xFailed to sign up user with error: \(error.localizedDescription)")
+                print("DEBUG -- Failed to sign up user with error: \(error.localizedDescription)")
                 descrip = error.localizedDescription
                 err = true
                 return
@@ -120,12 +120,11 @@ class AuthViewModel: ObservableObject {
             guard let user = result?.user else { return }
             self.userSession = user
             
-            print("DEBUG -- New user registered: \(self.userSession)")
-            
             let data = [
                 "email": email,
                 "password": password,
-                "phonenum": phoneNum,
+                "fullname": fullname,
+                //"phonenum": phoneNum,
                 "uid": user.uid,
                 "username": username
             ]
@@ -135,14 +134,25 @@ class AuthViewModel: ObservableObject {
                 .setData(data) { _ in
                     print("DEBUG -- User data stored")
                 }
+            
+            print("DEBUG -- New user registered: \(String(describing: self.userSession?.uid))")
         }
     
         if (err) {return [false, descrip]}
         return [true, ""]
     }
     
-    func confirmEmail(email: String, password: String, username: String, phoneNum: String) {
+    func confirmEmail() {
+        print("DEGUB -- Sending Verification Email to: \(String(describing: self.userSession?.email))")
         
+        Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+            if let error = error {
+                print("DEBUG -- Failed to send email verification with error: \(error.localizedDescription)")
+                return
+            }
+            
+            print("DEBUG -- email sent to \(String(describing: self.userSession?.email))")
+        })
     }
     
     //signout function
@@ -151,7 +161,7 @@ class AuthViewModel: ObservableObject {
         try? Auth.auth().signOut()
     }
     
-    func fetchUserData(){
+    func fetchuserData() {
         
         guard let uid = self.userSession?.uid else {return}
         service.fetchUserData(withuid: uid) { user in
