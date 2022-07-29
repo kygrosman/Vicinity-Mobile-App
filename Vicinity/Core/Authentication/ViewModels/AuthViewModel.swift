@@ -49,6 +49,7 @@ class AuthViewModel: ObservableObject {
         }
     
         if (err) {return [false, descrip]}
+        self.fetchuserData()
         return [true, ""]
     }
     
@@ -139,6 +140,7 @@ class AuthViewModel: ObservableObject {
         }
     
         if (err) {return [false, descrip]}
+        self.fetchuserData()
         return [true, ""]
     }
     

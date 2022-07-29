@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		23DE7E362891CF90000271B6 /* (null) in Resources */ = {isa = PBXBuildFile; };
-
 		23DE7E3B28920144000271B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23DE7E3A28920144000271B6 /* GoogleService-Info.plist */; };
 		23DE7E3E28930854000271B6 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E3D28930853000271B6 /* PostService.swift */; };
 		23DE7E4128930BAB000271B6 /* PostingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E4028930BAB000271B6 /* PostingViewModel.swift */; };
-		41CEBA542894627F00AB1A1E /* YesevaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41CEBA532894627F00AB1A1E /* YesevaOne-Regular.ttf */; };
-		41CEBA552894627F00AB1A1E /* YesevaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41CEBA532894627F00AB1A1E /* YesevaOne-Regular.ttf */; };
-		41CEBA562894627F00AB1A1E /* YesevaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41CEBA532894627F00AB1A1E /* YesevaOne-Regular.ttf */; };
+		41CEBA542894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41CEBA552894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41CEBA562894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		4EAA49F12891B81A008CECAE /* VicinityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F02891B81A008CECAE /* VicinityApp.swift */; };
 		4EAA49F32891B81A008CECAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F22891B81A008CECAE /* ContentView.swift */; };
 		4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA49F42891B81B008CECAE /* Assets.xcassets */; };
@@ -90,11 +89,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-
 		23DE7E3A28920144000271B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../vicinitySwift/Vicinity/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23DE7E3D28930853000271B6 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		23DE7E4028930BAB000271B6 /* PostingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingViewModel.swift; sourceTree = "<group>"; };
-		41CEBA5F28946BB500AB1A1E /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Regular.otf"; path = "../Inter-Regular.otf"; sourceTree = "<group>"; };
 		4EAA49ED2891B81A008CECAE /* Vicinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vicinity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA49F02891B81A008CECAE /* VicinityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityApp.swift; sourceTree = "<group>"; };
 		4EAA49F22891B81A008CECAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -192,8 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				23DE7E3A28920144000271B6 /* GoogleService-Info.plist */,
-				41CEBA5F28946BB500AB1A1E /* Inter-Regular.otf */,
-				41CEBA532894627F00AB1A1E /* YesevaOne-Regular.ttf */,
 				4EAA49EF2891B81A008CECAE /* Vicinity */,
 				4EAA4A002891B81B008CECAE /* VicinityTests */,
 				4EAA4A0A2891B81C008CECAE /* VicinityUITests */,
@@ -219,7 +214,6 @@
 				4EAA49F22891B81A008CECAE /* ContentView.swift */,
 				4EAA4A462891BAEE008CECAE /* Extensions.swift */,
 				4EAA49F42891B81B008CECAE /* Assets.xcassets */,
-				4E70BFB9289467E600FCA03D /* LaunchScreen.storyboard */,
 			);
 			path = Vicinity;
 			sourceTree = "<group>";
@@ -542,13 +536,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EAA4A4D2891BAEE008CECAE /* LaunchScreen.storyboard in Resources */,
-
 				23DE7E3B28920144000271B6 /* GoogleService-Info.plist in Resources */,
 				23DE7E362891CF90000271B6 /* (null) in Resources */,
 				4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */,
-				41CEBA542894627F00AB1A1E /* YesevaOne-Regular.ttf in Resources */,
-				41CEBA6028946BB500AB1A1E /* Inter-Regular.otf in Resources */,
+				41CEBA542894627F00AB1A1E /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,8 +547,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41CEBA552894627F00AB1A1E /* YesevaOne-Regular.ttf in Resources */,
-				41CEBA592894634000AB1A1E /* GoogleService-Info.plist in Resources */,
+				41CEBA552894627F00AB1A1E /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,8 +555,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41CEBA562894627F00AB1A1E /* YesevaOne-Regular.ttf in Resources */,
-				41CEBA582894633F00AB1A1E /* GoogleService-Info.plist in Resources */,
+				41CEBA562894627F00AB1A1E /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

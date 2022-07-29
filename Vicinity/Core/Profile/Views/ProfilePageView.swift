@@ -33,11 +33,13 @@ struct ProfilePageView: View {
     
 
 
-struct ProfilePageView_Previews: PreviewProvider {
+/*struct ProfilePageView_Previews: PreviewProvider {
     static var previews: some View {
         ProfilePageView(user: User(id:"maddy", username: "Mado", password: "Mado123", phonenum: "3058770449", email: "msukhde1@jh.edu", profileImageUrl: ""))
     }
-}
+} */
+
+
 extension ProfilePageView {
     var headerView : some View {
             ZStack(alignment: .bottomLeading){
@@ -51,7 +53,7 @@ extension ProfilePageView {
                     HStack{
                         Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
                             .padding(.top)
-                        Text("\(user.username)")
+                        Text("\(user.fullname)")
                             .font(.system(size:20))
                             .padding(.top)
                     }
