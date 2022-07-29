@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23DE7E362891CF90000271B6 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		4E70BFBA289467E600FCA03D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E70BFB9289467E600FCA03D /* LaunchScreen.storyboard */; };
+		4E70BFBC2894685800FCA03D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E70BFBB2894685800FCA03D /* GoogleService-Info.plist */; };
 		4EAA49F12891B81A008CECAE /* VicinityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F02891B81A008CECAE /* VicinityApp.swift */; };
 		4EAA49F32891B81A008CECAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F22891B81A008CECAE /* ContentView.swift */; };
 		4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA49F42891B81B008CECAE /* Assets.xcassets */; };
 		4EAA4A022891B81B008CECAE /* VicinityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A012891B81B008CECAE /* VicinityTests.swift */; };
 		4EAA4A0C2891B81C008CECAE /* VicinityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A0B2891B81C008CECAE /* VicinityUITests.swift */; };
 		4EAA4A0E2891B81C008CECAE /* VicinityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A0D2891B81C008CECAE /* VicinityUITestsLaunchTests.swift */; };
-		4EAA4A4D2891BAEE008CECAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA4A1B2891BAEE008CECAE /* LaunchScreen.storyboard */; };
 		4EAA4A4E2891BAEE008CECAE /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A1F2891BAEE008CECAE /* HomePageViewModel.swift */; };
 		4EAA4A4F2891BAEE008CECAE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A212891BAEE008CECAE /* HomeView.swift */; };
 		4EAA4A502891BAEE008CECAE /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA4A222891BAEE008CECAE /* HomePageView.swift */; };
@@ -63,7 +65,6 @@
 		4EAA4AED2891C888008CECAE /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4EAA4AEC2891C888008CECAE /* FirebaseRemoteConfigSwift */; };
 		4EAA4AEF2891C888008CECAE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4EAA4AEE2891C888008CECAE /* FirebaseStorage */; };
 		4EAA4AF12891C888008CECAE /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 4EAA4AF02891C888008CECAE /* FirebaseStorageCombine-Community */; };
-		4EAA4AF32891CC7F008CECAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA4AF22891CC7E008CECAE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E70BFB9289467E600FCA03D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4E70BFBB2894685800FCA03D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4EAA49ED2891B81A008CECAE /* Vicinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vicinity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA49F02891B81A008CECAE /* VicinityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityApp.swift; sourceTree = "<group>"; };
 		4EAA49F22891B81A008CECAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,7 +96,6 @@
 		4EAA4A072891B81C008CECAE /* VicinityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VicinityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA4A0B2891B81C008CECAE /* VicinityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityUITests.swift; sourceTree = "<group>"; };
 		4EAA4A0D2891B81C008CECAE /* VicinityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4EAA4A1B2891BAEE008CECAE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EAA4A1F2891BAEE008CECAE /* HomePageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		4EAA4A212891BAEE008CECAE /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4EAA4A222891BAEE008CECAE /* HomePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
@@ -114,7 +116,6 @@
 		4EAA4A462891BAEE008CECAE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4EAA4A492891BAEE008CECAE /* ImageUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		4EAA4A4A2891BAEE008CECAE /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		4EAA4AF22891CC7E008CECAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +175,7 @@
 		4EAA49E42891B819008CECAE = {
 			isa = PBXGroup;
 			children = (
-				4EAA4AF22891CC7E008CECAE /* GoogleService-Info.plist */,
+				4E70BFBB2894685800FCA03D /* GoogleService-Info.plist */,
 				4EAA49EF2891B81A008CECAE /* Vicinity */,
 				4EAA4A002891B81B008CECAE /* VicinityTests */,
 				4EAA4A0A2891B81C008CECAE /* VicinityUITests */,
@@ -199,8 +200,8 @@
 				4EAA49F02891B81A008CECAE /* VicinityApp.swift */,
 				4EAA49F22891B81A008CECAE /* ContentView.swift */,
 				4EAA4A462891BAEE008CECAE /* Extensions.swift */,
-				4EAA4A1B2891BAEE008CECAE /* LaunchScreen.storyboard */,
 				4EAA49F42891B81B008CECAE /* Assets.xcassets */,
+				4E70BFB9289467E600FCA03D /* LaunchScreen.storyboard */,
 			);
 			path = Vicinity;
 			sourceTree = "<group>";
@@ -521,9 +522,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EAA4A4D2891BAEE008CECAE /* LaunchScreen.storyboard in Resources */,
+				4E70BFBA289467E600FCA03D /* LaunchScreen.storyboard in Resources */,
+				4E70BFBC2894685800FCA03D /* GoogleService-Info.plist in Resources */,
+				23DE7E362891CF90000271B6 /* (null) in Resources */,
 				4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */,
-				4EAA4AF32891CC7F008CECAE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +756,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -783,6 +786,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

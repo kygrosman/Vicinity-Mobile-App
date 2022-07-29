@@ -16,10 +16,11 @@ struct VicinityApp: App {
     
     init() {
         FirebaseApp.configure()
-
         
         print("DEBUG -- User Session UID: \(String(describing: viewModel.userSession?.uid))")
         print("DEBUG -- Email Verification: \(String(describing: viewModel.userSession?.isEmailVerified))")
+        
+        //viewModel.signOut()
     }
     
     var body: some Scene {

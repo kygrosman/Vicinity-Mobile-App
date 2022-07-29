@@ -11,29 +11,55 @@ struct ProfilePageView: View {
     @State private var anon = false
     @State private var selectionFilter: PostsFilterViewModel = .mine
     @Namespace var animation
-    @EnvironmentObject var authViewModel: AuthViewModel
+    
+    private let user: User
+    init (user: User) {
+        self.user = user
+    }
+    
+    //@EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
-        VStack{
-            headerView
-            personalInfoView
-            filterBarView
-            Spacer()
-            postsView
+            VStack{
+                headerView
+                personalInfoView
+                filterBarView
+                Spacer()
+                postsView
+            }
         }
     }
     
     
-}
 
-struct ProfilePageView_Previews: PreviewProvider {
+
+/*struct ProfilePageView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfilePageView()
+        ProfilePageView(user: User)
     }
-}
+} */
 extension ProfilePageView {
-    
     var headerView : some View {
-        ZStack(alignment: .bottomLeading){
+            ZStack(alignment: .bottomLeading){
+                VStack(alignment: .leading){
+                    Image("Profile Image")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 120, height: 40)
+                        .offset(x:25, y:20)
+                    HStack{
+                        Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
+                            .padding(.top)
+                        Text("\(user.username)")
+                            .padding(.top)
+                    }
+                    .padding()
+                }
+                .offset(x:-90)
+            }
+
+        
+    }
+        /*ZStack(alignment: .bottomLeading){
             VStack(alignment: .leading){
                 Image("Profile Image")
                     .resizable()
@@ -43,26 +69,25 @@ extension ProfilePageView {
                 HStack{
                     Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
                         .padding(.top)
-                    Text("Maddy Sukhdeo")
+                    Text("maddy")
                         .padding(.top)
                 }
                 .padding()
             }
             .offset(x:-90)
-        }
-    }
+        } */
     
     var personalInfoView: some View{
         
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
                 Text("Username").font(.system(size:15)).foregroundColor(Color.gray)
-                Text("madobado").font(.system(size:20))
+                Text("@\(user.username)").font(.system(size:20))
             }
             
             VStack(alignment: .leading) {
                 Text("Email").font(.system(size:15)).foregroundColor(Color.gray)
-                Text("madelinesukhdeo@gmail.com").font(.system(size:20))
+                Text("\(user.email)").font(.system(size:20))
             }.padding(.top)
             
             VStack(alignment: .leading) {
