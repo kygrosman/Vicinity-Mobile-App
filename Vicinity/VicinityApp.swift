@@ -19,14 +19,11 @@ struct VicinityApp: App {
         
         print("<<<< DEBUG -- User Session UID: \(String(describing: viewModel.userSession?.uid))")
         print("<<<< DEBUG -- Email Verification: \(String(describing: viewModel.userSession?.isEmailVerified))")
-        
-        //viewModel.signOut()
     }
     
     var body: some Scene {
         WindowGroup {
             NavigationView{
-
                 if (viewModel.userSession == nil)
                 {
                     OpenAppView()

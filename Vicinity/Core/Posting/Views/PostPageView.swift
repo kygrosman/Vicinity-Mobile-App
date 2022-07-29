@@ -10,7 +10,7 @@ import Firebase
 
 struct PostPageView: View {
     
-    @ObservedObject var posts = HomePageViewModel()
+    @ObservedObject var postingViewModel = PostingViewModel()
     @State var postBody = ""
     @State var eventType = ""
     @State var cost = ""
@@ -20,62 +20,59 @@ struct PostPageView: View {
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
     @State private var importedImage: Image?
+    @State private var posted = false
     
 
     var body: some View {
-        /*NavigationView { */
-            //posting process
-            //enter in text body
-            //buttons represent tags
-            VStack() {
-                Text("Recommendation")
-                    .font(.custom("YesevaOne-Regular",size:30))
-                    .foregroundColor(Color("VicinityNavy"))
-                    .offset(y:20).padding(.bottom)
-                TextField("What's in your vicinity...", text: $postBody).offset(x:30 , y:0).padding(.top)
-                Spacer()
-                    .frame(height:400)
-                HStack {
-                    eventTypeDropdown()
-                    distanceDropdown()
-                    costDropdown()
-                }
-                HStack {
-                    CheckboxFieldViewSale()
-                    CheckboxFieldViewPlus21()
-                }.padding()
-                                
-                Button {
-                    showImagePicker.toggle()
-                    print("hello")
-                } label: {
-                    if let importedImage = importedImage {
-                        importedImage.resizable().frame(width: 70, height: 70)
-                    } else {
-                        Image(systemName: "plus.app").resizable().frame(width: 50, height: 50).foregroundColor(Color("VicinityNavy"))
-                        Text("Add an Image").fontWeight(.heavy).foregroundColor(.black)
-                    }
-                }.sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
-                    ImagePicker(selectedImage: $selectedImage)
-                }
-                
-                
-                //eventType = eventTypeDropdown().textOfButton
-                
-                /*NavigationLink(destination: HomePageView()){ */
-                    Button(action: {
-                        posts.addData(userID: "0000000", postBody: postBody, image: nil)
-                    }, label: {
-                        Text("Post").fontWeight(.heavy).foregroundColor(.black)
-                            .frame(width: 300, height: 32)
-                            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color("VicinityNavy"),lineWidth:3))
-                        
-                    }).padding(.top)
-                /*} */
-                Spacer()
+        
+        VStack() {
+            NavigationLink(destination: HomeView(), isActive: $posted) { EmptyView() }
+
+            Text("Recommendation")
+                .font(.custom("YesevaOne-Regular",size:30))
+                .foregroundColor(Color("VicinityNavy"))
+                .offset(y:20).padding(.bottom)
+            TextField("What's in your vicinity...", text: $postBody).offset(x:30 , y:0).padding(.top)
+            Spacer()
+                //.frame(height:400)
+                .frame(height: 4)
+            HStack {
+                eventTypeDropdown()
+                distanceDropdown()
+                costDropdown()
             }
-            //.navigationTitle("Create A New Post!")
+            HStack {
+                CheckboxFieldViewSale()
+                CheckboxFieldViewPlus21()
+            }.padding()
+                            
+            Button {
+                showImagePicker.toggle()
+            } label: {
+                if let importedImage = importedImage {
+                    importedImage.resizable().frame(width: 70, height: 70)
+                } else {
+                    Image(systemName: "plus.app").resizable().frame(width: 50, height: 50).foregroundColor(Color("VicinityNavy"))
+                    Text("Add an Image").fontWeight(.heavy).foregroundColor(.black)
+                }
+            }.sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
+                ImagePicker(selectedImage: $selectedImage)
+            }
+            
+            Button(action: {
+                postingViewModel.uploadPost(withPostbody: postBody, withType: "", withDistance: "", withCost: "", withPlus21: true, withSale: true, withAnon: false)
+                posted = true
+            }, label: {
+                Text("Post").fontWeight(.heavy).foregroundColor(.black)
+                    .frame(width: 300, height: 32)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color("VicinityNavy"),lineWidth:3))
+                
+            }).padding(.top)
+            
+            Spacer()
         }
+
+    }
     /*}*/
     
     func loadImage() {
@@ -101,7 +98,7 @@ struct CheckboxFieldViewSale: View {
 
         }.padding()
             .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(.red,lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.red,lineWidth: 2))
            
 
     }
@@ -120,7 +117,7 @@ struct CheckboxFieldViewPlus21: View {
 
         }.padding()
             .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(.black,lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
 
 
     }
@@ -177,7 +174,7 @@ struct eventTypeDropdown: View {
             }
         }.padding()
             .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(.orange,lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.orange,lineWidth: 2))
     }
     
     func returnText() -> String {
@@ -221,7 +218,7 @@ struct costDropdown: View {
             }
         }.padding()
             .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(.green,lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.green,lineWidth: 2))
 
     }
 }
@@ -264,7 +261,7 @@ struct distanceDropdown: View {
         }.padding()
             //.background(expand ? Color("VicinityBlue"): Color("VicinityBlue"))
             .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(.blue,lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.blue,lineWidth: 2))
 
     }
 }

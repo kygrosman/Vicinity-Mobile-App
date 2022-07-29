@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		23DE7E362891CF90000271B6 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		4E70BFBA289467E600FCA03D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E70BFB9289467E600FCA03D /* LaunchScreen.storyboard */; };
-		4E70BFBC2894685800FCA03D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E70BFBB2894685800FCA03D /* GoogleService-Info.plist */; };
+		23DE7E3E28930854000271B6 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E3D28930853000271B6 /* PostService.swift */; };
+		23DE7E4128930BAB000271B6 /* PostingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E4028930BAB000271B6 /* PostingViewModel.swift */; };
+		41CEBA542894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41CEBA552894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41CEBA562894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		4E70BFBE2894762600FCA03D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E70BFBD2894762600FCA03D /* GoogleService-Info.plist */; };
+		4E70BFC028947C5E00FCA03D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E70BFBF28947C5E00FCA03D /* LaunchScreen.storyboard */; };
 		4EAA49F12891B81A008CECAE /* VicinityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F02891B81A008CECAE /* VicinityApp.swift */; };
 		4EAA49F32891B81A008CECAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F22891B81A008CECAE /* ContentView.swift */; };
 		4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA49F42891B81B008CECAE /* Assets.xcassets */; };
@@ -85,8 +90,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4E70BFB9289467E600FCA03D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4E70BFBB2894685800FCA03D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		23DE7E3D28930853000271B6 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		23DE7E4028930BAB000271B6 /* PostingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingViewModel.swift; sourceTree = "<group>"; };
+		4E70BFBD2894762600FCA03D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4E70BFBF28947C5E00FCA03D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EAA49ED2891B81A008CECAE /* Vicinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vicinity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA49F02891B81A008CECAE /* VicinityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityApp.swift; sourceTree = "<group>"; };
 		4EAA49F22891B81A008CECAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -172,10 +179,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23DE7E3F28930B8C000271B6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				23DE7E4028930BAB000271B6 /* PostingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		4EAA49E42891B819008CECAE = {
 			isa = PBXGroup;
 			children = (
-				4E70BFBB2894685800FCA03D /* GoogleService-Info.plist */,
+				4E70BFBD2894762600FCA03D /* GoogleService-Info.plist */,
 				4EAA49EF2891B81A008CECAE /* Vicinity */,
 				4EAA4A002891B81B008CECAE /* VicinityTests */,
 				4EAA4A0A2891B81C008CECAE /* VicinityUITests */,
@@ -201,7 +216,7 @@
 				4EAA49F22891B81A008CECAE /* ContentView.swift */,
 				4EAA4A462891BAEE008CECAE /* Extensions.swift */,
 				4EAA49F42891B81B008CECAE /* Assets.xcassets */,
-				4E70BFB9289467E600FCA03D /* LaunchScreen.storyboard */,
+				4E70BFBF28947C5E00FCA03D /* LaunchScreen.storyboard */,
 			);
 			path = Vicinity;
 			sourceTree = "<group>";
@@ -329,6 +344,7 @@
 		4EAA4A342891BAEE008CECAE /* Posting */ = {
 			isa = PBXGroup;
 			children = (
+				23DE7E3F28930B8C000271B6 /* ViewModel */,
 				4EAA4A352891BAEE008CECAE /* Components */,
 				4EAA4A372891BAEE008CECAE /* Views */,
 			);
@@ -373,6 +389,7 @@
 			children = (
 				4EAA4A492891BAEE008CECAE /* ImageUploader.swift */,
 				4EAA4A4A2891BAEE008CECAE /* UserService.swift */,
+				23DE7E3D28930853000271B6 /* PostService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -522,10 +539,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E70BFBA289467E600FCA03D /* LaunchScreen.storyboard in Resources */,
-				4E70BFBC2894685800FCA03D /* GoogleService-Info.plist in Resources */,
 				23DE7E362891CF90000271B6 /* (null) in Resources */,
 				4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */,
+				4E70BFBE2894762600FCA03D /* GoogleService-Info.plist in Resources */,
+				4E70BFC028947C5E00FCA03D /* LaunchScreen.storyboard in Resources */,
+				41CEBA542894627F00AB1A1E /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +551,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41CEBA552894627F00AB1A1E /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +559,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41CEBA562894627F00AB1A1E /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EAA4A6A2891BAEE008CECAE /* UserService.swift in Sources */,
+				23DE7E4128930BAB000271B6 /* PostingViewModel.swift in Sources */,
 				4EAA4A582891BAEE008CECAE /* OpenAppView.swift in Sources */,
 				4EAA4A5A2891BAEE008CECAE /* SignUpView.swift in Sources */,
 				4EAA4A512891BAEE008CECAE /* PostsFilterViewModel.swift in Sources */,
@@ -558,6 +579,7 @@
 				4EAA4A562891BAEE008CECAE /* ConfirmEmailView.swift in Sources */,
 				4EAA49F32891B81A008CECAE /* ContentView.swift in Sources */,
 				4EAA4A662891BAEE008CECAE /* Post.swift in Sources */,
+				23DE7E3E28930854000271B6 /* PostService.swift in Sources */,
 				4EAA4A4F2891BAEE008CECAE /* HomeView.swift in Sources */,
 				4EAA49F12891B81A008CECAE /* VicinityApp.swift in Sources */,
 				4EAA4A5C2891BAEE008CECAE /* PostPageView.swift in Sources */,

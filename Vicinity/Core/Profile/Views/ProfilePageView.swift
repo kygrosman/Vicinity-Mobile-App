@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ProfilePageView: View {
     @State private var anon = false
@@ -17,14 +18,14 @@ struct ProfilePageView: View {
         self.user = user
     }
     
-    //@EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
             VStack{
                 headerView
                 personalInfoView
+                Spacer()
                 filterBarView
                 Spacer()
-                postsView
+                //postsView
             }
         }
     }
@@ -32,11 +33,11 @@ struct ProfilePageView: View {
     
 
 
-/*struct ProfilePageView_Previews: PreviewProvider {
+struct ProfilePageView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfilePageView(user: User)
+        ProfilePageView(user: User(id:"maddy", username: "Mado", fullname: "beepis remington", password: "Mado123", email: "msukhde1@jh.edu", profileImageUrl: ""))
     }
-} */
+}
 extension ProfilePageView {
     var headerView : some View {
             ZStack(alignment: .bottomLeading){
@@ -45,16 +46,18 @@ extension ProfilePageView {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 120, height: 40)
-                        .offset(x:25, y:20)
+                        .position(x:85, y:40)
+                        .frame(height:40)
                     HStack{
                         Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
                             .padding(.top)
                         Text("\(user.username)")
+                            .font(.system(size:20))
                             .padding(.top)
                     }
                     .padding()
                 }
-                .offset(x:-90)
+            
             }
 
         
@@ -88,14 +91,13 @@ extension ProfilePageView {
             VStack(alignment: .leading) {
                 Text("Email").font(.system(size:15)).foregroundColor(Color.gray)
                 Text("\(user.email)").font(.system(size:20))
-            }.padding(.top)
+            }
+            .padding(.top)
             
-            VStack(alignment: .leading) {
-                Text("Anonymous?").font(.system(size:15)).foregroundColor(Color.gray)
-                Toggle("", isOn: $anon).labelsHidden()
-            }.padding(.top)
                 
-        }.offset(x:-35)
+        }
+        .position(x: 110, y: 60)
+        .frame(height: 130)
         
     }
     
@@ -104,7 +106,7 @@ extension ProfilePageView {
             ForEach(PostsFilterViewModel.allCases, id: \.rawValue){ item in
                 VStack{
                     Text(item.title)
-                        .font(.system(size:25))
+                        .font(.system(size:20))
                         .fontWeight(selectionFilter == item ? .semibold : .regular)
                         .foregroundColor(selectionFilter == item ? Color("VicinityNavy") : Color("VicinityBlue"))
                     
@@ -127,18 +129,18 @@ extension ProfilePageView {
                 }
             }
         }
-        .overlay(Divider().offset(x:0,y:25))
+        .overlay(Divider().offset(x:0,y:20))
     }
-    
+    /*
     var postsView: some View {
         ScrollView {
             LazyVStack {
                 ForEach(0...20, id: \.self) {_ in
-                    IndividualPostView().padding()
+                    IndividualPostView(post: Post(id: "x", uid: "x", postBody: "x", type: "x", distance: "x", cost: "x", plus21: true, sale: true, anon: false, timestamp: <FIRTimestamp: seconds=1659034215 nanoseconds=271147000>, user: nil)).padding()
                 }
             }
         }
 
-    }
+    } */
     
 }

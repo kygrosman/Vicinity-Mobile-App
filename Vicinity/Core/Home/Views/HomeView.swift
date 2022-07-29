@@ -32,9 +32,9 @@ struct HomeView: View {
                 tabBarAppearance.configureWithOpaqueBackground()
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             }
-
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
         }
-    
     }
 }
 

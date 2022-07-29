@@ -57,6 +57,7 @@ class AuthViewModel: ObservableObject {
             err = false
             guard let user = result?.user else { return }
             self.userSession = user
+            self.fetchuserData()
         }
     
         if (err) {return [false, descrip]}
@@ -94,16 +95,6 @@ class AuthViewModel: ObservableObject {
          */
         
         /*
-        let phoneNumTest = NSPredicate(format: "SELF MATCHES %@", "^\\d{3}\\d{3}\\d{4}$")
-        let grabbedPN = phoneNum.trimmingCharacters(in: .whitespacesAndNewlines)
-        let phoneNumBool = phoneNumTest.evaluate(with: grabbedPN)
-        
-        if (!phoneNumBool)
-        {
-            // Phone number invalid
-            return [false, "Phone number form is invalid"]
-        }
-        
         //check if password is valid
         let pwTest = NSPredicate(format: "SELF MATCHES %@",
             "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
@@ -137,7 +128,6 @@ class AuthViewModel: ObservableObject {
                 "email": email,
                 "password": password,
                 "fullname": fullname,
-                //"phonenum": phoneNum,
                 "uid": user.uid,
                 "username": username
             ]
@@ -149,6 +139,7 @@ class AuthViewModel: ObservableObject {
                 }
             
             print("DEBUG -- New user registered: \(String(describing: self.userSession?.uid))")
+            self.fetchuserData()
         }
     
         if (err) {return [false, descrip]}
@@ -158,7 +149,7 @@ class AuthViewModel: ObservableObject {
     func confirmEmail() {
         print("DEGUB -- Sending Verification Email to: \(String(describing: self.userSession?.email))")
         
-        Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+        userSession?.sendEmailVerification(completion: { error in
             if let error = error {
                 print("DEBUG -- Failed to send email verification with error: \(error.localizedDescription)")
                 return
@@ -177,9 +168,11 @@ class AuthViewModel: ObservableObject {
     func fetchuserData() {
         
         guard let uid = self.userSession?.uid else {return}
+        print("uid", uid)
         service.fetchUserData(withuid: uid) { user in
             self.currentUser = user
         }
+        
     }
 
 }
