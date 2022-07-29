@@ -18,7 +18,7 @@ class AuthViewModel: ObservableObject {
     
     init() {
         self.userSession = Auth.auth().currentUser
-        print("DEBUG -- User Session: \(self.userSession)")
+        print("DEBUG -- User Session: \(String(describing: self.userSession))")
     }
     
     
@@ -39,13 +39,25 @@ class AuthViewModel: ObservableObject {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("DEBUG -- Failed to log in user with error: \(error.localizedDescription)")
-                descrip = error.localizedDescription
+                
+                switch error.localizedDescription {
+                case "The password is invalid or the user does not have a password.":
+                    descrip = "Invalid password"
+                case "The email address is badly formatted.":
+                    descrip = "Email is invalid"
+                case "There is no user record corresponding to this identifier. The user may have been deleted.":
+                    descrip = "No user with that email"
+                default:
+                    descrip = "Error logging in"
+                }
+                
                 err = true
                 return
             }
             err = false
             guard let user = result?.user else { return }
             self.userSession = user
+            self.fetchuserData()
         }
     
         if (err) {return [false, descrip]}
@@ -68,6 +80,7 @@ class AuthViewModel: ObservableObject {
             return [false, "Fill in all fields"]
         }
         
+        /*
         //check if email is a JHU emial
         let grabbedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -80,18 +93,9 @@ class AuthViewModel: ObservableObject {
             // Email is not a valid JHU email
             return [false, "Email is not a vlid JHU email"]
         }
+         */
         
         /*
-        let phoneNumTest = NSPredicate(format: "SELF MATCHES %@", "^\\d{3}\\d{3}\\d{4}$")
-        let grabbedPN = phoneNum.trimmingCharacters(in: .whitespacesAndNewlines)
-        let phoneNumBool = phoneNumTest.evaluate(with: grabbedPN)
-        
-        if (!phoneNumBool)
-        {
-            // Phone number invalid
-            return [false, "Phone number form is invalid"]
-        }
-        
         //check if password is valid
         let pwTest = NSPredicate(format: "SELF MATCHES %@",
             "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
@@ -125,7 +129,6 @@ class AuthViewModel: ObservableObject {
                 "email": email,
                 "password": password,
                 "fullname": fullname,
-                //"phonenum": phoneNum,
                 "uid": user.uid,
                 "username": username
             ]
@@ -137,6 +140,7 @@ class AuthViewModel: ObservableObject {
                 }
             
             print("DEBUG -- New user registered: \(String(describing: self.userSession?.uid))")
+            self.fetchuserData()
         }
     
         if (err) {return [false, descrip]}
@@ -147,7 +151,7 @@ class AuthViewModel: ObservableObject {
     func confirmEmail() {
         print("DEGUB -- Sending Verification Email to: \(String(describing: self.userSession?.email))")
         
-        Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+        userSession?.sendEmailVerification(completion: { error in
             if let error = error {
                 print("DEBUG -- Failed to send email verification with error: \(error.localizedDescription)")
                 return

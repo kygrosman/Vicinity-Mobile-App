@@ -12,6 +12,7 @@ struct HomePageView: View {
     @ObservedObject var homePageViewModel = HomePageViewModel()
     
     var body: some View {
+        
         VStack {
             ZStack(alignment: .bottomLeading) {
                 Image("vicinity-logo")
@@ -30,6 +31,7 @@ struct HomePageView: View {
             }
 
         }
+        .navigationBarHidden(true)
 
     }
 }

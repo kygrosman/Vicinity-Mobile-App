@@ -17,16 +17,8 @@ struct VicinityApp: App {
     init() {
         FirebaseApp.configure()
         
-        print("DEBUG -- User Session UID: \(String(describing: viewModel.userSession?.uid))")
-        print("DEBUG -- Email Verification: \(String(describing: viewModel.userSession?.isEmailVerified))")
-        
-        //viewModel.signOut()
-        
-        for fontFamily in UIFont.familyNames {
-            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
-                print("\(fontName)")
-            }
-        }
+        print("<<<< DEBUG -- User Session UID: \(String(describing: viewModel.userSession?.uid))")
+        print("<<<< DEBUG -- Email Verification: \(String(describing: viewModel.userSession?.isEmailVerified))")
     }
     
     var body: some Scene {

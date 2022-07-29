@@ -35,7 +35,7 @@ struct ProfilePageView: View {
 
 /*struct ProfilePageView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfilePageView(user: User(id:"maddy", username: "Mado", password: "Mado123", phonenum: "3058770449", email: "msukhde1@jh.edu", profileImageUrl: ""))
+        ProfilePageView(user: User(id:"maddy", username: "Mado", fullname: "beepis remington", password: "Mado123", email: "msukhde1@jh.edu", profileImageUrl: ""))
     }
 } */
 
