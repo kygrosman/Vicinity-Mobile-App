@@ -9,11 +9,11 @@ import SwiftUI
 
 struct HomePageView: View {
 
-    @ObservedObject var model = HomePageViewModel()
+    @ObservedObject var homePageViewModel = HomePageViewModel()
     
     var body: some View {
         VStack {
-            ZStack(alignment: .bottomLeading){
+            ZStack(alignment: .bottomLeading) {
                 Image("vicinity-logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -24,27 +24,13 @@ struct HomePageView: View {
             
             ScrollView {
                 LazyVStack {
-                    ForEach(0...20, id: \.self) {_ in
-                        IndividualPostView().padding()
-                    }
+                    ForEach(homePageViewModel.posts) {post in
+                        IndividualPostView(post: post).padding() }
                 }
             }
 
         }
-        /*
-        NavigationView {
-            
-            List(model.posts) { p in
-                VStack(alignment: .leading) {
-                    Text(p.postBody).font(.headline)
-                    Text(p.userID).font(.subheadline)
-                }
-            }
-            
-            
-        }.onAppear() {
-            self.model.fetchData()
-        } */
+
     }
 }
 

@@ -21,7 +21,6 @@ struct VicinityApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                
                 if (viewModel.userSession != nil)
                 {
                     HomeView()

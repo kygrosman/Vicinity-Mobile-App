@@ -31,7 +31,28 @@ struct HomeView: View {
                 let tabBarAppearance = UITabBarAppearance()
                 tabBarAppearance.configureWithOpaqueBackground()
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-            }
+            }.navigationBarBackButtonHidden(true)
+        } else {
+            TabView {
+                HomePageView().tabItem{
+                    Text("Home")
+                    Image(systemName: "house")
+                }
+                
+                PostPageView().tabItem{
+                    Text("Post")
+                    Image(systemName: "plus")
+                }
+                
+                /*ProfilePageView(user: user).tabItem{
+                    Text("Profile")
+                    Image(systemName: "person")
+                } */
+            }.onAppear{
+                let tabBarAppearance = UITabBarAppearance()
+                tabBarAppearance.configureWithOpaqueBackground()
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }.navigationBarBackButtonHidden(true)
 
         }
     

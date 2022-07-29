@@ -7,13 +7,21 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 import FirebaseFirestoreSwift
 
 
-struct Post: Identifiable {
+struct Post: Identifiable, Decodable {
     @DocumentID var id: String?
-    var userID: String
-    var postBody: String
-    var image: UIImage
-    var anon: Bool
+    let uid: String
+    let postbody: String
+    let type: String
+    let distance: String
+    let cost: String
+    let plus21: Bool
+    let sale: Bool
+    let anon: Bool
+    let timestamp: Timestamp
+    
+    var user: User? 
 }

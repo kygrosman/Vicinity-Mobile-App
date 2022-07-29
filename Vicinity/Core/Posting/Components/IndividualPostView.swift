@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct IndividualPostView: View {
+    let post: Post
     var body: some View {
         //each post is a vstack
         VStack(alignment: .leading) {
@@ -63,7 +64,7 @@ struct IndividualPostView: View {
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.black,lineWidth: 1.5))
             }.padding()
             
-            Text("this is our first post!").multilineTextAlignment(.leading).font(Font.custom("Inter-Italic", size: 18))
+            Text(post.postbody).multilineTextAlignment(.leading).font(Font.custom("Inter-Italic", size: 18))
         }
         
         Divider()
@@ -71,8 +72,8 @@ struct IndividualPostView: View {
     
 }
 
-struct IndividualPostView_Previews: PreviewProvider {
+/*struct IndividualPostView_Previews: PreviewProvider {
     static var previews: some View {
         IndividualPostView()
     }
-}
+} */

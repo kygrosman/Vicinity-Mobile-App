@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ProfilePageView: View {
     @State private var anon = false
@@ -17,14 +18,13 @@ struct ProfilePageView: View {
         self.user = user
     }
     
-    //@EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
             VStack{
                 headerView
                 personalInfoView
                 filterBarView
                 Spacer()
-                postsView
+                //postsView
             }
         }
     }
@@ -129,16 +129,16 @@ extension ProfilePageView {
         }
         .overlay(Divider().offset(x:0,y:25))
     }
-    
+    /*
     var postsView: some View {
         ScrollView {
             LazyVStack {
                 ForEach(0...20, id: \.self) {_ in
-                    IndividualPostView().padding()
+                    IndividualPostView(post: Post(id: "x", uid: "x", postBody: "x", type: "x", distance: "x", cost: "x", plus21: true, sale: true, anon: false, timestamp: <FIRTimestamp: seconds=1659034215 nanoseconds=271147000>, user: nil)).padding()
                 }
             }
         }
 
-    }
+    } */
     
 }
