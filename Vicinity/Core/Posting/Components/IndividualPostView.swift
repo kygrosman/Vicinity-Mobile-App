@@ -8,26 +8,35 @@
 import SwiftUI
 
 struct IndividualPostView: View {
-    let post: Post
+    @ObservedObject var viewModel: IndividualPostViewModel
+    
+    init(post: Post) {
+        self.viewModel = IndividualPostViewModel(post: post)
+    }
+    
     var body: some View {
         //each post is a vstack
         VStack(alignment: .leading) {
             HStack {
                 //photo and username are across the top, horizontally
                 Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
-                Text(post.user?.username ?? "anon")
+                Text(viewModel.post.user?.username ?? "anon")
                 Text("2w").font(.caption).foregroundColor(Color.gray)
                 Spacer()
                 VStack {
                     Button {
-                        //action (add to saved posts database)
+                        viewModel.post.saved ?? false
+                        ? viewModel.unsavePost()
+                        : viewModel.savePost()
                     } label: {
-                        Image(systemName: "bookmark")
+                        Image(systemName: viewModel.post.saved ?? false ? "bookmark.fill" : "bookmark")
+                            .foregroundColor(Color("VicinityBlue"))
                     }
                     Button {
                         //action (comment)
                     } label: {
                         Image(systemName: "message")
+                            .foregroundColor(Color("VicinityBlue"))
                     }.offset(y:3)
                 }
                 
@@ -64,7 +73,7 @@ struct IndividualPostView: View {
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.black,lineWidth: 1.5))
             }.padding()
             
-            Text(post.postbody).multilineTextAlignment(.leading).font(Font.custom("Inter-Italic", size: 18))
+            Text(viewModel.post.postbody).multilineTextAlignment(.leading).font(Font.custom("Inter-Italic", size: 18))
         }
         
         Divider()

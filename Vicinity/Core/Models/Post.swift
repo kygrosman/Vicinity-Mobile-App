@@ -23,5 +23,6 @@ struct Post: Identifiable, Decodable {
     let anon: Bool
     let timestamp: Timestamp
     
-    var user: User? 
+    var user: User?
+    var saved: Bool?
 }

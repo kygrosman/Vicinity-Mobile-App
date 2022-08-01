@@ -11,11 +11,11 @@ import Firebase
 struct ProfilePageView: View {
     @State private var anon = false
     @State private var selectionFilter: PostsFilterViewModel = .mine
+    @ObservedObject var profViewModel: ProfileViewModel
     @Namespace var animation
     
-    private let user: User
     init (user: User) {
-        self.user = user
+        self.profViewModel = ProfileViewModel(user: user)
     }
     
     var body: some View {
@@ -53,7 +53,7 @@ extension ProfilePageView {
                     HStack{
                         Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
                             .padding(.top)
-                        Text("\(user.fullname)")
+                        Text("\(profViewModel.user.fullname)")
                             .font(.system(size:20))
                             .padding(.top)
                     }
@@ -87,12 +87,12 @@ extension ProfilePageView {
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
                 Text("Username").font(.system(size:15)).foregroundColor(Color.gray)
-                Text("@\(user.username)").font(.system(size:20))
+                Text("@\(profViewModel.user.username)").font(.system(size:20))
             }
             
             VStack(alignment: .leading) {
                 Text("Email").font(.system(size:15)).foregroundColor(Color.gray)
-                Text("\(user.email)").font(.system(size:20))
+                Text("\(profViewModel.user.email)").font(.system(size:20))
             }
             .padding(.top)
             
@@ -133,16 +133,16 @@ extension ProfilePageView {
         }
         .overlay(Divider().offset(x:0,y:20))
     }
-    /*
+    
     var postsView: some View {
         ScrollView {
             LazyVStack {
-                ForEach(0...20, id: \.self) {_ in
-                    IndividualPostView(post: Post(id: "x", uid: "x", postBody: "x", type: "x", distance: "x", cost: "x", plus21: true, sale: true, anon: false, timestamp: <FIRTimestamp: seconds=1659034215 nanoseconds=271147000>, user: nil)).padding()
+                ForEach(profViewModel.posts(forFilter: self.selectionFilter)) {post in
+                    IndividualPostView(post: post).padding()
                 }
             }
         }
 
-    } */
+    }
     
 }

@@ -21,4 +21,5 @@ class PostingViewModel: ObservableObject {
             }
         }
     }
+    
 }
