@@ -10,7 +10,7 @@ import Firebase
 struct PostService {
     
     
-    func uploadPost(postbody: String, type: String, distance: String, cost: String, plus21: Bool, sale: Bool, anon: Bool, completion: @escaping(Bool) -> Void) {
+    func uploadPost(postbody: String, type: String, distance: String, cost: String, plus21: Bool, sale: Bool, anon: Bool, completion: @escaping(Bool) -> Bool) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let data = ["uid": uid,
                     "postbody": postbody,

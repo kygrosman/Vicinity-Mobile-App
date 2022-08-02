@@ -169,13 +169,9 @@ class AuthViewModel: ObservableObject {
     }
     
     func fetchuserData() {
-        print("maddy")
         guard let uid = self.userSession?.uid else {return}
-        print("biz")
         service.fetchUserData(withuid: uid) { user in
             self.currentUser = user
         }
-        
     }
-
 }

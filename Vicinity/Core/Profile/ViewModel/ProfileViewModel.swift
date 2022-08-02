@@ -40,6 +40,7 @@ class ProfileViewModel: ObservableObject {
             }
             
         }
+        
     }
     
     func fetchUserSavedPosts() {
