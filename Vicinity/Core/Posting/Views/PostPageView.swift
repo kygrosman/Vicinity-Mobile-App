@@ -11,7 +11,7 @@ import Firebase
 struct PostPageView: View {
     
     @ObservedObject var postingViewModel = PostingViewModel()
-    @State var postBody = ""
+    @State var postBody = "what's in your vicinity..."
     
     @State var expandDistance = false
     @State var textOfDistanceButton = "DISTANCE"
@@ -41,8 +41,12 @@ struct PostPageView: View {
             Text("Recommendation")
                 .font(.custom("YesevaOne-Regular",size:30))
                 .foregroundColor(Color("VicinityNavy"))
-                .offset(y:20).padding(.bottom)
-            TextField("What's in your vicinity...", text: $postBody).offset(x:30 , y:0).padding(.top)
+                .offset(y:20)
+                .padding(.bottom)
+            TextEditor(text: $postBody)
+                //.offset(x:30 , y:0)
+                .padding()
+                .frame(height: 100)
             Spacer()
                 //.frame(height:400)
                 .frame(height: 4)
