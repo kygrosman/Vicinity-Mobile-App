@@ -98,7 +98,7 @@ struct PostService {
                         .getDocument { doc, _ in
                             guard let post = try? doc?.data(as: Post.self) else {return}
                             posts.append(post)
-                            completion(posts)
+                            completion(posts.sorted(by: {$0.timestamp.dateValue() > $1.timestamp.dateValue() }))
                         }
                     
                 }
