@@ -19,6 +19,7 @@ class AuthViewModel: ObservableObject {
     init() {
         self.userSession = Auth.auth().currentUser
         print("DEBUG -- User Session: \(String(describing: self.userSession))")
+        self.fetchuserData()
     }
     
     
@@ -57,10 +58,11 @@ class AuthViewModel: ObservableObject {
             err = false
             guard let user = result?.user else { return }
             self.userSession = user
-            self.fetchuserData()
+            //self.fetchuserData()
         }
-    
+        print("error")
         if (err) {return [false, descrip]}
+        self.fetchuserData()
         return [true, ""]
     }
     
@@ -143,6 +145,7 @@ class AuthViewModel: ObservableObject {
         }
     
         if (err) {return [false, descrip]}
+        self.fetchuserData()
         return [true, ""]
     }
     
@@ -183,13 +186,9 @@ class AuthViewModel: ObservableObject {
     
     
     func fetchuserData() {
-        
         guard let uid = self.userSession?.uid else {return}
-        print("uid", uid)
         service.fetchUserData(withuid: uid) { user in
             self.currentUser = user
         }
-        
     }
-
 }

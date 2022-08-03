@@ -12,16 +12,26 @@ struct PostPageView: View {
     
     @ObservedObject var postingViewModel = PostingViewModel()
     @State var postBody = ""
-    @State var eventType = ""
-    @State var cost = ""
-    @State var distance = ""
-    @State var sale = false
-    @State var plus21 = false
+    
+    @State var expandDistance = false
+    @State var textOfDistanceButton = "DISTANCE"
+    
+    @State var expandEventType = false
+    @State var textOfEventTypeButton = "TYPE"
+
+    @State var expandCost = false
+    @State var textOfCostButton = "COST"
+    
+    @State var sale:Bool = false
+    @State var plus21:Bool = false
+    
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
     @State private var importedImage: Image?
     @State private var posted = false
     
+    @State private var error_msg = ""
+    @State private var showAlert = false
 
     var body: some View {
         
@@ -37,13 +47,146 @@ struct PostPageView: View {
                 //.frame(height:400)
                 .frame(height: 4)
             HStack {
-                eventTypeDropdown()
-                distanceDropdown()
-                costDropdown()
+                VStack {
+                    HStack {
+                        Text(textOfEventTypeButton).fontWeight(.heavy).foregroundColor(.orange)
+                        Image(systemName: expandEventType ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
+                            .foregroundColor(.orange)
+                    }.onTapGesture {
+                        expandEventType.toggle()
+                    }
+                    if expandEventType {
+                        Button(action: {
+                            textOfEventTypeButton = "FOOD"
+                            expandEventType.toggle()
+                        }) {
+                            Text("FOOD").padding()
+                        }.foregroundColor(.black)
+                        
+                        Button(action: {
+                            textOfEventTypeButton = "EVENT"
+                            expandEventType.toggle()
+                        }) {
+                            Text("EVENT").padding()
+                        }.foregroundColor(.black)
+                        
+                        Button(action: {
+                            textOfEventTypeButton = "SHOP"
+                            expandEventType.toggle()
+                        }) {
+                            Text("SHOP").padding()
+                        }.foregroundColor(.black)
+                        
+                        Button(action: {
+                            textOfEventTypeButton = "ACTIVITY"
+                            expandEventType.toggle()
+                        }) {
+                            Text("ACTIVITY").padding()
+                        }.foregroundColor(.black)
+                        
+                        Button(action: {
+                            textOfEventTypeButton = "RESOURCE"
+                            expandEventType.toggle()
+                        }) {
+                            Text("RESOURCE").padding()
+                        }.foregroundColor(.black)
+                    }
+                }.padding()
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(.orange,lineWidth: 2))
+                
+                VStack {
+                    HStack {
+                        Text(textOfDistanceButton).fontWeight(.heavy).foregroundColor(.blue)
+                        Image(systemName: expandDistance ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
+                            .foregroundColor(.blue)
+                    }.onTapGesture {
+                        expandDistance.toggle()
+                    }
+                    if expandDistance {
+                        Button(action: {
+                            textOfDistanceButton = "WALK"
+                            expandDistance.toggle()
+                        }) {
+                            Text("WALK").padding()
+                        }.foregroundColor(.black)
+                        
+                        Button(action: {
+                            textOfDistanceButton = "SHUTTLE"
+                            expandDistance.toggle()
+                        }) {
+                            Text("SHUTTLE").padding()
+                        }.foregroundColor(.black)
+                        
+                        Button(action: {
+                            textOfDistanceButton = "DRIVE"
+                            expandDistance.toggle()
+                        }) {
+                            Text("DRIVE").padding()
+                        }.foregroundColor(.black)
+                        
+                    }
+                }.padding()
+                    //.background(expand ? Color("VicinityBlue"): Color("VicinityBlue"))
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(.blue,lineWidth: 2))
+
+                VStack {
+                    HStack {
+                        Text(textOfCostButton).fontWeight(.heavy).foregroundColor(.green)
+                        Image(systemName: expandCost ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
+                            .foregroundColor(.green)
+                    }.onTapGesture {
+                        self.expandCost.toggle()
+                    }
+                    if expandCost {
+                        Button(action: {
+                            self.textOfCostButton = "$"
+                            self.expandCost.toggle()
+                        }) {
+                            Text("$").padding()
+                        }.foregroundColor(.black)
+                        
+                        Button(action: {
+                            self.textOfCostButton = "$$"
+                            self.expandCost.toggle()
+                        }) {
+                            Text("$$").padding()
+                        }.foregroundColor(.black)
+                        
+                        Button(action: {
+                            self.textOfCostButton = "$$$"
+                            self.expandCost.toggle()
+                        }) {
+                            Text("$$$").padding()
+                        }.foregroundColor(.black)
+                    }
+                }.padding()
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(.green,lineWidth: 2))
+                
             }
             HStack {
-                CheckboxFieldViewSale()
-                CheckboxFieldViewPlus21()
+                Button(action: toggleSale){
+                    HStack{
+                        Image(systemName: sale ? "checkmark.square": "square").foregroundColor(.red)
+                        Text("SALE").foregroundColor(Color.red).fontWeight(.heavy)
+                    }
+
+                }.padding()
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(.red,lineWidth: 2))
+                
+                Button(action: togglePlus21){
+                    HStack{
+                        Image(systemName: plus21 ? "checkmark.square": "square").foregroundColor(.black)
+                        Text("+21").foregroundColor(Color.black).fontWeight(.heavy)
+                    }
+
+                }.padding()
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
+                
             }.padding()
                             
             Button {
@@ -60,14 +203,29 @@ struct PostPageView: View {
             }
             
             Button(action: {
-                postingViewModel.uploadPost(withPostbody: postBody, withType: "", withDistance: "", withCost: "", withPlus21: true, withSale: true, withAnon: false)
-                posted = true
+                let p = postingViewModel.uploadPost(
+                    withPostbody: postBody,
+                    withType: textOfEventTypeButton,
+                    withDistance: textOfDistanceButton,
+                    withCost: textOfCostButton,
+                    withPlus21: plus21,
+                    withSale: sale,
+                    withAnon: false)
+                if p {
+                    posted = true
+                } else {
+                    showAlert = true
+                    error_msg = "post must contain body and type, distance, cost selection"
+                }
+                
             }, label: {
                 Text("Post").fontWeight(.heavy).foregroundColor(.black)
                     .frame(width: 300, height: 32)
                     .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color("VicinityNavy"),lineWidth:3))
                 
-            }).padding(.top)
+            }).padding(.top).alert(isPresented: $showAlert) {
+                Alert(title: Text("unable to post"), message: Text(error_msg))
+            }
             
             Spacer()
         }
@@ -80,138 +238,60 @@ struct PostPageView: View {
         importedImage = Image(uiImage: selectedImage)
     }
     
+    func toggleSale(){sale = !sale}
+    func togglePlus21(){plus21 = !plus21}
+    
     /*func uploadImage(_ image: UIImage) {
         ImageUploader.uploadImage()
     } */
 }
 
-struct CheckboxFieldViewSale: View {
-    @State var isChecked:Bool = false
-    var title = "SALE"
-    func toggle(){isChecked = !isChecked}
-    var body: some View {
-        Button(action: toggle){
-            HStack{
-                Image(systemName: isChecked ? "checkmark.square": "square").foregroundColor(.red)
-                Text(title).foregroundColor(Color.red).fontWeight(.heavy)
-            }
-
-        }.padding()
-            .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.red,lineWidth: 2))
-           
-
-    }
-}
-
-struct CheckboxFieldViewPlus21: View {
-    @State var isChecked:Bool = false
-    var title = "+21"
-    func toggle(){isChecked = !isChecked}
-    var body: some View {
-        Button(action: toggle){
-            HStack{
-                Image(systemName: isChecked ? "checkmark.square": "square").foregroundColor(.black)
-                Text(title).foregroundColor(Color.black).fontWeight(.heavy)
-            }
-
-        }.padding()
-            .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
 
 
+
+
+struct PostPageView_Previews: PreviewProvider {
+    static var previews: some View {
+        PostPageView()
     }
 }
 
 
-struct eventTypeDropdown: View {
-    @State var expand = false
-    @State var textOfButton = "TYPE"
+
+
+//not relevant below!
+
+
+/*struct costDropdown: View {
+    @State var expandCost = false
+    @State var textOfCostButton = "COST"
     var body: some View {
         VStack {
             HStack {
-                Text(textOfButton).fontWeight(.heavy).foregroundColor(.orange)
-                Image(systemName: expand ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
-                    .foregroundColor(.orange)
-            }.onTapGesture {
-                self.expand.toggle()
-            }
-            if expand {
-                Button(action: {
-                    self.textOfButton = "FOOD"
-                    self.expand.toggle()
-                }) {
-                    Text("FOOD").padding()
-                }.foregroundColor(.black)
-                
-                Button(action: {
-                    self.textOfButton = "EVENT"
-                    self.expand.toggle()
-                }) {
-                    Text("EVENT").padding()
-                }.foregroundColor(.black)
-                
-                Button(action: {
-                    self.textOfButton = "SHOP"
-                    self.expand.toggle()
-                }) {
-                    Text("SHOP").padding()
-                }.foregroundColor(.black)
-                
-                Button(action: {
-                    self.textOfButton = "ACTIVITY"
-                    self.expand.toggle()
-                }) {
-                    Text("ACTIVITY").padding()
-                }.foregroundColor(.black)
-                
-                Button(action: {
-                    self.textOfButton = "RESOURCE"
-                    self.expand.toggle()
-                }) {
-                    Text("RESOURCE").padding()
-                }.foregroundColor(.black)
-            }
-        }.padding()
-            .cornerRadius(20)
-            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.orange,lineWidth: 2))
-    }
-    
-    func returnText() -> String {
-        return self.textOfButton
-    }
-}
-
-struct costDropdown: View {
-    @State var expand = false
-    @State var textOfButton = "COST"
-    var body: some View {
-        VStack {
-            HStack {
-                Text(textOfButton).fontWeight(.heavy).foregroundColor(.green)
-                Image(systemName: expand ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
+                Text(textOfCostButton).fontWeight(.heavy).foregroundColor(.green)
+                Image(systemName: expandCost ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
                     .foregroundColor(.green)
             }.onTapGesture {
-                self.expand.toggle()
+                self.expandCost.toggle()
             }
-            if expand {
+            if expandCost {
                 Button(action: {
-                    self.textOfButton = "$"
-                    self.expand.toggle()
+                    self.textOfCostButton = "$"
+                    self.expandCost.toggle()
                 }) {
                     Text("$").padding()
                 }.foregroundColor(.black)
                 
                 Button(action: {
-                    self.textOfButton = "$$"
-                    self.expand.toggle()
+                    self.textOfCostButton = "$$"
+                    self.expandCost.toggle()
                 }) {
                     Text("$$").padding()
                 }.foregroundColor(.black)
                 
                 Button(action: {
-                    self.textOfButton = "$$$"
-                    self.expand.toggle()
+                    self.textOfCostButton = "$$$"
+                    self.expandCost.toggle()
                 }) {
                     Text("$$$").padding()
                 }.foregroundColor(.black)
@@ -223,36 +303,38 @@ struct costDropdown: View {
     }
 }
 
+
+
 struct distanceDropdown: View {
-    @State var expand = false
-    @State var textOfButton = "DISTANCE"
+    @State var expandDistance = false
+    @State var textOfDistanceButton = "DISTANCE"
     var body: some View {
         VStack {
             HStack {
-                Text(textOfButton).fontWeight(.heavy).foregroundColor(.blue)
-                Image(systemName: expand ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
+                Text(textOfDistanceButton).fontWeight(.heavy).foregroundColor(.blue)
+                Image(systemName: expandDistance ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
                     .foregroundColor(.blue)
             }.onTapGesture {
-                self.expand.toggle()
+                self.expandDistance.toggle()
             }
-            if expand {
+            if expandDistance {
                 Button(action: {
-                    self.textOfButton = "WALK"
-                    self.expand.toggle()
+                    self.textOfDistanceButton = "WALK"
+                    self.expandDistance.toggle()
                 }) {
                     Text("WALK").padding()
                 }.foregroundColor(.black)
                 
                 Button(action: {
-                    self.textOfButton = "SHUTTLE"
-                    self.expand.toggle()
+                    self.textOfDistanceButton = "SHUTTLE"
+                    self.expandDistance.toggle()
                 }) {
                     Text("SHUTTLE").padding()
                 }.foregroundColor(.black)
                 
                 Button(action: {
-                    self.textOfButton = "DRIVE"
-                    self.expand.toggle()
+                    self.textOfDistanceButton = "DRIVE"
+                    self.expandDistance.toggle()
                 }) {
                     Text("DRIVE").padding()
                 }.foregroundColor(.black)
@@ -267,20 +349,97 @@ struct distanceDropdown: View {
 }
 
 
-/*struct MyTextFieldStyle: TextFieldStyle {
-    func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-        .padding(85)
-        .background(
-            //RoundedRectangle(cornerRadius: 20, style: .continuous)
-                //.stroke(Color("VicinityBlue"), lineWidth: 3)
-        ).padding()
-    }
-} */
+struct CheckboxFieldViewSale: View {
+    @State var sale:Bool = false
+    var title = "SALE"
+    func toggleSale(){sale = !sale}
+    var body: some View {
+        Button(action: toggleSale){
+            HStack{
+                Image(systemName: sale ? "checkmark.square": "square").foregroundColor(.red)
+                Text("SALE").foregroundColor(Color.red).fontWeight(.heavy)
+            }
 
+        }.padding()
+            .cornerRadius(20)
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.red,lineWidth: 2))
+           
 
-struct PostPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostPageView()
     }
 }
+
+struct CheckboxFieldViewPlus21: View {
+    @State var plus21:Bool = false
+    var title = "+21"
+    func togglePlus21(){plus21 = !plus21}
+    var body: some View {
+        Button(action: togglePlus21){
+            HStack{
+                Image(systemName: plus21 ? "checkmark.square": "square").foregroundColor(.black)
+                Text("+21").foregroundColor(Color.black).fontWeight(.heavy)
+            }
+
+        }.padding()
+            .cornerRadius(20)
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
+
+
+    }
+}
+ 
+ struct eventTypeDropdown: View {
+     @State var expandEventType = false
+     @State var textOfEventTypeButton = "TYPE"
+     var body: some View {
+         VStack {
+             HStack {
+                 Text(textOfEventTypeButton).fontWeight(.heavy).foregroundColor(.orange)
+                 Image(systemName: expandEventType ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
+                     .foregroundColor(.orange)
+             }.onTapGesture {
+                 self.expandEventType.toggle()
+             }
+             if expandEventType {
+                 Button(action: {
+                     self.textOfEventTypeButton = "FOOD"
+                     self.expandEventType.toggle()
+                 }) {
+                     Text("FOOD").padding()
+                 }.foregroundColor(.black)
+                 
+                 Button(action: {
+                     self.textOfEventTypeButton = "EVENT"
+                     self.expandEventType.toggle()
+                 }) {
+                     Text("EVENT").padding()
+                 }.foregroundColor(.black)
+                 
+                 Button(action: {
+                     self.textOfEventTypeButton = "SHOP"
+                     self.expandEventType.toggle()
+                 }) {
+                     Text("SHOP").padding()
+                 }.foregroundColor(.black)
+                 
+                 Button(action: {
+                     self.textOfEventTypeButton = "ACTIVITY"
+                     self.expandEventType.toggle()
+                 }) {
+                     Text("ACTIVITY").padding()
+                 }.foregroundColor(.black)
+                 
+                 Button(action: {
+                     self.textOfEventTypeButton = "RESOURCE"
+                     self.expandEventType.toggle()
+                 }) {
+                     Text("RESOURCE").padding()
+                 }.foregroundColor(.black)
+             }
+         }.padding()
+             .cornerRadius(20)
+             .overlay(RoundedRectangle(cornerRadius: 25).stroke(.orange,lineWidth: 2))
+     }
+     
+     
+ }*/
+

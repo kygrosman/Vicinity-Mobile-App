@@ -12,13 +12,24 @@ class PostingViewModel: ObservableObject {
     
     
     let service = PostService()
-    func uploadPost(withPostbody postbody: String, withType type: String, withDistance distance: String, withCost cost: String, withPlus21 plus21: Bool, withSale sale: Bool, withAnon anon: Bool) {
+    func uploadPost(withPostbody postbody: String, withType type: String, withDistance distance: String, withCost cost: String, withPlus21 plus21: Bool, withSale sale: Bool, withAnon anon: Bool) -> Bool  {
+        
+        if postbody == "" ||
+        type == "TYPE" ||
+        cost == "COST" ||
+        distance == "DISTANCE"{
+            return false 
+        }
+        
         service.uploadPost(postbody: postbody, type: type, distance: distance, cost: cost, plus21: plus21, sale: sale, anon: anon) { success in
             if success {
                 self.didUploadPost = true
             } else {
                 //show error message to user
             }
+            return true
         }
+        return true
     }
+    
 }
