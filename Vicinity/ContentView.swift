@@ -7,12 +7,28 @@
 
 import SwiftUI
 
-
-
 struct ContentView: View {
+    
+    @EnvironmentObject var viewModel: AuthViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("WELCOME!")
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundColor(Color("VicinityGold"))
+                .padding(.bottom, 15)
+            Button(action: {
+                viewModel.signOut()
+            }, label: {
+                Text("Sign Out")
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("VicinityNavy"))
+            })
+        }
+        
+        
     }
 }
 

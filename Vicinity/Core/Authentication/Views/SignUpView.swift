@@ -27,8 +27,6 @@ struct SignUpView: View {
         
         VStack {
             
-            //NavigationLink(destination: ConfirmEmailView(), isActive: $action) { EmptyView() }
-            
             // navigation links
             VStack(alignment: .leading) {
                 //title

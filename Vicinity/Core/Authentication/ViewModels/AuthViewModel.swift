@@ -159,11 +159,28 @@ class AuthViewModel: ObservableObject {
         })
     }
     
+    func resetPass(email: String) -> Array<Any> {
+        
+        var err = false
+        var descrip = ""
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print("DEBUG -- Failed to sign up user with error: \(error.localizedDescription)")
+                descrip = error.localizedDescription
+                err = true
+                return
+            }
+        }
+        if (err) { return [false, descrip] }
+        return [true,""]
+    }
+    
     //signout function
     func signOut() {
         userSession = nil
         try? Auth.auth().signOut()
     }
+    
     
     func fetchuserData() {
         

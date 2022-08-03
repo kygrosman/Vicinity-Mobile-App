@@ -12,6 +12,9 @@ struct ForgotPassView: View {
     
     @State private var action: Int? = 0
     @State private var email = ""
+    @State private var showAlert = false
+    @State private var error_msg = ""
+    @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
@@ -25,13 +28,18 @@ struct ForgotPassView: View {
                         .fontWeight(.heavy)
                         .foregroundColor(Color("VicinityNavy"))
                         .multilineTextAlignment(.leading)
-                        .padding([.bottom], 70.0)
+                        .padding([.bottom], 30)
                     
+                    Text("Enter your email below and shortly after you will receive a link to reset your password")
+                        .padding([.trailing], 65)
+                        .foregroundColor(Color("VicinityNavy"))
+                        .padding(.bottom, 20)
+                        
                     
                     // email text field
                     Group {
                         TextField("email", text: $email)
-                            .padding(.bottom, 20)
+                            .padding([.bottom, .trailing], 15)
                     }
                     .disableAutocorrection(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                     .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xxxLarge/*@END_MENU_TOKEN@*/)
@@ -44,7 +52,13 @@ struct ForgotPassView: View {
                     // login button
                     Button(action: {
                         //send new pswrd link
-        
+                        let reset = viewModel.resetPass(email: email)
+                        if (reset[0] as! Bool == false)
+                        {
+                            error_msg = reset[1] as! String
+                            showAlert = true
+                        }
+                        
                     }, label: {
                         Text("Send Password Reset").fontWeight(.heavy)
                     })
@@ -53,6 +67,9 @@ struct ForgotPassView: View {
                     .background(Color("VicinityNavy"))
                     .cornerRadius(30)
                     .padding(.bottom, 20)
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Unable to send email"), message: Text(error_msg))
+                    }
                     
                 }
             }

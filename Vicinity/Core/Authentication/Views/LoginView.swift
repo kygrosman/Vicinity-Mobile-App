@@ -24,7 +24,7 @@ struct LoginView: View {
         
             
         ZStack {
-            NavigationLink(destination: ConfirmEmailView(), isActive: $action) { EmptyView() }
+            NavigationLink(destination: ForgotPassView(), isActive: $action) { EmptyView() }
             
             /*
              RoundedRectangle(cornerRadius: 40)

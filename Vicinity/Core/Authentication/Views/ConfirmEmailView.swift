@@ -13,6 +13,7 @@ import SwiftEmailValidator
 struct ConfirmEmailView: View {
     
     @EnvironmentObject var viewModel: AuthViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         let temp_email = viewModel.userSession?.email ?? "[nil]"
