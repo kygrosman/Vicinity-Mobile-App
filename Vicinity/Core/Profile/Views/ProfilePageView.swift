@@ -21,24 +21,16 @@ struct ProfilePageView: View {
     var body: some View {
             VStack{
                 headerView
-                personalInfoView
+                personalInfoView.padding(.bottom)
                 Spacer()
                 filterBarView
                 Spacer()
-                //postsView
-            }
+                postsView
+            }.navigationBarTitleDisplayMode(.inline)
         }
     }
     
     
-
-
-/*struct ProfilePageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfilePageView(user: User(id:"maddy", username: "Mado", fullname: "beepis remington", password: "Mado123", email: "msukhde1@jh.edu", profileImageUrl: ""))
-    }
-} */
-
 
 extension ProfilePageView {
     var headerView : some View {
@@ -64,23 +56,6 @@ extension ProfilePageView {
 
         
     }
-        /*ZStack(alignment: .bottomLeading){
-            VStack(alignment: .leading){
-                Image("Profile Image")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 120, height: 40)
-                    .offset(x:25, y:20)
-                HStack{
-                    Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
-                        .padding(.top)
-                    Text("maddy")
-                        .padding(.top)
-                }
-                .padding()
-            }
-            .offset(x:-90)
-        } */
     
     var personalInfoView: some View{
         
@@ -98,8 +73,9 @@ extension ProfilePageView {
             
                 
         }
-        .position(x: 110, y: 60)
-        .frame(height: 130)
+        .padding()
+        .position(x: 150, y: 60)
+        .frame(height: 80)
         
     }
     
@@ -130,8 +106,8 @@ extension ProfilePageView {
                     }
                 }
             }
-        }
-        .overlay(Divider().offset(x:0,y:20))
+        }.padding(.top, 14)
+        .overlay(Divider().offset(x:0,y:200))
     }
     
     var postsView: some View {

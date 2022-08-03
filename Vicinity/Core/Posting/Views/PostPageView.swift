@@ -232,7 +232,7 @@ struct PostPageView: View {
             }
             
             Spacer()
-        }
+        }.navigationBarTitleDisplayMode(.inline)
 
     }
     /*}*/

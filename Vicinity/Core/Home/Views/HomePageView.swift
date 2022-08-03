@@ -30,7 +30,7 @@ struct HomePageView: View {
                 }
             }
 
-        }
+        }.navigationBarTitleDisplayMode(.inline)
     }
 }
 
