@@ -45,32 +45,38 @@ struct IndividualPostView: View {
                 //tags (between 3 and 5, sale and plus 21 only show up if set to true)
                 Text(viewModel.post.type)
                     .font(.subheadline).bold()
-                    .frame(width: 60, height: 32)
+                    .frame(width: viewModel.post.type.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)), height: 32)
                     .foregroundColor(.orange)
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.orange,lineWidth: 1.5 ))
                 Spacer()
                 Text(viewModel.post.cost)
                     .font(.subheadline).bold()
-                    .frame(width: 60, height: 32)
+                    .frame(width: (viewModel.post.cost.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)) * 2), height: 32)
                     .foregroundColor(.green)
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.green,lineWidth:1.5))
-                Spacer()
-                Text("SALE")
-                    .font(.subheadline).bold()
-                    .frame(width: 60, height: 32)
-                    .foregroundColor(.red)
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(.red,lineWidth: 1.5))
+                if viewModel.post.sale {
+                    Spacer()
+                    Text("SALE")
+                        .font(.subheadline).bold()
+                        .frame(width: 60, height: 32)
+                        .foregroundColor(.red)
+                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(.red,lineWidth: 1.5))
+
+                }
                 Spacer()
                 Text(viewModel.post.distance)
                     .font(.subheadline).bold()
-                    .frame(width: 90, height: 32)
+                    .frame(width: viewModel.post.distance.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)), height: 32)
                     .foregroundColor(.blue)
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.blue,lineWidth: 1.5))
-                Spacer()
-                Text("+21")  .font(.subheadline).bold()
-                    .frame(width: 60, height: 32)
-                    .foregroundColor(.black)
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(.black,lineWidth: 1.5))
+                if viewModel.post.plus21 {
+                    Spacer()
+                    Text("+21")  .font(.subheadline).bold()
+                        .frame(width: 60, height: 32)
+                        .foregroundColor(.black)
+                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(.black,lineWidth: 1.5))
+                }
+                
             }.padding()
             
             Text(viewModel.post.postbody).multilineTextAlignment(.leading).font(Font.custom("Inter-Italic", size: 18))
@@ -79,6 +85,14 @@ struct IndividualPostView: View {
         Divider()
     }
     
+}
+
+extension String {
+    func widthOfString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSAttributedString.Key.font: font]
+        let size = self.size(withAttributes: fontAttributes)
+        return size.width
+    }
 }
 
 /*struct IndividualPostView_Previews: PreviewProvider {
