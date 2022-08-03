@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct IndividualPostView: View {
     @ObservedObject var viewModel: IndividualPostViewModel
@@ -21,7 +22,7 @@ struct IndividualPostView: View {
                 //photo and username are across the top, horizontally
                 Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
                 Text(viewModel.post.user?.username ?? "anon")
-                Text("2w").font(.caption).foregroundColor(Color.gray)
+                Text(convertTimestampIntoString(currTime:viewModel.post.timestamp)).font(.caption).foregroundColor(Color.gray)
                 Spacer()
                 VStack {
                     Button {
@@ -84,6 +85,18 @@ struct IndividualPostView: View {
         
         Divider()
     }
+    
+    func convertTimestampIntoString(currTime: Timestamp) -> String {
+        let timeAsDate = currTime.dateValue()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: timeAsDate)
+    }
+
     
 }
 
