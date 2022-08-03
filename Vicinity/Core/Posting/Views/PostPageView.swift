@@ -24,6 +24,7 @@ struct PostPageView: View {
     
     @State var sale:Bool = false
     @State var plus21:Bool = false
+    @State var anon:Bool = false
     
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
@@ -192,7 +193,17 @@ struct PostPageView: View {
                     .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
                 
             }.padding()
-                            
+                 
+            Button(action: toggleAnon){
+                HStack{
+                    Image(systemName: anon ? "checkmark.square": "square").foregroundColor(.black)
+                    Text("post anonymously").foregroundColor(Color.black).fontWeight(.heavy)
+                }
+
+            }.padding()
+                .cornerRadius(20)
+                .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
+
             Button {
                 showImagePicker.toggle()
             } label: {
@@ -214,7 +225,7 @@ struct PostPageView: View {
                     withCost: textOfCostButton,
                     withPlus21: plus21,
                     withSale: sale,
-                    withAnon: false)
+                    withAnon: anon)
                 if p {
                     posted = true
                 } else {
@@ -244,6 +255,7 @@ struct PostPageView: View {
     
     func toggleSale(){sale = !sale}
     func togglePlus21(){plus21 = !plus21}
+    func toggleAnon(){anon = !anon}
     
     /*func uploadImage(_ image: UIImage) {
         ImageUploader.uploadImage()
