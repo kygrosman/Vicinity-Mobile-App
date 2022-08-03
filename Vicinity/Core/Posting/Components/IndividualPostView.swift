@@ -49,14 +49,12 @@ struct IndividualPostView: View {
                     .frame(width: viewModel.post.type.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)), height: 32)
                     .foregroundColor(.orange)
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.orange,lineWidth: 1.5 ))
-                Spacer()
                 Text(viewModel.post.cost)
                     .font(.subheadline).bold()
                     .frame(width: (viewModel.post.cost.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)) * 2), height: 32)
                     .foregroundColor(.green)
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.green,lineWidth:1.5))
                 if viewModel.post.sale {
-                    Spacer()
                     Text("SALE")
                         .font(.subheadline).bold()
                         .frame(width: 60, height: 32)
@@ -64,14 +62,12 @@ struct IndividualPostView: View {
                         .overlay(RoundedRectangle(cornerRadius: 20).stroke(.red,lineWidth: 1.5))
 
                 }
-                Spacer()
                 Text(viewModel.post.distance)
                     .font(.subheadline).bold()
                     .frame(width: viewModel.post.distance.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)), height: 32)
                     .foregroundColor(.blue)
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.blue,lineWidth: 1.5))
                 if viewModel.post.plus21 {
-                    Spacer()
                     Text("+21")  .font(.subheadline).bold()
                         .frame(width: 60, height: 32)
                         .foregroundColor(.black)
