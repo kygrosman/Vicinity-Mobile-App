@@ -10,7 +10,7 @@ import Firebase
 struct PostService {
     
     
-    func uploadPost(postbody: String, type: String, distance: String, cost: String, plus21: Bool, sale: Bool, anon: Bool, completion: @escaping(Bool) -> Bool) {
+    func uploadPost(postbody: String, type: String, distance: String, cost: String, plus21: Bool, sale: Bool, anon: Bool, imageURL: String, completion: @escaping(Bool) -> Bool) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let data = ["uid": uid,
                     "postbody": postbody,
@@ -20,8 +20,9 @@ struct PostService {
                     "plus21": plus21,
                     "sale": sale,
                     "anon": anon,
-                    "timestamp": Timestamp(date: Date())] as [String : Any]
-        Firestore.firestore().collection("posts").document().setData(data) { error in
+                    "timestamp": Timestamp(date: Date()),
+                    "imageURL": imageURL] as [String : Any]
+            Firestore.firestore().collection("posts").document().setData(data) { error in
             if let error = error {
                 print("DEBUG: failed to upload tweet with error: \(error.localizedDescription)")
                 completion(false)

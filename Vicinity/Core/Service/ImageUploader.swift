@@ -15,7 +15,6 @@ struct ImageUploader {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {return}
         let filename = NSUUID().uuidString
         let ref = Storage.storage().reference(withPath: "/post_image/\(filename)")
-        
         ref.putData(imageData, metadata: nil) {_, error in
             if let error = error {
                 print("DEBUG: failed to upload image with error \(error.localizedDescription)")
@@ -28,6 +27,8 @@ struct ImageUploader {
                     return
                 }
                 guard let imageURL = imageURL?.absoluteString else {return}
+                print("biz1")
+                print(imageURL)
                 completion(imageURL)
             }
         }

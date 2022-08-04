@@ -13,6 +13,7 @@
 		23DE7E4328949241000271B6 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E4228949241000271B6 /* ProfileViewModel.swift */; };
 		23DE7E452895B1FC000271B6 /* IndividualPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E442895B1FC000271B6 /* IndividualPostViewModel.swift */; };
 		23DE7E47289ADC42000271B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23DE7E46289ADC42000271B6 /* GoogleService-Info.plist */; };
+		23DE7E49289C5C68000271B6 /* IndividualPostForCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E48289C5C67000271B6 /* IndividualPostForCommentsView.swift */; };
 		41CEBA542894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		41CEBA552894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		41CEBA562894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -97,6 +98,7 @@
 		23DE7E4228949241000271B6 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		23DE7E442895B1FC000271B6 /* IndividualPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualPostViewModel.swift; sourceTree = "<group>"; };
 		23DE7E46289ADC42000271B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		23DE7E48289C5C67000271B6 /* IndividualPostForCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualPostForCommentsView.swift; sourceTree = "<group>"; };
 		4E70BFBF28947C5E00FCA03D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EAA49ED2891B81A008CECAE /* Vicinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vicinity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA49F02891B81A008CECAE /* VicinityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityApp.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				4EAA4A212891BAEE008CECAE /* HomeView.swift */,
+				23DE7E48289C5C67000271B6 /* IndividualPostForCommentsView.swift */,
 				4EAA4A222891BAEE008CECAE /* HomePageView.swift */,
 			);
 			path = Views;
@@ -595,6 +598,7 @@
 				4EAA4A4E2891BAEE008CECAE /* HomePageViewModel.swift in Sources */,
 				4EAA4A552891BAEE008CECAE /* AuthComps.swift in Sources */,
 				4EAA4A502891BAEE008CECAE /* HomePageView.swift in Sources */,
+				23DE7E49289C5C68000271B6 /* IndividualPostForCommentsView.swift in Sources */,
 				4EAA4A5B2891BAEE008CECAE /* IndividualPostView.swift in Sources */,
 				4EAA4A672891BAEE008CECAE /* Extensions.swift in Sources */,
 				4EAA4A652891BAEE008CECAE /* User.swift in Sources */,

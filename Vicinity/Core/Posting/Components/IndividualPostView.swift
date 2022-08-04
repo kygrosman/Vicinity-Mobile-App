@@ -10,13 +10,14 @@ import Firebase
 
 struct IndividualPostView: View {
     @ObservedObject var viewModel: IndividualPostViewModel
+    @State private var seeFullScreenPost = false
     
     init(post: Post) {
         self.viewModel = IndividualPostViewModel(post: post)
     }
     
     var body: some View {
-        //each post is a vstack
+        NavigationLink(destination: IndividualPostForCommentsView(), isActive: $seeFullScreenPost) { EmptyView() }
         VStack(alignment: .leading) {
             HStack {
                 //photo and username are across the top, horizontally
@@ -34,7 +35,7 @@ struct IndividualPostView: View {
                             .foregroundColor(Color("VicinityBlue"))
                     }
                     Button {
-                        //action (comment)
+                        seeFullScreenPost = true
                     } label: {
                         Image(systemName: "message")
                             .foregroundColor(Color("VicinityBlue"))
