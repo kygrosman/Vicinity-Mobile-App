@@ -146,6 +146,13 @@ struct PostPageView: View {
                     }
                     if expandCost {
                         Button(action: {
+                            self.textOfCostButton = "FREE"
+                            self.expandCost.toggle()
+                        }) {
+                            Text("FREE").padding()
+                        }.foregroundColor(.black)
+                        
+                        Button(action: {
                             self.textOfCostButton = "$"
                             self.expandCost.toggle()
                         }) {
