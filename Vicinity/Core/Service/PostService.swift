@@ -106,5 +106,9 @@ struct PostService {
             }
     }
     
+    func fetchIndividualPost() {
+        
+    }
+    
     
 }

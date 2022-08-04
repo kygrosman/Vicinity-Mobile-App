@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct IndividualPostForCommentsView: View {
+    @ObservedObject var viewModel: IndividualPostViewModel
+    
+    init(post: Post) {
+        self.viewModel = IndividualPostViewModel(post: post)
+        
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        IndividualPostView(post: self.viewModel.post, showComment: false)
+        Spacer()
     }
 }
 
-struct IndividualPostForCommentsView_Previews: PreviewProvider {
+/*struct IndividualPostForCommentsView_Previews: PreviewProvider {
     static var previews: some View {
         IndividualPostForCommentsView()
     }
-}
+} */
