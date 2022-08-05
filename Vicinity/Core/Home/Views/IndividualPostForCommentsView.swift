@@ -9,11 +9,11 @@ import SwiftUI
 
 struct IndividualPostForCommentsView: View {
     @ObservedObject var viewModel: IndividualPostViewModel
+    @ObservedObject var commentViewModel = CommentOnPostViewModel()
     @State var comment = "leave a comment..."
     
     init(post: Post) {
         self.viewModel = IndividualPostViewModel(post: post)
-        
     }
     
     var body: some View {
@@ -26,7 +26,7 @@ struct IndividualPostForCommentsView: View {
                 .frame(height: 50)
                 .overlay(Rectangle().stroke(Color("VicinityNavy"),lineWidth:3))
             Button(action: {
-                //post comment
+                let posted = commentViewModel.postComment(post: viewModel.post, comment: comment)
             }, label: {
                 Text("post").foregroundColor(.black)
                     .frame(width: 60, height: 32)

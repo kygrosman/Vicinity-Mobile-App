@@ -106,7 +106,22 @@ struct PostService {
             }
     }
     
-    func fetchIndividualPost() {
+    func postComment(_ post: Post, _ comment: String, completion: @escaping(Bool) -> Bool) {
+        
+        //goal for this function:
+        //increment numComments counter
+        //add comment to collection
+        
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let post = Firestore.firestore().collection("posts")
+            .document(post.uid)
+            .collection("post-comments")
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else {return}
+                print("biz")
+                print(documents)
+                completion(true)
+            }
         
     }
     

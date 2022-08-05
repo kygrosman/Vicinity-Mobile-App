@@ -31,8 +31,6 @@ class PostingViewModel: ObservableObject {
                 imageURL = returnedImageURL
             }
         }
-        print("biz2")
-        print(imageURL)
         
         service.uploadPost(postbody: postbody, type: type, distance: distance, cost: cost, plus21: plus21, sale: sale, anon: anon, imageURL: imageURL) { success in
             if success {
