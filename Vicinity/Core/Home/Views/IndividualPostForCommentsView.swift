@@ -22,7 +22,7 @@ struct IndividualPostForCommentsView: View {
         Spacer()
         
         VStack {
-            TextEditor(text: $comment)
+            TextEditor(text: $comment).foregroundColor(.gray)
                 .frame(height: 50)
                 .overlay(Rectangle().stroke(Color("VicinityNavy"),lineWidth:3))
             Button(action: {
