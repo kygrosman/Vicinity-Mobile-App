@@ -10,6 +10,7 @@ import SwiftUI
 struct HomePageView: View {
 
     @ObservedObject var homePageViewModel = HomePageViewModel()
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {

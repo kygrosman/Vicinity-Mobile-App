@@ -11,9 +11,11 @@ struct IndividualPostForCommentsView: View {
     @ObservedObject var viewModel: IndividualPostViewModel
     @ObservedObject var commentViewModel = CommentOnPostViewModel()
     @State var comment = "leave a comment..."
+    @State var comments: [Comment]
     
-    init(post: Post) {
+    init(post: Post, comments: [Comment]) {
         self.viewModel = IndividualPostViewModel(post: post)
+        self.comments = comments
     }
     
     var body: some View {
@@ -27,6 +29,9 @@ struct IndividualPostForCommentsView: View {
                 .overlay(Rectangle().stroke(Color("VicinityNavy"),lineWidth:3))
             Button(action: {
                 let posted = commentViewModel.postComment(post: viewModel.post, comment: comment)
+                if posted {
+                    self.comments = commentViewModel.fetchComments(post: viewModel.post)
+                }
             }, label: {
                 Text("post").foregroundColor(.black)
                     .frame(width: 60, height: 32)
@@ -37,10 +42,10 @@ struct IndividualPostForCommentsView: View {
         
         ScrollView {
             LazyVStack {
-                ForEach(0...5, id: \.self) { _ in
-                    IndividualCommentView().padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
-                }
+                ForEach(self.comments) {post in
+                    IndividualCommentView(comment: post) }
             }
         }
+        
     }
 }

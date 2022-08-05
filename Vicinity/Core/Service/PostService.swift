@@ -21,7 +21,8 @@ struct PostService {
                     "sale": sale,
                     "anon": anon,
                     "timestamp": Timestamp(date: Date()),
-                    "imageURL": imageURL] as [String : Any]
+                    "imageURL": imageURL,
+                    "numComments": 0] as [String : Any]
             Firestore.firestore().collection("posts").document().setData(data) { error in
             if let error = error {
                 print("DEBUG: failed to upload tweet with error: \(error.localizedDescription)")
@@ -113,16 +114,59 @@ struct PostService {
         //add comment to collection
         
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        let post = Firestore.firestore().collection("posts")
-            .document(post.uid)
-            .collection("post-comments")
-            .getDocuments { snapshot, _ in
-                guard let documents = snapshot?.documents else {return}
-                print("biz")
-                print(documents)
-                completion(true)
-            }
+        guard let postID = post.id else {return}
         
+        let comment = ["userID": uid, "commentBody": comment]
+        
+        let postObj = Firestore.firestore().collection("posts").document(postID)
+        
+        postObj.updateData(["numComments": (post.numComments ?? 0) + 1]) { err in
+            if let err = err {
+                print("unable to update number of comments, because \(err)")
+            } else {
+                print("success!")
+            }
+            
+            postObj.collection("post-comments").document().setData(comment) { error in
+            if let error = error {
+                print("DEBUG: failed to upload comment with error: \(error.localizedDescription)")
+                completion(false)
+            }
+            completion(true)
+            }
+
+        }
+        
+        
+    }
+    
+    func fetchComments(_ post: Post, completion: @escaping([Comment]) -> [Comment]) {
+        var allComments = [Comment]()
+        let postNumComments = post.numComments ?? 0
+        if postNumComments == 0 {
+            return
+        }
+        
+        guard let postID = post.id else {return}
+        let postComments = Firestore.firestore().collection("posts").document(postID).collection("post-comments")
+        postComments.getDocuments { snapshot, _ in
+            guard let documents = snapshot?.documents else {return}
+            let comments = documents.compactMap({ try? $0.data(as: Comment.self)} )
+            comments.forEach({ comment in
+                let uidOfCommenter = comment.userID
+                Firestore.firestore().collection("users").document(uidOfCommenter).getDocument { doc, _ in
+                    guard let commentor = try? doc?.data(as: User.self) else {return}
+                    var currentComment = comment
+                    currentComment.user = commentor
+                    allComments.append(currentComment)
+                    completion(allComments)
+                }
+                completion(allComments)
+            })
+        }
+        
+        
+
     }
     
     

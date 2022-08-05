@@ -15,14 +15,17 @@ struct Post: Identifiable, Decodable {
     @DocumentID var id: String?
     let uid: String
     let postbody: String
+    let timestamp: Timestamp
+    
+    var numComments: Int?
+    var user: User?
+    var saved: Bool?
+
+    //tags
     let type: String
     let distance: String
     let cost: String
     let plus21: Bool
     let sale: Bool
     let anon: Bool
-    let timestamp: Timestamp
-    
-    var user: User?
-    var saved: Bool?
 }
