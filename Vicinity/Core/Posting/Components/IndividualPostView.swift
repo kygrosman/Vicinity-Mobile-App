@@ -47,11 +47,10 @@ struct IndividualPostView: View {
                         } label: {
                             Image(systemName: "message")
                                 .foregroundColor(Color("VicinityBlue"))
+                                .overlay(Text(String(viewModel.post.numComments ?? 0)).foregroundColor(.black).font(.system(size: 11)))
                         }.offset(y:3)
                     }
-                    
                 }
-                
             }
             HStack {
                 //tags (between 3 and 5, sale and plus 21 only show up if set to true)
