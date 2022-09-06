@@ -15,3 +15,4 @@ struct User: Decodable, Identifiable {
     let email: String
     let profileImageUrl: String?
 }
+

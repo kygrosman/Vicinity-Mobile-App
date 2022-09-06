@@ -12,11 +12,11 @@
 		23DE7E4128930BAB000271B6 /* PostingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E4028930BAB000271B6 /* PostingViewModel.swift */; };
 		23DE7E4328949241000271B6 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E4228949241000271B6 /* ProfileViewModel.swift */; };
 		23DE7E452895B1FC000271B6 /* IndividualPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E442895B1FC000271B6 /* IndividualPostViewModel.swift */; };
-		23DE7E47289ADC42000271B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23DE7E46289ADC42000271B6 /* GoogleService-Info.plist */; };
 		41CEBA542894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		41CEBA552894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		41CEBA562894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		4E70BFC028947C5E00FCA03D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E70BFBF28947C5E00FCA03D /* LaunchScreen.storyboard */; };
+		4EA93474289B410700DA5697 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EA93473289B410700DA5697 /* GoogleService-Info.plist */; };
 		4EAA49F12891B81A008CECAE /* VicinityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F02891B81A008CECAE /* VicinityApp.swift */; };
 		4EAA49F32891B81A008CECAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F22891B81A008CECAE /* ContentView.swift */; };
 		4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA49F42891B81B008CECAE /* Assets.xcassets */; };
@@ -96,8 +96,8 @@
 		23DE7E4028930BAB000271B6 /* PostingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingViewModel.swift; sourceTree = "<group>"; };
 		23DE7E4228949241000271B6 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		23DE7E442895B1FC000271B6 /* IndividualPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualPostViewModel.swift; sourceTree = "<group>"; };
-		23DE7E46289ADC42000271B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E70BFBF28947C5E00FCA03D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4EA93473289B410700DA5697 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4EAA49ED2891B81A008CECAE /* Vicinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vicinity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA49F02891B81A008CECAE /* VicinityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityApp.swift; sourceTree = "<group>"; };
 		4EAA49F22891B81A008CECAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		4EAA49E42891B819008CECAE = {
 			isa = PBXGroup;
 			children = (
-				23DE7E46289ADC42000271B6 /* GoogleService-Info.plist */,
+				4EA93473289B410700DA5697 /* GoogleService-Info.plist */,
 				4EAA49EF2891B81A008CECAE /* Vicinity */,
 				4EAA4A002891B81B008CECAE /* VicinityTests */,
 				4EAA4A0A2891B81C008CECAE /* VicinityUITests */,
@@ -546,8 +546,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				23DE7E362891CF90000271B6 /* (null) in Resources */,
+				4EA93474289B410700DA5697 /* GoogleService-Info.plist in Resources */,
 				4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */,
-				23DE7E47289ADC42000271B6 /* GoogleService-Info.plist in Resources */,
 				4E70BFC028947C5E00FCA03D /* LaunchScreen.storyboard in Resources */,
 				41CEBA542894627F00AB1A1E /* (null) in Resources */,
 			);

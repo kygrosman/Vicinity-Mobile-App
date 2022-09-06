@@ -14,6 +14,7 @@ struct ForgotPassView: View {
     @State private var email = ""
     @State private var showAlert = false
     @State private var error_msg = ""
+    @State private var error_title = ""
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -55,9 +56,16 @@ struct ForgotPassView: View {
                         let reset = viewModel.resetPass(email: email)
                         if (reset[0] as! Bool == false)
                         {
+                            error_title = "Unable to Send Email"
                             error_msg = reset[1] as! String
                             showAlert = true
                         }
+                        else {
+                            error_title = "Password Reset Sent"
+                            error_msg = "Check your email for a password reset link"
+                            showAlert = true
+                        }
+                        
                         
                     }, label: {
                         Text("Send Password Reset").fontWeight(.heavy)
