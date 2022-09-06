@@ -105,7 +105,7 @@ extension ProfilePageView {
                     }
                 }
             }
-        }.padding(.top, 14)
+        }.padding(.top, 50)
         //.overlay(Divider().offset(x:0,y:200))
     }
     
