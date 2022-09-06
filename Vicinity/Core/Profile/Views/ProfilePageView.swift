@@ -22,7 +22,6 @@ struct ProfilePageView: View {
             VStack{
                 headerView
                 personalInfoView.padding(.bottom)
-                Spacer()
                 filterBarView
                 Spacer()
                 postsView
@@ -107,14 +106,14 @@ extension ProfilePageView {
                 }
             }
         }.padding(.top, 14)
-        .overlay(Divider().offset(x:0,y:200))
+        //.overlay(Divider().offset(x:0,y:200))
     }
     
     var postsView: some View {
         ScrollView {
             LazyVStack {
                 ForEach(profViewModel.posts(forFilter: self.selectionFilter)) {post in
-                    IndividualPostView(post: post, showComment: true).padding()
+                    IndividualPostView(post: post, showComment: true).padding(.init(top: 2, leading: 10, bottom: 10, trailing: 10))
                 }
             }
         }

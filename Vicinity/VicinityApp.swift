@@ -8,7 +8,6 @@
 import SwiftUI
 import Firebase
 import NavigationStack
-
 @main
 struct VicinityApp: App {
     

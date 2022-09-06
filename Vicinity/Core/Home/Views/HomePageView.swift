@@ -27,7 +27,7 @@ struct HomePageView: View {
             ScrollView {
                 LazyVStack {
                     ForEach(homePageViewModel.posts) {post in
-                        IndividualPostView(post: post, showComment: true).padding() }
+                        IndividualPostView(post: post, showComment: true).padding(.init(top: 2, leading: 10, bottom: 10, trailing: 10)) }
                 }
             }
 
