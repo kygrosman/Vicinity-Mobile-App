@@ -11,11 +11,11 @@ struct IndividualPostForCommentsView: View {
     @ObservedObject var viewModel: IndividualPostViewModel
     @ObservedObject var commentViewModel = CommentOnPostViewModel()
     @State var comment = "leave a comment..."
-    @State var comments: [Comment]
+    @State var comments: [Comment]!
     
-    init(post: Post, comments: [Comment]) {
+    init(post: Post) {
         self.viewModel = IndividualPostViewModel(post: post)
-        self.comments = comments
+        self.comments = commentViewModel.fetchComments(post: post)
     }
     
     var body: some View {
@@ -42,8 +42,10 @@ struct IndividualPostForCommentsView: View {
         
         ScrollView {
             LazyVStack {
-                ForEach(self.comments) {post in
-                    IndividualCommentView(comment: post) }
+                if self.comments != nil {
+                    ForEach(self.comments) {post in
+                        IndividualCommentView(comment: post) }
+                }
             }
         }
         

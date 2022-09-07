@@ -23,7 +23,7 @@ struct IndividualPostView: View {
     }
     
     var body: some View {
-        NavigationLink(destination: IndividualPostForCommentsView(post: viewModel.post, comments: comments), isActive: $seeFullScreenPost) { EmptyView() }
+        NavigationLink(destination: IndividualPostForCommentsView(post: viewModel.post), isActive: $seeFullScreenPost) { EmptyView() }
         VStack(alignment: .leading) {
             HStack {
                 //photo and username are across the top, horizontally
