@@ -10,7 +10,7 @@ import Firebase
 
 struct IndividualPostView: View {
     @ObservedObject var viewModel: IndividualPostViewModel
-    @ObservedObject var commentViewModel = CommentOnPostViewModel()
+    @ObservedObject var commentViewModel: CommentOnPostViewModel
     
     @State private var comments = [Comment]()
     @State private var seeFullScreenPost = false
@@ -19,6 +19,7 @@ struct IndividualPostView: View {
     
     init(post: Post, showComment: Bool) {
         self.viewModel = IndividualPostViewModel(post: post)
+        self.commentViewModel = CommentOnPostViewModel(post: post)
         self.showComment = showComment
     }
     
@@ -42,7 +43,7 @@ struct IndividualPostView: View {
                     }
                     if showComment {
                         Button {
-                            self.comments = commentViewModel.fetchComments(post: viewModel.post)
+                            //self.comments = commentViewModel.fetchComments(post: viewModel.post)
                             seeFullScreenPost = true
                         } label: {
                             Image(systemName: "message")
