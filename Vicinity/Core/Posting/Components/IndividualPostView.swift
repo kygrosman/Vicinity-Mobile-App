@@ -48,7 +48,7 @@ struct IndividualPostView: View {
                         } label: {
                             Image(systemName: "message")
                                 .foregroundColor(Color("VicinityBlue"))
-                                .overlay(Text(String(viewModel.post.numComments ?? 0)).foregroundColor(.black).font(.system(size: 11)))
+                                .overlay(Text(String(commentViewModel.comments.count)).foregroundColor(.black).font(.system(size: 11)))
                         }.offset(y:3)
                     }
                 }
