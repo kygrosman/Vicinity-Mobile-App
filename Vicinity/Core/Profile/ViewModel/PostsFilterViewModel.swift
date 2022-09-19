@@ -11,13 +11,13 @@ import SwiftUI
 enum PostsFilterViewModel: Int, CaseIterable{
     case mine
     case saved
-    case getFeedback
+    //case getFeedback
 
     var title: String {
         switch self {
         case .mine: return "Mine"
         case .saved: return "Saved"
-        case .getFeedback: return "Ideas?"
+        //case .getFeedback: return "Ideas?"
         }
     }
 }

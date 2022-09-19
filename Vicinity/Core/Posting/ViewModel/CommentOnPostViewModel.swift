@@ -18,8 +18,6 @@ class CommentOnPostViewModel: ObservableObject {
     
     func postComment(post: Post, comment: String) -> Bool {
         postService.postComment(post, comment) { posted in
-            //print("debuginggin", posted)
-            //print("debugging more", post.numComments)
             return posted
         }
         return false
@@ -27,8 +25,6 @@ class CommentOnPostViewModel: ObservableObject {
     
     func fetchComments(post: Post) ->  [Comment] {
         postService.fetchComments(post) { comments in
-            //print("bizzle", post)
-            print("maddy", post, comments.count)
             self.comments = comments
             return comments
             
