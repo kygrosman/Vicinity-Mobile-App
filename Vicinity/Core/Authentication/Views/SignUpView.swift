@@ -74,7 +74,7 @@ struct SignUpView: View {
                     let sign = viewModel.signup(email: email, password: password, username: username, fullname: fullname)
                     if (sign[0] as! Bool)
                     {
-                        viewModel.confirmEmail()
+                        //viewModel.confirmEmail()
                         //self.action.toggle()
                     }
                     else {

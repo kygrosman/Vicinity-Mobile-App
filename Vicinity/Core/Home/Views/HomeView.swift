@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    
+
     var body: some View {
         if let user = authViewModel.currentUser {
             TabView {

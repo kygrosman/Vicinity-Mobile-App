@@ -7,16 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		233C601A289DC78F00FCB99D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C6019289DC78F00FCB99D /* Comment.swift */; };
 		23DE7E362891CF90000271B6 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		23DE7E3E28930854000271B6 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E3D28930853000271B6 /* PostService.swift */; };
 		23DE7E4128930BAB000271B6 /* PostingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E4028930BAB000271B6 /* PostingViewModel.swift */; };
 		23DE7E4328949241000271B6 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E4228949241000271B6 /* ProfileViewModel.swift */; };
 		23DE7E452895B1FC000271B6 /* IndividualPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E442895B1FC000271B6 /* IndividualPostViewModel.swift */; };
+		23DE7E49289C5C68000271B6 /* IndividualPostForCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E48289C5C67000271B6 /* IndividualPostForCommentsView.swift */; };
+		23DE7E4C289CAA75000271B6 /* IndividualCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E4B289CAA75000271B6 /* IndividualCommentView.swift */; };
+		23DE7E4E289CD4DC000271B6 /* CommentOnPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E4D289CD4DC000271B6 /* CommentOnPostViewModel.swift */; };
 		41CEBA542894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		41CEBA552894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		41CEBA562894627F00AB1A1E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		4E05F17428CE650C008BBD0D /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05F17328CE650C008BBD0D /* SideMenuView.swift */; };
+		4E05F17728CE6531008BBD0D /* SideMenuRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05F17628CE6531008BBD0D /* SideMenuRowView.swift */; };
+		4E05F17928CE654E008BBD0D /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05F17828CE654E008BBD0D /* SideMenuViewModel.swift */; };
+		4E05F17E28D69D95008BBD0D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05F17D28D69D94008BBD0D /* EditProfileView.swift */; };
+		4E05F18028D69DF0008BBD0D /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05F17F28D69DEF008BBD0D /* EditProfileViewModel.swift */; };
+		4E05F18228D78257008BBD0D /* ForgotPassView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05F18128D78257008BBD0D /* ForgotPassView2.swift */; };
+		4E05F18528D7B8E5008BBD0D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4E05F18428D7B8E5008BBD0D /* Kingfisher */; };
 		4E70BFC028947C5E00FCA03D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E70BFBF28947C5E00FCA03D /* LaunchScreen.storyboard */; };
-		4EA93474289B410700DA5697 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EA93473289B410700DA5697 /* GoogleService-Info.plist */; };
+		4E98467028C7B485003BCCAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E98466F28C7B485003BCCAB /* GoogleService-Info.plist */; };
 		4EAA49F12891B81A008CECAE /* VicinityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F02891B81A008CECAE /* VicinityApp.swift */; };
 		4EAA49F32891B81A008CECAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA49F22891B81A008CECAE /* ContentView.swift */; };
 		4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA49F42891B81B008CECAE /* Assets.xcassets */; };
@@ -92,12 +103,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		233C6019289DC78F00FCB99D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		23DE7E3D28930853000271B6 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		23DE7E4028930BAB000271B6 /* PostingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingViewModel.swift; sourceTree = "<group>"; };
 		23DE7E4228949241000271B6 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		23DE7E442895B1FC000271B6 /* IndividualPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualPostViewModel.swift; sourceTree = "<group>"; };
+		23DE7E48289C5C67000271B6 /* IndividualPostForCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualPostForCommentsView.swift; sourceTree = "<group>"; };
+		23DE7E4B289CAA75000271B6 /* IndividualCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualCommentView.swift; sourceTree = "<group>"; };
+		23DE7E4D289CD4DC000271B6 /* CommentOnPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentOnPostViewModel.swift; sourceTree = "<group>"; };
+		4E05F17328CE650C008BBD0D /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		4E05F17628CE6531008BBD0D /* SideMenuRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRowView.swift; sourceTree = "<group>"; };
+		4E05F17828CE654E008BBD0D /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
+		4E05F17D28D69D94008BBD0D /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		4E05F17F28D69DEF008BBD0D /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		4E05F18128D78257008BBD0D /* ForgotPassView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassView2.swift; sourceTree = "<group>"; };
 		4E70BFBF28947C5E00FCA03D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4EA93473289B410700DA5697 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4E98466F28C7B485003BCCAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4EAA49ED2891B81A008CECAE /* Vicinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vicinity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA49F02891B81A008CECAE /* VicinityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicinityApp.swift; sourceTree = "<group>"; };
 		4EAA49F22891B81A008CECAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -158,6 +179,7 @@
 				4EAA4AED2891C888008CECAE /* FirebaseRemoteConfigSwift in Frameworks */,
 				4EAA4AC12891C888008CECAE /* FirebaseAnalyticsSwift in Frameworks */,
 				4EAA4AC72891C888008CECAE /* FirebaseAppDistribution-Beta in Frameworks */,
+				4E05F18528D7B8E5008BBD0D /* Kingfisher in Frameworks */,
 				4EAA4AEB2891C888008CECAE /* FirebaseRemoteConfig in Frameworks */,
 				4EAA4AEF2891C888008CECAE /* FirebaseStorage in Frameworks */,
 				4EAA4ACB2891C888008CECAE /* FirebaseAuthCombine-Community in Frameworks */,
@@ -187,15 +209,75 @@
 			isa = PBXGroup;
 			children = (
 				23DE7E4028930BAB000271B6 /* PostingViewModel.swift */,
+				23DE7E4D289CD4DC000271B6 /* CommentOnPostViewModel.swift */,
 				23DE7E442895B1FC000271B6 /* IndividualPostViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		23DE7E4A289CAA61000271B6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				23DE7E4B289CAA75000271B6 /* IndividualCommentView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		4E05F17028CE64B4008BBD0D /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				4E05F17228CE64F3008BBD0D /* SideMenuView */,
+				4E05F17128CE64D6008BBD0D /* SideMenuViewModel */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		4E05F17128CE64D6008BBD0D /* SideMenuViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4E05F17828CE654E008BBD0D /* SideMenuViewModel.swift */,
+			);
+			path = SideMenuViewModel;
+			sourceTree = "<group>";
+		};
+		4E05F17228CE64F3008BBD0D /* SideMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				4E05F17328CE650C008BBD0D /* SideMenuView.swift */,
+				4E05F17628CE6531008BBD0D /* SideMenuRowView.swift */,
+			);
+			path = SideMenuView;
+			sourceTree = "<group>";
+		};
+		4E05F17A28D69D49008BBD0D /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				4E05F17C28D69D69008BBD0D /* ViewModels */,
+				4E05F17B28D69D5C008BBD0D /* Views */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		4E05F17B28D69D5C008BBD0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4E05F17D28D69D94008BBD0D /* EditProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4E05F17C28D69D69008BBD0D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4E05F17F28D69DEF008BBD0D /* EditProfileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		4EAA49E42891B819008CECAE = {
 			isa = PBXGroup;
 			children = (
-				4EA93473289B410700DA5697 /* GoogleService-Info.plist */,
+				4E98466F28C7B485003BCCAB /* GoogleService-Info.plist */,
 				4EAA49EF2891B81A008CECAE /* Vicinity */,
 				4EAA4A002891B81B008CECAE /* VicinityTests */,
 				4EAA4A0A2891B81C008CECAE /* VicinityUITests */,
@@ -246,6 +328,8 @@
 		4EAA4A1C2891BAEE008CECAE /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4E05F17A28D69D49008BBD0D /* EditProfile */,
+				4E05F17028CE64B4008BBD0D /* SideMenu */,
 				4EAA4A482891BAEE008CECAE /* Service */,
 				4EAA4A432891BAEE008CECAE /* Models */,
 				4EAA4A412891BAEE008CECAE /* Utils */,
@@ -260,6 +344,7 @@
 		4EAA4A1D2891BAEE008CECAE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				23DE7E4A289CAA61000271B6 /* Components */,
 				4EAA4A1E2891BAEE008CECAE /* ViewModels */,
 				4EAA4A202891BAEE008CECAE /* Views */,
 			);
@@ -278,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				4EAA4A212891BAEE008CECAE /* HomeView.swift */,
+				23DE7E48289C5C67000271B6 /* IndividualPostForCommentsView.swift */,
 				4EAA4A222891BAEE008CECAE /* HomePageView.swift */,
 			);
 			path = Views;
@@ -342,6 +428,7 @@
 				4EAA4A302891BAEE008CECAE /* LoginView.swift */,
 				4EAA4A312891BAEE008CECAE /* OpenAppView.swift */,
 				4EAA4A322891BAEE008CECAE /* ForgotPassView.swift */,
+				4E05F18128D78257008BBD0D /* ForgotPassView2.swift */,
 				4EAA4A332891BAEE008CECAE /* SignUpView.swift */,
 			);
 			path = Views;
@@ -386,6 +473,7 @@
 			children = (
 				4EAA4A442891BAEE008CECAE /* User.swift */,
 				4EAA4A452891BAEE008CECAE /* Post.swift */,
+				233C6019289DC78F00FCB99D /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -451,6 +539,7 @@
 				4EAA4AEC2891C888008CECAE /* FirebaseRemoteConfigSwift */,
 				4EAA4AEE2891C888008CECAE /* FirebaseStorage */,
 				4EAA4AF02891C888008CECAE /* FirebaseStorageCombine-Community */,
+				4E05F18428D7B8E5008BBD0D /* Kingfisher */,
 			);
 			productName = Vicinity;
 			productReference = 4EAA49ED2891B81A008CECAE /* Vicinity.app */;
@@ -528,6 +617,7 @@
 				4EAA4A742891BC5B008CECAE /* XCRemoteSwiftPackageReference "SwiftEmailValidator" */,
 				4EAA4A772891BCD0008CECAE /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */,
 				4EAA4ABB2891C888008CECAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				4E05F18328D7B8E5008BBD0D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 4EAA49EE2891B81A008CECAE /* Products */;
 			projectDirPath = "";
@@ -545,8 +635,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E98467028C7B485003BCCAB /* GoogleService-Info.plist in Resources */,
 				23DE7E362891CF90000271B6 /* (null) in Resources */,
-				4EA93474289B410700DA5697 /* GoogleService-Info.plist in Resources */,
 				4EAA49F52891B81B008CECAE /* Assets.xcassets in Resources */,
 				4E70BFC028947C5E00FCA03D /* LaunchScreen.storyboard in Resources */,
 				41CEBA542894627F00AB1A1E /* (null) in Resources */,
@@ -581,7 +671,10 @@
 				4EAA4A582891BAEE008CECAE /* OpenAppView.swift in Sources */,
 				4EAA4A5A2891BAEE008CECAE /* SignUpView.swift in Sources */,
 				4EAA4A512891BAEE008CECAE /* PostsFilterViewModel.swift in Sources */,
+				23DE7E4C289CAA75000271B6 /* IndividualCommentView.swift in Sources */,
 				4EAA4A592891BAEE008CECAE /* ForgotPassView.swift in Sources */,
+				4E05F17428CE650C008BBD0D /* SideMenuView.swift in Sources */,
+				23DE7E4E289CD4DC000271B6 /* CommentOnPostViewModel.swift in Sources */,
 				4EAA4A562891BAEE008CECAE /* ConfirmEmailView.swift in Sources */,
 				4EAA49F32891B81A008CECAE /* ContentView.swift in Sources */,
 				4EAA4A662891BAEE008CECAE /* Post.swift in Sources */,
@@ -591,15 +684,22 @@
 				4EAA4A5C2891BAEE008CECAE /* PostPageView.swift in Sources */,
 				4EAA4A642891BAEE008CECAE /* ImagePicker.swift in Sources */,
 				23DE7E4328949241000271B6 /* ProfileViewModel.swift in Sources */,
+				4E05F17E28D69D95008BBD0D /* EditProfileView.swift in Sources */,
 				4EAA4A572891BAEE008CECAE /* LoginView.swift in Sources */,
 				4EAA4A4E2891BAEE008CECAE /* HomePageViewModel.swift in Sources */,
 				4EAA4A552891BAEE008CECAE /* AuthComps.swift in Sources */,
 				4EAA4A502891BAEE008CECAE /* HomePageView.swift in Sources */,
+				23DE7E49289C5C68000271B6 /* IndividualPostForCommentsView.swift in Sources */,
 				4EAA4A5B2891BAEE008CECAE /* IndividualPostView.swift in Sources */,
 				4EAA4A672891BAEE008CECAE /* Extensions.swift in Sources */,
+				4E05F17928CE654E008BBD0D /* SideMenuViewModel.swift in Sources */,
 				4EAA4A652891BAEE008CECAE /* User.swift in Sources */,
+				233C601A289DC78F00FCB99D /* Comment.swift in Sources */,
+				4E05F18228D78257008BBD0D /* ForgotPassView2.swift in Sources */,
 				4EAA4A692891BAEE008CECAE /* ImageUploader.swift in Sources */,
 				23DE7E452895B1FC000271B6 /* IndividualPostViewModel.swift in Sources */,
+				4E05F17728CE6531008BBD0D /* SideMenuRowView.swift in Sources */,
+				4E05F18028D69DF0008BBD0D /* EditProfileViewModel.swift in Sources */,
 				4EAA4A522891BAEE008CECAE /* ProfilePageView.swift in Sources */,
 				4EAA4A542891BAEE008CECAE /* AuthViewModel.swift in Sources */,
 			);
@@ -950,6 +1050,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4E05F18328D7B8E5008BBD0D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		4EAA4A6D2891BC0E008CECAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -985,6 +1093,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4E05F18428D7B8E5008BBD0D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E05F18328D7B8E5008BBD0D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		4EAA4A752891BC5B008CECAE /* SwiftEmailValidator */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4EAA4A742891BC5B008CECAE /* XCRemoteSwiftPackageReference "SwiftEmailValidator" */;

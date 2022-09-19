@@ -34,11 +34,7 @@ class HomePageViewModel: ObservableObject {
         }
     }
     
-    /*func uploadImageToPost(_ image: UIImage) {
-        var userSession: FirebaseAuth.User?
-        guard let uuid = userSession?.uid else {return}
-        
-    } */
+
 
     
 }

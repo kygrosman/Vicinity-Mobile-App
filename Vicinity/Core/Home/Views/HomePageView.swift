@@ -10,6 +10,7 @@ import SwiftUI
 struct HomePageView: View {
 
     @ObservedObject var homePageViewModel = HomePageViewModel()
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
@@ -26,7 +27,7 @@ struct HomePageView: View {
             ScrollView {
                 LazyVStack {
                     ForEach(homePageViewModel.posts) {post in
-                        IndividualPostView(post: post).padding() }
+                        IndividualPostView(post: post, showComment: true).padding() }
                 }
             }
 

@@ -10,13 +10,20 @@ import Firebase
 
 struct IndividualPostView: View {
     @ObservedObject var viewModel: IndividualPostViewModel
+    @ObservedObject var commentViewModel = CommentOnPostViewModel()
     
-    init(post: Post) {
+    @State private var comments = [Comment]()
+    @State private var seeFullScreenPost = false
+    @State private var showComment: Bool
+
+    
+    init(post: Post, showComment: Bool) {
         self.viewModel = IndividualPostViewModel(post: post)
+        self.showComment = showComment
     }
     
     var body: some View {
-        //each post is a vstack
+        NavigationLink(destination: IndividualPostForCommentsView(post: viewModel.post, comments: comments), isActive: $seeFullScreenPost) { EmptyView() }
         VStack(alignment: .leading) {
             HStack {
                 //photo and username are across the top, horizontally
@@ -33,14 +40,17 @@ struct IndividualPostView: View {
                         Image(systemName: viewModel.post.saved ?? false ? "bookmark.fill" : "bookmark")
                             .foregroundColor(Color("VicinityBlue"))
                     }
-                    Button {
-                        //action (comment)
-                    } label: {
-                        Image(systemName: "message")
-                            .foregroundColor(Color("VicinityBlue"))
-                    }.offset(y:3)
+                    if showComment {
+                        Button {
+                            self.comments = commentViewModel.fetchComments(post: viewModel.post)
+                            seeFullScreenPost = true
+                        } label: {
+                            Image(systemName: "message")
+                                .foregroundColor(Color("VicinityBlue"))
+                                .overlay(Text(String(viewModel.post.numComments ?? 0)).foregroundColor(.black).font(.system(size: 11)))
+                        }.offset(y:3)
+                    }
                 }
-                
             }
             HStack {
                 //tags (between 3 and 5, sale and plus 21 only show up if set to true)

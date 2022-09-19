@@ -22,6 +22,16 @@ class AuthViewModel: ObservableObject {
         self.fetchuserData()
     }
     
+    // used to re init user for email validation
+    func reInitUser() {
+        Auth.auth().currentUser?.reload(completion: { error in
+            if let error = error {
+                print(error)
+            }
+        })
+        
+        self.fetchuserData()
+    }
     
     // LOGIN FUNCTION
     func login(email: String, password: String) -> Array<Any> {
@@ -131,7 +141,8 @@ class AuthViewModel: ObservableObject {
                 "password": password,
                 "fullname": fullname,
                 "uid": user.uid,
-                "username": username
+                "username": username,
+                "profileImageUrl": ""
             ]
             
             Firestore.firestore().collection("users")
@@ -189,6 +200,19 @@ class AuthViewModel: ObservableObject {
         guard let uid = self.userSession?.uid else {return}
         service.fetchUserData(withuid: uid) { user in
             self.currentUser = user
+        }
+    }
+    
+    // update info from edit-profile view
+    func updateProfile(_ image: UIImage, _ username: String) {
+        guard let uid = userSession?.uid else { return }
+        
+        ImageUploader.uploadImage(image: image) { profileImageURL in
+            Firestore.firestore().collection("users")
+                .document(uid)
+                .updateData(["profileImageUrl": profileImageURL, "username": username], completion: { _ in
+                    print("DEBUG -- Updated user data")
+                })
         }
     }
 }

@@ -146,6 +146,13 @@ struct PostPageView: View {
                     }
                     if expandCost {
                         Button(action: {
+                            self.textOfCostButton = "FREE"
+                            self.expandCost.toggle()
+                        }) {
+                            Text("FREE").padding()
+                        }.foregroundColor(.black)
+                        
+                        Button(action: {
                             self.textOfCostButton = "$"
                             self.expandCost.toggle()
                         }) {
@@ -203,7 +210,7 @@ struct PostPageView: View {
             }.padding()
                 .cornerRadius(20)
                 .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
-
+ 
             Button {
                 showImagePicker.toggle()
             } label: {
@@ -225,7 +232,8 @@ struct PostPageView: View {
                     withCost: textOfCostButton,
                     withPlus21: plus21,
                     withSale: sale,
-                    withAnon: anon)
+                    withAnon: anon,
+                    im: selectedImage)
                 if p {
                     posted = true
                 } else {
@@ -257,9 +265,7 @@ struct PostPageView: View {
     func togglePlus21(){plus21 = !plus21}
     func toggleAnon(){anon = !anon}
     
-    /*func uploadImage(_ image: UIImage) {
-        ImageUploader.uploadImage()
-    } */
+
 }
 
 

@@ -15,6 +15,8 @@ struct ConfirmEmailView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         let temp_email = viewModel.userSession?.email ?? "[nil]"
         
@@ -74,6 +76,14 @@ struct ConfirmEmailView: View {
         }
         .offset(x: 0, y: -100)
         .navigationBarHidden(true)
+        .onAppear {
+            viewModel.confirmEmail()
+        }
+        .onReceive(timer) { _ in
+            print("DEBUG -- checking if email validated")
+            viewModel.reInitUser()
+            print("DEBUG -- email verified: \(viewModel.userSession!.isEmailVerified)")
+        }
     }
 }
 

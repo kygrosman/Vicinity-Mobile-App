@@ -1,50 +1,47 @@
 //
-//  ForgotPassView.swift
-//  Vicinity (iOS)
+//  ForgotPassView2.swift
+//  Vicinity
 //
-//  Created by Kyle Grosman on 7/25/22.
+//  Created by Kyle Grosman on 9/18/22.
 //
 
 import SwiftUI
 import NavigationStack
 
-struct ForgotPassView: View {
+struct ForgotPassView2: View {
     
     @State private var action: Int? = 0
-    @State private var email = ""
     @State private var showAlert = false
     @State private var error_msg = ""
     @State private var error_title = ""
+    @State private var tBool = false
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
             
-            VStack {
+        VStack {
                 // navigation links
                 VStack(alignment: .leading) {
                     //title
-                    Text("Forgot Password")
+                    Text("Reset Password")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundColor(Color("VicinityNavy"))
                         .multilineTextAlignment(.leading)
                         .padding([.bottom], 30)
                     
-                    Text("Enter your email below and shortly after you will receive a link to reset your password")
+                    Text("Click the reset button to send a password reset link to the following email")
                         .padding([.trailing], 65)
                         .foregroundColor(Color("VicinityNavy"))
                         .padding(.bottom, 20)
                         
+                    Text("Email")
+                        .font(.system(size:15))
+                        .foregroundColor(Color.gray)
+                    Text("\(viewModel.currentUser!.email)")
+                        .font(.system(size:20))
                     
-                    // email text field
-                    Group {
-                        TextField("email", text: $email)
-                            .padding([.bottom, .trailing], 15)
-                    }
-                    .disableAutocorrection(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xxxLarge/*@END_MENU_TOKEN@*/)
-                    .font(.headline.weight(.bold))
                 }.padding(.leading, 50)
                 .padding(.bottom, 20)
                 
@@ -53,9 +50,10 @@ struct ForgotPassView: View {
                     // login button
                     Button(action: {
                         //send new pswrd link
-                        let reset = viewModel.resetPass(email: email)
+                        let reset = viewModel.resetPass(email: viewModel.currentUser!.email)
                         if (reset[0] as! Bool == false)
                         {
+                            tBool = true
                             error_title = "Unable to Send Email"
                             error_msg = reset[1] as! String
                             showAlert = true
@@ -76,7 +74,18 @@ struct ForgotPassView: View {
                     .cornerRadius(30)
                     .padding(.bottom, 20)
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text(error_title), message: Text(error_msg))
+                        Alert(title:
+                            Text(error_title),
+                            message: Text(error_msg),
+                            dismissButton: Alert.Button.default(
+                                Text("Ok"),
+                                action: {
+                                    if (!tBool) {
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }
+                                }
+                            )
+                        )
                     }
                     
                 }
@@ -85,8 +94,3 @@ struct ForgotPassView: View {
         }
     }
 
-struct ForgotPassView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForgotPassView()
-    }
-}
