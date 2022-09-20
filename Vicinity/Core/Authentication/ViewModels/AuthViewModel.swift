@@ -11,6 +11,7 @@ import SwiftEmailValidator
 
 class AuthViewModel: ObservableObject {
     
+    @Published var showMenu = false
     @Published var userSession: FirebaseAuth.User?
     
     private let service = UserService()
@@ -142,7 +143,8 @@ class AuthViewModel: ObservableObject {
                 "fullname": fullname,
                 "uid": user.uid,
                 "username": username,
-                "profileImageUrl": ""
+                // default profile image (just a blue square)
+                "profileImageUrl": "https://htmlcolorcodes.com/assets/images/colors/baby-blue-color-solid-background-1920x1080.png"
             ]
             
             Firestore.firestore().collection("users")
@@ -203,16 +205,30 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    // update info from edit-profile view
-    func updateProfile(_ image: UIImage, _ username: String) {
+    func updateProfPic(_ image: UIImage) {
         guard let uid = userSession?.uid else { return }
         
-        ImageUploader.uploadImage(image: image) { profileImageURL in
+        ImageUploader.uploadImage(image: image, useCase: "PROFILE") { profileImageURL in
             Firestore.firestore().collection("users")
                 .document(uid)
-                .updateData(["profileImageUrl": profileImageURL, "username": username], completion: { _ in
+                .updateData(["profileImageUrl": profileImageURL], completion: { _ in
                     print("DEBUG -- Updated user data")
                 })
         }
+        
+        reInitUser()
     }
+    
+    func updateProfDetails(_ username: String) {
+        guard let uid = userSession?.uid else { return }
+        
+        Firestore.firestore().collection("users")
+            .document(uid)
+            .updateData(["username": username], completion: { _ in
+                print("DEBUG -- Updated user data")
+            })
+                         
+        reInitUser()
+    }
+
 }

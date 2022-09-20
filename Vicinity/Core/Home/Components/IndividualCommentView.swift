@@ -15,13 +15,24 @@ struct IndividualCommentView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
+        HStack {
+            Circle().frame(width: 30, height: 30).foregroundColor(Color("VicinityBlue"))
+            VStack {
+                Text(comment.commentBody).font(Font.custom("Inter-Italic", size: 18))
+                Text("  @" + (comment.user?.username ?? "anon")).foregroundColor(Color("VicinityNavy")).fontWeight(.bold)
+            }
+        }.padding(.trailing)
+        /*
+        VStack {
             HStack {
+                Circle().frame(width: 20, height: 20).foregroundColor(Color("VicinityBlue"))
                 Text("@" + (comment.user?.username ?? "anon") + ":").foregroundColor(Color("VicinityNavy")).fontWeight(.bold)
                 Text(comment.commentBody).multilineTextAlignment(.leading).font(Font.custom("Inter-Italic", size: 18))
-            }.padding(.leading)
-        }.padding(.init(top: 10, leading: 0, bottom: 10, trailing: 5))
+            }.padding()
+        }.padding(.init(top: 10, leading: 0, bottom: 10, trailing: 5)) */
+        Divider()
     }
+    
 }
 
 /*struct IndividualCommentView_Previews: PreviewProvider {

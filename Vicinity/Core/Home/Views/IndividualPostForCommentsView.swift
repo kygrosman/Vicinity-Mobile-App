@@ -9,13 +9,21 @@ import SwiftUI
 
 struct IndividualPostForCommentsView: View {
     @ObservedObject var viewModel: IndividualPostViewModel
-    @ObservedObject var commentViewModel = CommentOnPostViewModel()
+    @ObservedObject var commentViewModel: CommentOnPostViewModel
     @State var comment = "leave a comment..."
-    @State var comments: [Comment]
+    //@State var comments: [Comment]!
     
-    init(post: Post, comments: [Comment]) {
+    init(post: Post) {
         self.viewModel = IndividualPostViewModel(post: post)
-        self.comments = comments
+        self.commentViewModel = CommentOnPostViewModel(post: post)
+        
+        //self.comments =  commentViewModel.fetchComments(post: post)
+    
+        /*if self.viewModel.post.numComments != nil {
+            print("DEBUGGING: not nil", post, self.viewModel.post.numComments)
+        } else {
+            print("DEBUG: nil", post)
+        }*/
     }
     
     var body: some View {
@@ -28,10 +36,10 @@ struct IndividualPostForCommentsView: View {
                 .frame(height: 50)
                 .overlay(Rectangle().stroke(Color("VicinityNavy"),lineWidth:3))
             Button(action: {
-                let posted = commentViewModel.postComment(post: viewModel.post, comment: comment)
-                if posted {
-                    self.comments = commentViewModel.fetchComments(post: viewModel.post)
-                }
+                let _ = commentViewModel.postComment(post: viewModel.post, comment: comment)
+                /*if posted {
+                    loadView()
+                }*/
             }, label: {
                 Text("post").foregroundColor(.black)
                     .frame(width: 60, height: 32)
@@ -42,8 +50,8 @@ struct IndividualPostForCommentsView: View {
         
         ScrollView {
             LazyVStack {
-                ForEach(self.comments) {post in
-                    IndividualCommentView(comment: post) }
+                ForEach(self.commentViewModel.comments) {c in
+                    IndividualCommentView(comment: c) }
             }
         }
         

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct EditProfileView: View {
     
@@ -14,17 +15,8 @@ struct EditProfileView: View {
     @State private var selectedImage: UIImage?
     @State private var profileImage: Image?
     @EnvironmentObject var authViewModel: AuthViewModel
-    //@Environment(\.presentationMode) var presentation
     
-    //var to hold image
-    
-    /*
-    @ObservedObject var profViewModel: ProfileViewModel
-    
-    init (user: User) {
-        self.profViewModel = ProfileViewModel(user: user)
-    }
-    */
+    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -33,14 +25,26 @@ struct EditProfileView: View {
                 content
                 
                 Button {
+                    let newUN = username != authViewModel.currentUser?.username
+                    let newPP = selectedImage != nil
                     // change all the updated content into firebase
-                    if (selectedImage == nil) {
+                    if (newPP && newUN) {
+                        //update prof pic
+                        authViewModel.updateProfPic(selectedImage!)
                         
+                        // update prof details
+                        authViewModel.updateProfDetails(username)
+                    } else if (newUN) {
+                        // update prof details
+                        authViewModel.updateProfDetails(username)
+                    } else if (newPP) {
+                        //update prof pic
+                        authViewModel.updateProfPic(selectedImage!)
                     }
-                    authViewModel.updateProfile(selectedImage!,username)
                     
-                    // navigation link back to profile
-                    //self.presentation.wrappedValue.dismiss()
+                    authViewModel.showMenu.toggle()
+                    
+                    self.presentation.wrappedValue.dismiss()
                     
                 } label: {
                     Text("Save").fontWeight(.heavy)
@@ -97,9 +101,11 @@ extension EditProfileView {
                                     .scaledToFill()
                                     .clipShape(Circle())
                             } else {
-                                Circle()
+                                KFImage(URL(string: (authViewModel.currentUser?.profileImageUrl)!))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .clipShape(Circle())
                                     .frame(width: 100, height: 100)
-                                    .foregroundColor(Color("VicinityBlue"))
                             }
                             
                             //Image()
@@ -119,9 +125,11 @@ extension EditProfileView {
                                     .scaledToFill()
                                     .clipShape(Circle())
                             } else {
-                                Circle()
+                                KFImage(URL(string: (authViewModel.currentUser?.profileImageUrl)!))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .clipShape(Circle())
                                     .frame(width: 50, height: 50)
-                                    .foregroundColor(Color("VicinityBlue"))
                             }
                             
                             //Image()
@@ -178,8 +186,3 @@ extension EditProfileView {
     }
 }
 
-struct EditProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditProfileView()
-    }
-}

@@ -26,7 +26,7 @@ class PostingViewModel: ObservableObject {
         if im != nil {
             print("ahh")
             let currentImage = im!
-            ImageUploader.uploadImage(image: currentImage) { returnedImageURL in
+            ImageUploader.uploadImage(image: currentImage, useCase: "POST") { returnedImageURL in
                 print(returnedImageURL)
                 imageURL = returnedImageURL
             }

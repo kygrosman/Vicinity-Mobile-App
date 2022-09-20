@@ -14,9 +14,12 @@ import Kingfisher
 // --------------------------------------------
 
 struct ProfilePageView: View {
+    
+    @State var refreshToggle = false
     @State private var anon = false
     @State private var selectionFilter: PostsFilterViewModel = .mine
-    @State var showMenu = false
+    
+    @EnvironmentObject var authViewModel: AuthViewModel
     @ObservedObject var profViewModel: ProfileViewModel
     @Namespace var animation
     
@@ -25,41 +28,21 @@ struct ProfilePageView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .trailing) {
-            VStack{
-                Group {
-                    headerView
-                    personalInfoView.padding(.bottom, 45)
-                }
-                .padding(.leading, 10)
-                
-                Spacer()
-                filterBarView
-                Spacer()
-                postsView
-            }//.navigationBarTitleDisplayMode(.inline)
-            .padding(.top, 50)
-            
-            if showMenu {
-                ZStack {
-                    Color(.black)
-                        .opacity(0.25)
-                }.onTapGesture {
-                    withAnimation(.easeInOut) {
-                        showMenu = false
-                    }
-                }
+        VStack{
+            Group {
+                headerView
+                personalInfoView.padding(.bottom, 45)
             }
+            .padding(.leading, 10)
             
-            SideMenuView()
-                .offset(x: showMenu ? 0: 300)
-                .frame(width: 200, height: UIScreen.screenHeight)
-                .background(showMenu ? Color.white : Color.clear)
-                
+            Spacer()
+            filterBarView
+            Spacer()
+            postsView
+            
             
         }
         .navigationBarTitleDisplayMode(.inline)
-        .padding(.top, 30)
     }
 }
     
@@ -67,52 +50,51 @@ struct ProfilePageView: View {
 
 extension ProfilePageView {
     var headerView : some View {
-        //ZStack(alignment: .bottomLeading){
-            VStack(alignment: .leading){
-                HStack {
-                    Image("Profile Image")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 40)
-                        .position(x: UIScreen.screenWidth - 330, y:UIScreen.screenHeight - 860)
-                        .frame(height:40)
-                    
-                    // side menu button
-                    Button {
-                        showMenu.toggle()
-                    } label: {
-                        Image(systemName: "line.horizontal.3")
-                            .foregroundColor(Color("VicinityNavy"))
-                    }.padding([.top, .trailing], 30)
-                }
+        VStack(alignment: .leading){
+            HStack {
+                // vicinity profile logo
+                Image("Profile Image")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 120, height: 40)
+                    .position(x: UIScreen.screenWidth - 330, y:UIScreen.screenHeight - 860)
+                    .frame(height:40)
                 
-                HStack{
-                    if (profViewModel.user.profileImageUrl != "") {
-                        KFImage(URL(string: profViewModel.user.profileImageUrl!))
-                            .resizable()
-                            .scaledToFill()
-                            .clipShape(Circle())
-                            .frame(width: 100, height: 100)
-                    } else {
-                        Circle()
-                            .frame(width: 100, height: 100)
-                            .foregroundColor(Color("VicinityBlue"))
-                            .padding(.top)
-                            .padding(.trailing)
+                // side menu button
+                Button {
+                    withAnimation(.easeInOut) {
+                        authViewModel.showMenu.toggle()
                     }
-                    
-                    Text("\(profViewModel.user.fullname)")
-                        .font(.system(size:20))
-                        .padding(.top)
-                }
-                .padding()
+                } label: {
+                    Image(systemName: "line.horizontal.3")
+                        .foregroundColor(Color("VicinityNavy"))
+                }.padding([.top, .trailing], 30)
             }
-        //}
+            
+            HStack{
+                // KF profile image
+                KFImage(URL(string: profViewModel.user.profileImageUrl!))
+                    .resizable()
+                    .scaledToFill()
+                    .clipShape(Circle())
+                    .frame(width: 100, height: 100)
+                    .padding(.leading, 30)
+                
+                // profile full name
+                Text("\(profViewModel.user.fullname)")
+                    .font(.system(size:20))
+                    .padding(.leading, 15)
+                    
+            }
+            .padding(.top, 30)
+        }
     }
     
     var personalInfoView: some View{
         
         VStack(alignment: .leading) {
+            
+            // profile username
             VStack(alignment: .leading) {
                 Text("Username")
                     .font(.system(size:15))
@@ -121,6 +103,7 @@ extension ProfilePageView {
                     .font(.system(size:20))
             }
             
+            // profile email
             VStack(alignment: .leading) {
                 Text("Email")
                     .font(.system(size:15))
@@ -138,6 +121,7 @@ extension ProfilePageView {
         
     }
     
+    // personal and saved posts
     var filterBarView: some View {
         HStack{
             ForEach(PostsFilterViewModel.allCases, id: \.rawValue){ item in
@@ -173,168 +157,11 @@ extension ProfilePageView {
         ScrollView {
             LazyVStack {
                 ForEach(profViewModel.posts(forFilter: self.selectionFilter)) {post in
-                    IndividualPostView(post: post, showComment: true).padding()
+                    IndividualPostView(post: post, showComment: true).padding(.init(top: 2, leading: 10, bottom: 10, trailing: 10))
                 }
             }
         }
 
     }
     
-}
-
-
-// --------------------------------------------
-// TEST PROFILE VIEW
-// --------------------------------------------
-
-struct Test_ProfilePageView: View {
-    @State private var anon = false
-    @State private var selectionFilter: PostsFilterViewModel = .mine
-    @State private var showMenu = false
-    //@ObservedObject var profViewModel: ProfileViewModel
-    @Namespace var animation
-    
-    /*
-    init (user: User) {
-        self.profViewModel = ProfileViewModel(user: user)
-    }
-     */
-    
-    var body: some View {
-            VStack{
-                headerView
-                personalInfoView.padding(.bottom)
-                Spacer()
-                filterBarView
-                Spacer()
-                postsView
-                
-                if showMenu {
-                    ZStack {
-                        Color(.black)
-                            .opacity(0.25)
-                    }.onTapGesture {
-                        withAnimation(.easeInOut) {
-                            showMenu = false
-                        }
-                    }
-                }
-                
-                SideMenuView()
-                    .offset(x: showMenu ? 0: 300)
-                    .frame(width: 200)
-                    .background(showMenu ? Color.white : Color.clear)
-                
-            }//.navigationBarTitleDisplayMode(.inline)
-            .ignoresSafeArea()
-        }
-    }
-    
-    
-
-extension Test_ProfilePageView {
-    var headerView : some View {
-            ZStack(alignment: .topTrailing){
-                VStack(alignment: .leading){
-                    HStack {
-                        Image("Profile Image")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 40)
-                            .position(x: UIScreen.screenWidth - 330, y:UIScreen.screenHeight - 860)
-                            .frame(height:40)
-                        Button {
-                            showMenu.toggle()
-                        } label: {
-                            Image(systemName: "line.horizontal.3")
-                                .foregroundColor(Color("VicinityNavy"))
-                        }.padding([.top, .trailing], 30)
-                        //.position(x: UIScreen.screenWidth - 300, y:UIScreen.screenHeight - 840)
-                        
-                    }
-                    
-                    HStack{
-                        Circle().frame(width: 100, height: 100).foregroundColor(Color("VicinityBlue"))
-                            .padding(.bottom,20)
-                    }
-                    .padding([.top, .leading], 30)
-                }
-            }
-    }
-    
-    var personalInfoView: some View{
-        
-        VStack(alignment: .leading) {
-            VStack(alignment: .leading) {
-                Text("Username")
-                    .font(.system(size:15))
-                    .foregroundColor(Color.gray)
-                Text("@Test_Username")
-                    .font(.system(size:20))
-            }
-            
-            VStack(alignment: .leading) {
-                Text("Email").font(.system(size:15)).foregroundColor(Color.gray)
-                Text("test@jhu.edu").font(.system(size:20))
-            }
-            .padding([.top, .bottom])
-            
-                
-        }
-        .padding()
-        .position(x: UIScreen.screenWidth - 300, y: UIScreen.screenHeight - 840)
-        .frame(height: 80)
-        
-    }
-    
-    var filterBarView: some View {
-        HStack{
-            ForEach(PostsFilterViewModel.allCases, id: \.rawValue){ item in
-                VStack{
-                    Text(item.title)
-                        .font(.system(size:20))
-                        .fontWeight(selectionFilter == item ? .semibold : .regular)
-                        .foregroundColor(selectionFilter == item ? Color("VicinityNavy") : Color("VicinityBlue"))
-                    
-                    if selectionFilter == item {
-                        Capsule()
-                            .foregroundColor(Color("VicinityNavy"))
-                            .frame(height: 3)
-                            .matchedGeometryEffect(id: "filter", in: animation)
-                    } else {
-                        Capsule()
-                            .foregroundColor(Color(.clear))
-                            .frame(height: 3)
-                    }
-                    
-                }
-                .onTapGesture{
-                    withAnimation(.easeInOut) {
-                        self.selectionFilter = item
-                    }
-                }
-            }
-        }.padding(.top, 40)
-        .overlay(Divider().offset(x:0, y:40))
-    }
-    
-    var postsView: some View {
-        ScrollView {
-            LazyVStack {
-                /*
-                ForEach(profViewModel.posts(forFilter: self.selectionFilter)) {post in
-                    IndividualPostView(post: post).padding()
-                 */
-                }
-            }
-        }
-    }
-    
-
-struct ProfilePageView_Previews: PreviewProvider {
-    //@EnvironmentObject static var authViewModel: AuthViewModel
-    static var previews: some View {
-        //ProfilePageView(user: authViewModel.currentUser!)
-        Test_ProfilePageView()
-    }
 }

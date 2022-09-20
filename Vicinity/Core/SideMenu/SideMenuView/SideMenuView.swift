@@ -67,7 +67,6 @@ struct SideMenuView: View {
         }
         .padding(.trailing, 30)
         
-        
     }
 }
 

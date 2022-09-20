@@ -26,8 +26,8 @@ class ProfileViewModel: ObservableObject {
             return posts
         case .saved:
             return savedPosts
-        case .getFeedback:
-            return posts
+        /*case .getFeedback:
+            return posts */
         }
     }
     
