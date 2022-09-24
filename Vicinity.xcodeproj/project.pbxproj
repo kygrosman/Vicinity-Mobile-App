@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230BFDB328DFB4FD00C67E58 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 230BFDB228DFB4FD00C67E58 /* Kingfisher */; };
 		233C601A289DC78F00FCB99D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C6019289DC78F00FCB99D /* Comment.swift */; };
+		23CB12AB28DA045C00FFD8DD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 23CB12AA28DA045C00FFD8DD /* Kingfisher */; };
 		23DE7E362891CF90000271B6 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		23DE7E3E28930854000271B6 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E3D28930853000271B6 /* PostService.swift */; };
 		23DE7E4128930BAB000271B6 /* PostingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE7E4028930BAB000271B6 /* PostingViewModel.swift */; };
@@ -175,10 +177,12 @@
 				4EAA4AE92891C888008CECAE /* FirebasePerformance in Frameworks */,
 				4EAA4AC52891C888008CECAE /* FirebaseAppCheck in Frameworks */,
 				4EAA4ABF2891C888008CECAE /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				230BFDB328DFB4FD00C67E58 /* Kingfisher in Frameworks */,
 				4EAA4AE12891C888008CECAE /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				4EAA4AED2891C888008CECAE /* FirebaseRemoteConfigSwift in Frameworks */,
 				4EAA4AC12891C888008CECAE /* FirebaseAnalyticsSwift in Frameworks */,
 				4EAA4AC72891C888008CECAE /* FirebaseAppDistribution-Beta in Frameworks */,
+				23CB12AB28DA045C00FFD8DD /* Kingfisher in Frameworks */,
 				4E05F18528D7B8E5008BBD0D /* Kingfisher in Frameworks */,
 				4EAA4AEB2891C888008CECAE /* FirebaseRemoteConfig in Frameworks */,
 				4EAA4AEF2891C888008CECAE /* FirebaseStorage in Frameworks */,
@@ -540,6 +544,8 @@
 				4EAA4AEE2891C888008CECAE /* FirebaseStorage */,
 				4EAA4AF02891C888008CECAE /* FirebaseStorageCombine-Community */,
 				4E05F18428D7B8E5008BBD0D /* Kingfisher */,
+				23CB12AA28DA045C00FFD8DD /* Kingfisher */,
+				230BFDB228DFB4FD00C67E58 /* Kingfisher */,
 			);
 			productName = Vicinity;
 			productReference = 4EAA49ED2891B81A008CECAE /* Vicinity.app */;
@@ -618,6 +624,8 @@
 				4EAA4A772891BCD0008CECAE /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */,
 				4EAA4ABB2891C888008CECAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				4E05F18328D7B8E5008BBD0D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				23CB12A928DA045C00FFD8DD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				230BFDB128DFB4FD00C67E58 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 4EAA49EE2891B81A008CECAE /* Products */;
 			projectDirPath = "";
@@ -1050,6 +1058,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		230BFDB128DFB4FD00C67E58 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		23CB12A928DA045C00FFD8DD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		4E05F18328D7B8E5008BBD0D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1093,6 +1117,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		230BFDB228DFB4FD00C67E58 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 230BFDB128DFB4FD00C67E58 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		23CB12AA28DA045C00FFD8DD /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E05F18328D7B8E5008BBD0D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		4E05F18428D7B8E5008BBD0D /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4E05F18328D7B8E5008BBD0D /* XCRemoteSwiftPackageReference "Kingfisher" */;

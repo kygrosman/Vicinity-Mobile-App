@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import Kingfisher
 
 struct IndividualPostView: View {
     @ObservedObject var viewModel: IndividualPostViewModel
@@ -29,6 +30,16 @@ struct IndividualPostView: View {
             HStack {
                 //photo and username are across the top, horizontally
                 Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
+                /*if (commentViewModel.user?.profileImageUrl == nil) {
+                    Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
+                } else {
+                    KFImage(URL(string: commentViewModel.user?.profileImageUrl!))
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                        .frame(width: 56, height: 56)
+                        .padding(.leading, 30)
+                } */
                 Text(viewModel.post.anon ? "anon" : viewModel.post.user?.username ?? "anon")
                 Text(convertTimestampIntoString(currTime:viewModel.post.timestamp)).font(.caption).foregroundColor(Color.gray)
                 Spacer()

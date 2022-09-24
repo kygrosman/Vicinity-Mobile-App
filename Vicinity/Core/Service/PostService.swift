@@ -116,7 +116,7 @@ struct PostService {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         guard let postID = post.id else {return}
         
-        let comment = ["userID": uid, "commentBody": comment]
+        let comment = ["userID": uid, "commentBody": comment, "timestamp": Timestamp(date: Date())] as [String : Any]
         
         let postObj = Firestore.firestore().collection("posts").document(postID)
         
@@ -146,9 +146,9 @@ struct PostService {
         if postNumComments == 0 {
             return
         }
-        
+            
         guard let postID = post.id else {return}
-        let postComments = Firestore.firestore().collection("posts").document(postID).collection("post-comments")
+        let postComments = Firestore.firestore().collection("posts").document(postID).collection("post-comments").order(by: "timestamp", descending: true)
         postComments.getDocuments { snapshot, _ in
             guard let documents = snapshot?.documents else {return}
             let comments = documents.compactMap({ try? $0.data(as: Comment.self)} )
@@ -160,6 +160,7 @@ struct PostService {
                     currentComment.user = commentor
                     allComments.append(currentComment)
                     completion(allComments)
+
                 }
                 completion(allComments)
             })

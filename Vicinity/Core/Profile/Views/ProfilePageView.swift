@@ -73,12 +73,16 @@ extension ProfilePageView {
             
             HStack{
                 // KF profile image
-                KFImage(URL(string: profViewModel.user.profileImageUrl!))
-                    .resizable()
-                    .scaledToFill()
-                    .clipShape(Circle())
-                    .frame(width: 100, height: 100)
-                    .padding(.leading, 30)
+                if (profViewModel.user.profileImageUrl == nil) {
+                    Circle().frame(width: 100, height: 100).foregroundColor(Color("VicinityBlue"))
+                } else {
+                    KFImage(URL(string: profViewModel.user.profileImageUrl!))
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                        .frame(width: 100, height: 100)
+                        .padding(.leading, 30)
+                }
                 
                 // profile full name
                 Text("\(profViewModel.user.fullname)")
