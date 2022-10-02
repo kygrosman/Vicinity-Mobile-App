@@ -39,7 +39,7 @@ struct IndividualPostView: View {
                         .clipShape(Circle())
                         .frame(width: 56, height: 56)
                         .padding(.leading, 30)
-                } */
+                }*/
                 Text(viewModel.post.anon ? "anon" : viewModel.post.user?.username ?? "anon")
                 Text(convertTimestampIntoString(currTime:viewModel.post.timestamp)).font(.caption).foregroundColor(Color.gray)
                 Spacer()

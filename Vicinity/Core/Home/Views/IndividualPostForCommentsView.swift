@@ -18,13 +18,6 @@ struct IndividualPostForCommentsView: View {
         self.viewModel = IndividualPostViewModel(post: post)
         self.commentViewModel = CommentOnPostViewModel(post: post)
         
-        //self.comments =  commentViewModel.fetchComments(post: post)
-    
-        /*if self.viewModel.post.numComments != nil {
-            print("DEBUGGING: not nil", post, self.viewModel.post.numComments)
-        } else {
-            print("DEBUG: nil", post)
-        }*/
     }
     
     var body: some View {
