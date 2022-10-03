@@ -100,6 +100,8 @@ extension EditProfileView {
                                     .frame(width: 100, height: 100)
                                     .scaledToFill()
                                     .clipShape(Circle())
+                            } else if authViewModel.currentUser?.profileImageUrl == nil {
+                                Circle().frame(width: 100, height: 100).foregroundColor(Color("VicinityBlue"))
                             } else {
                                 KFImage(URL(string: (authViewModel.currentUser?.profileImageUrl)!))
                                     .resizable()
@@ -124,6 +126,8 @@ extension EditProfileView {
                                     .frame(width: 50, height: 50)
                                     .scaledToFill()
                                     .clipShape(Circle())
+                            } else if authViewModel.currentUser?.profileImageUrl == nil {
+                                Circle().frame(width: 100, height: 100).foregroundColor(Color("VicinityBlue"))
                             } else {
                                 KFImage(URL(string: (authViewModel.currentUser?.profileImageUrl)!))
                                     .resizable()

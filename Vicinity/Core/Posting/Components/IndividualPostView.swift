@@ -29,17 +29,17 @@ struct IndividualPostView: View {
         VStack(alignment: .leading) {
             HStack {
                 //photo and username are across the top, horizontally
-                Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
-                /*if (commentViewModel.user?.profileImageUrl == nil) {
+                //Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
+                if (viewModel.post.user?.profileImageUrl == nil) {
                     Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
                 } else {
-                    KFImage(URL(string: commentViewModel.user?.profileImageUrl!))
+                    KFImage(URL(string: (viewModel.post.user?.profileImageUrl!)!))
                         .resizable()
                         .scaledToFill()
                         .clipShape(Circle())
                         .frame(width: 56, height: 56)
-                        .padding(.leading, 30)
-                }*/
+                        //.padding(.leading, 30)
+                }
                 Text(viewModel.post.anon ? "anon" : viewModel.post.user?.username ?? "anon")
                 Text(convertTimestampIntoString(currTime:viewModel.post.timestamp)).font(.caption).foregroundColor(Color.gray)
                 Spacer()
