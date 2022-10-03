@@ -48,9 +48,17 @@ struct PostPageView: View {
                 //.offset(x:30 , y:0)
                 .padding()
                 .frame(height: 100)*/
-            TextField("hi", text: $postBody, prompt: Text("what's in your vicinity..."))
-                .padding()
-                .frame(height: 100)
+            if #available(iOS 16.0, *) {
+                TextField("hi", text: $postBody, prompt: Text("what's in your vicinity..."), axis: .vertical)
+                    .padding()
+                    .frame(height: 100)
+                    .multilineTextAlignment(.leading)
+            } else {
+                TextField("hi", text: $postBody, prompt: Text("what's in your vicinity..."))
+                    .padding()
+                    .frame(height: 100)
+                    .multilineTextAlignment(.leading)
+            }
             Spacer()
             HStack {
                 VStack {
