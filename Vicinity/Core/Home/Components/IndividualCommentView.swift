@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct IndividualCommentView: View {
     let comment: Comment
@@ -16,9 +17,18 @@ struct IndividualCommentView: View {
     
     var body: some View {
         HStack {
-            Circle().frame(width: 30, height: 30).foregroundColor(Color("VicinityBlue"))
+            if (comment.user?.profileImageUrl == nil) {
+                Circle().frame(width: 30, height: 30).foregroundColor(Color("VicinityBlue"))
+            } else {
+                KFImage(URL(string: (comment.user?.profileImageUrl!)!))
+                    .resizable()
+                    .scaledToFill()
+                    .clipShape(Circle())
+                    .frame(width: 30, height: 30)
+                    //.padding(.leading, 30)
+            }
             HStack {
-                Text("@" + (comment.user?.username ?? "anon")).foregroundColor(Color("VicinityNavy")).fontWeight(.bold)
+                Text((comment.user?.username ?? "anon")).foregroundColor(Color("VicinityNavy")).fontWeight(.bold)
                 Text(comment.commentBody).font(Font.custom("Inter-Italic", size: 18))
             }.multilineTextAlignment(.leading)
         }.padding(.trailing)

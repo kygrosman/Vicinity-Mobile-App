@@ -28,9 +28,7 @@ struct IndividualPostView: View {
         NavigationLink(destination: IndividualPostForCommentsView(post: viewModel.post), isActive: $seeFullScreenPost) { EmptyView() }
         VStack(alignment: .leading) {
             HStack {
-                //photo and username are across the top, horizontally
-                //Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
-                if (viewModel.post.user?.profileImageUrl == nil) {
+                if (viewModel.post.user?.profileImageUrl == nil || viewModel.post.anon == true) {
                     Circle().frame(width: 56, height: 56).foregroundColor(Color("VicinityBlue"))
                 } else {
                     KFImage(URL(string: (viewModel.post.user?.profileImageUrl!)!))
@@ -99,6 +97,14 @@ struct IndividualPostView: View {
             }.padding()
             
             Text(viewModel.post.postbody).multilineTextAlignment(.leading).font(Font.custom("Inter-Italic", size: 18))
+            
+            if (viewModel.post.imageURL != "") {
+                KFImage(URL(string: (viewModel.post.imageURL!)))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                    //.padding(.leading, 30)
+            }
         }
         
         Divider()

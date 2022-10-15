@@ -36,6 +36,242 @@ struct PostPageView: View {
 
     var body: some View {
         
+        ScrollView() {
+            NavigationLink(destination: HomeView(), isActive: $posted) { EmptyView() }
+
+            Text("Recommendation")
+                .font(.custom("YesevaOne-Regular",size:30))
+                .foregroundColor(Color("VicinityNavy"))
+                .offset(y:20)
+                .padding(.bottom)
+            if #available(iOS 16.0, *) {
+                TextField("hi", text: $postBody, prompt: Text("what's in your vicinity..."), axis: .vertical)
+                    .padding()
+                    .frame(height: 100)
+                    .multilineTextAlignment(.leading)
+            } else {
+                TextField("hi", text: $postBody, prompt: Text("what's in your vicinity..."))
+                    .padding()
+                    .frame(height: 100)
+                    .multilineTextAlignment(.leading)
+            }
+            Spacer()
+            HStack {
+                VStack {
+                    HStack {
+                        Text(textOfEventTypeButton).fontWeight(.heavy).foregroundColor(.orange).font(Font.system(size: 12))
+                        Image(systemName: expandEventType ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
+                            .foregroundColor(.orange)
+                    }.onTapGesture {
+                        expandEventType.toggle()
+                    }
+                    if expandEventType {
+                        Button(action: {
+                            textOfEventTypeButton = "FOOD"
+                            expandEventType.toggle()
+                        }) {
+                            Text("FOOD").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                        
+                        Button(action: {
+                            textOfEventTypeButton = "EVENT"
+                            expandEventType.toggle()
+                        }) {
+                            Text("EVENT").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                        
+                        Button(action: {
+                            textOfEventTypeButton = "SHOP"
+                            expandEventType.toggle()
+                        }) {
+                            Text("SHOP").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                        
+                        Button(action: {
+                            textOfEventTypeButton = "ACTIVITY"
+                            expandEventType.toggle()
+                        }) {
+                            Text("ACTIVITY").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                        
+                        Button(action: {
+                            textOfEventTypeButton = "RESOURCE"
+                            expandEventType.toggle()
+                        }) {
+                            Text("RESOURCE").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                    }
+                }.padding()
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(.orange,lineWidth: 2))
+                
+                VStack {
+                    HStack {
+                        Text(textOfDistanceButton).fontWeight(.heavy).foregroundColor(.blue).font(Font.system(size: 12))
+                        Image(systemName: expandDistance ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
+                            .foregroundColor(.blue)
+                    }.onTapGesture {
+                        expandDistance.toggle()
+                    }
+                    if expandDistance {
+                        Button(action: {
+                            textOfDistanceButton = "WALK"
+                            expandDistance.toggle()
+                        }) {
+                            Text("WALK").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                        
+                        Button(action: {
+                            textOfDistanceButton = "SHUTTLE"
+                            expandDistance.toggle()
+                        }) {
+                            Text("SHUTTLE").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                        
+                        Button(action: {
+                            textOfDistanceButton = "DRIVE"
+                            expandDistance.toggle()
+                        }) {
+                            Text("DRIVE").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                        
+                    }
+                }.padding()
+                    //.background(expand ? Color("VicinityBlue"): Color("VicinityBlue"))
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(.blue,lineWidth: 2))
+
+                VStack {
+                    HStack {
+                        Text(textOfCostButton).fontWeight(.heavy).foregroundColor(.green)
+                            .font(Font.system(size: 12))
+                        Image(systemName: expandCost ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
+                            .foregroundColor(.green)
+                    }.onTapGesture {
+                        self.expandCost.toggle()
+                    }
+                    if expandCost {
+                        Button(action: {
+                            self.textOfCostButton = "FREE"
+                            self.expandCost.toggle()
+                        }) {
+                            Text("FREE").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                        
+                        Button(action: {
+                            self.textOfCostButton = "$"
+                            self.expandCost.toggle()
+                        }) {
+                            Text("$").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                        
+                        Button(action: {
+                            self.textOfCostButton = "$$"
+                            self.expandCost.toggle()
+                        }) {
+                            Text("$$").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                        
+                        Button(action: {
+                            self.textOfCostButton = "$$$"
+                            self.expandCost.toggle()
+                        }) {
+                            Text("$$$").padding()
+                        }.foregroundColor(.black)
+                            .font(Font.system(size: 12))
+                    }
+                }.padding()
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(.green,lineWidth: 2))
+                
+            }
+            HStack {
+                Button(action: toggleSale){
+                    HStack{
+                        Image(systemName: sale ? "checkmark.square": "square").foregroundColor(.red)
+                        Text("SALE").foregroundColor(Color.red).fontWeight(.heavy).font(Font.system(size: 12))
+                    }
+
+                }.padding()
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(.red,lineWidth: 2))
+                
+                Button(action: togglePlus21){
+                    HStack{
+                        Image(systemName: plus21 ? "checkmark.square": "square").foregroundColor(.black)
+                        Text("+21").foregroundColor(Color.black).fontWeight(.heavy).font(Font.system(size: 12))
+                    }
+
+                }.padding()
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
+                
+            }.padding()
+                 
+            Button(action: toggleAnon){
+                HStack{
+                    Image(systemName: anon ? "checkmark.square": "square").foregroundColor(.black)
+                    Text("post anonymously").foregroundColor(Color.black).fontWeight(.heavy).font(Font.system(size: 12))
+                }
+
+            }.padding()
+                .cornerRadius(20)
+                .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
+ 
+            Button {
+                showImagePicker.toggle()
+            } label: {
+                if let importedImage = importedImage {
+                    importedImage.resizable().frame(width: 70, height: 70)
+                } else {
+                    Image(systemName: "plus.app").resizable().frame(width: 50, height: 50).foregroundColor(Color("VicinityNavy"))
+                    Text("Add an Image").fontWeight(.heavy).foregroundColor(.black).font(Font.system(size: 12))
+                }
+            }.sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
+                ImagePicker(selectedImage: $selectedImage)
+            }
+            
+            Button(action: {
+                let p = postingViewModel.uploadPost(
+                    withPostbody: postBody,
+                    withType: textOfEventTypeButton,
+                    withDistance: textOfDistanceButton,
+                    withCost: textOfCostButton,
+                    withPlus21: plus21,
+                    withSale: sale,
+                    withAnon: anon,
+                    im: selectedImage)
+                if p {
+                    posted = true
+                } else {
+                    showAlert = true
+                    error_msg = "post must contain body and type, distance, cost selection"
+                }
+                
+            }, label: {
+                Text("Post").fontWeight(.heavy).foregroundColor(.black)
+                    .frame(width: 300, height: 32)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color("VicinityNavy"),lineWidth:3))
+                
+            }).padding(.top).alert(isPresented: $showAlert) {
+                Alert(title: Text("unable to post"), message: Text(error_msg))
+            }
+            
+            Spacer()
+
+        }
+        /*
         VStack() {
             NavigationLink(destination: HomeView(), isActive: $posted) { EmptyView() }
 
@@ -44,10 +280,6 @@ struct PostPageView: View {
                 .foregroundColor(Color("VicinityNavy"))
                 .offset(y:20)
                 .padding(.bottom)
-            /*TextEditor(text: $postBody)
-                //.offset(x:30 , y:0)
-                .padding()
-                .frame(height: 100)*/
             if #available(iOS 16.0, *) {
                 TextField("hi", text: $postBody, prompt: Text("what's in your vicinity..."), axis: .vertical)
                     .padding()
@@ -260,7 +492,7 @@ struct PostPageView: View {
             }
             
             Spacer()
-        }.navigationBarTitleDisplayMode(.inline)
+        }.navigationBarTitleDisplayMode(.inline) */
 
     }
     /*}*/
@@ -273,6 +505,7 @@ struct PostPageView: View {
     func toggleSale(){sale = !sale}
     func togglePlus21(){plus21 = !plus21}
     func toggleAnon(){anon = !anon}
+    
     
 
 }

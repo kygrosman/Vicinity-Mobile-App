@@ -20,6 +20,7 @@ struct Post: Identifiable, Decodable {
     var numComments: Int?
     var user: User?
     var saved: Bool?
+    var imageURL: String?
 
     //tags
     let type: String
