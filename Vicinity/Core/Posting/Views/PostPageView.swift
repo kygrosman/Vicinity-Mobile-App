@@ -35,15 +35,27 @@ struct PostPageView: View {
     @State private var showAlert = false
 
     var body: some View {
+        VStack {
+            ZStack(alignment: .bottomLeading) {
+                Image("recommend-vicinity")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 193.6, height: 56.67)
+                    .offset(x:-90, y:7)
+            
+            }
         
-        ScrollView() {
-            NavigationLink(destination: HomeView(), isActive: $posted) { EmptyView() }
-
-            Text("Recommendation")
-                .font(.custom("YesevaOne-Regular",size:30))
-                .foregroundColor(Color("VicinityNavy"))
-                .offset(y:20)
-                .padding(.bottom)
+            ScrollView() {
+                NavigationLink(destination: HomeView(), isActive: $posted) { EmptyView() }
+            
+            /*Text("Recommendation")
+             .font(.custom("YesevaOne-Regular",size:30))
+             .foregroundColor(Color("VicinityNavy"))
+             .offset(y:20)
+             .padding(.bottom)*/
+            
+            
+            
             if #available(iOS 16.0, *) {
                 TextField("hi", text: $postBody, prompt: Text("what's in your vicinity..."), axis: .vertical)
                     .padding()
@@ -145,10 +157,10 @@ struct PostPageView: View {
                         
                     }
                 }.padding()
-                    //.background(expand ? Color("VicinityBlue"): Color("VicinityBlue"))
+                //.background(expand ? Color("VicinityBlue"): Color("VicinityBlue"))
                     .cornerRadius(20)
                     .overlay(RoundedRectangle(cornerRadius: 25).stroke(.blue,lineWidth: 2))
-
+                
                 VStack {
                     HStack {
                         Text(textOfCostButton).fontWeight(.heavy).foregroundColor(.green)
@@ -202,7 +214,7 @@ struct PostPageView: View {
                         Image(systemName: sale ? "checkmark.square": "square").foregroundColor(.red)
                         Text("SALE").foregroundColor(Color.red).fontWeight(.heavy).font(Font.system(size: 12))
                     }
-
+                    
                 }.padding()
                     .cornerRadius(20)
                     .overlay(RoundedRectangle(cornerRadius: 25).stroke(.red,lineWidth: 2))
@@ -212,23 +224,23 @@ struct PostPageView: View {
                         Image(systemName: plus21 ? "checkmark.square": "square").foregroundColor(.black)
                         Text("+21").foregroundColor(Color.black).fontWeight(.heavy).font(Font.system(size: 12))
                     }
-
+                    
                 }.padding()
                     .cornerRadius(20)
                     .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
                 
             }.padding()
-                 
+            
             Button(action: toggleAnon){
                 HStack{
                     Image(systemName: anon ? "checkmark.square": "square").foregroundColor(.black)
                     Text("post anonymously").foregroundColor(Color.black).fontWeight(.heavy).font(Font.system(size: 12))
                 }
-
+                
             }.padding()
                 .cornerRadius(20)
                 .overlay(RoundedRectangle(cornerRadius: 25).stroke(.black,lineWidth: 2))
- 
+            
             Button {
                 showImagePicker.toggle()
             } label: {
@@ -269,8 +281,9 @@ struct PostPageView: View {
             }
             
             Spacer()
-
+            
         }
+    }
         /*
         VStack() {
             NavigationLink(destination: HomeView(), isActive: $posted) { EmptyView() }
