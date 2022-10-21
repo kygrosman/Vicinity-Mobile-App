@@ -22,24 +22,31 @@ class PostingViewModel: ObservableObject {
             return false 
         }
         
-        var imageURL = ""
         if im != nil {
-            print("ahh")
             let currentImage = im!
             ImageUploader.uploadImage(image: currentImage, useCase: "POST") { returnedImageURL in
-                print(returnedImageURL)
-                imageURL = returnedImageURL
+                
+                self.service.uploadPost(postbody: postbody, type: type, distance: distance, cost: cost, plus21: plus21, sale: sale, anon: anon, imageURL: returnedImageURL) { success in
+                    if success {
+                        self.didUploadPost = true
+                    } else {
+                        return false
+                    }
+                    return true
+                }
             }
-        }
-        
-        service.uploadPost(postbody: postbody, type: type, distance: distance, cost: cost, plus21: plus21, sale: sale, anon: anon, imageURL: imageURL) { success in
-            if success {
-                self.didUploadPost = true
-            } else {
-                return false
+        } else {
+            service.uploadPost(postbody: postbody, type: type, distance: distance, cost: cost, plus21: plus21, sale: sale, anon: anon, imageURL: "") { success in
+                if success {
+                    self.didUploadPost = true
+                } else {
+                    return false
+                }
+                return true
             }
             return true
         }
+
         return true
     }
     

@@ -102,7 +102,6 @@ struct IndividualPostView: View {
                 KFImage(URL(string: (viewModel.post.imageURL!)))
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 100, height: 100)
                     //.padding(.leading, 30)
             }
         }
