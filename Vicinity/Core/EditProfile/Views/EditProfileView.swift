@@ -20,7 +20,7 @@ struct EditProfileView: View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            VStack() {
+            VStack(alignment: .leading) {
                 header
                 content
                 
@@ -65,14 +65,14 @@ struct EditProfileView: View {
 
 extension EditProfileView {
     var header : some View {
-        VStack{
+        VStack(alignment: .leading) {
             Image("Edit_Profile")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 199, height: 40)
-                .position(x: UIScreen.screenWidth - 285, y: UIScreen.screenHeight - 860)
-                .frame(height:40)
+                //.position(x: UIScreen.screenWidth - 285, y: UIScreen.screenHeight - 860)
         }
+        //.padding(.leading, 15)
     }
     
     var content : some View {
@@ -112,7 +112,7 @@ extension EditProfileView {
                             
                             //Image()
                         }
-                        .padding(.trailing, UIScreen.screenWidth - 400)
+                        .padding(.trailing, 10)
                         
                         //50x50 prof pic
                         VStack(alignment: .leading) {

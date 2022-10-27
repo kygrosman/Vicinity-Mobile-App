@@ -14,15 +14,16 @@ struct HomePageView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             ZStack(alignment: .bottomLeading) {
                 Image("vicinity-logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 145.2, height: 44)
-                    .offset(x:-110, y:7)
+                    .frame(width: 132, height: 40)
+                    //.offset(x:-110, y:7)
+                    .padding(.leading, 20)
                 
-            }
+            }.padding(.bottom, 5)
             
             ScrollView {
                 LazyVStack {

@@ -28,21 +28,20 @@ struct ProfilePageView: View {
     }
     
     var body: some View {
-        VStack{
+        VStack(alignment: .leading) {
             Group {
-                headerView
+                headerView.padding(.bottom, 15)
                 personalInfoView.padding(.bottom, 45)
             }
-            .padding(.leading, 10)
+            .padding(.leading, 20)
             
-            Spacer()
+            //Spacer()
             filterBarView
-            Spacer()
+            //Spacer()
             postsView
-            
-            
         }
         .navigationBarTitleDisplayMode(.inline)
+        
     }
 }
     
@@ -57,8 +56,11 @@ extension ProfilePageView {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 40)
-                    .position(x: UIScreen.screenWidth - 330, y:UIScreen.screenHeight - 860)
-                    .frame(height:40)
+                    .padding(.leading, 5)
+                    //.padding(.top, 15)
+                
+                // separates image to left side and button to right side
+                Spacer()
                 
                 // side menu button
                 Button {
@@ -68,7 +70,7 @@ extension ProfilePageView {
                 } label: {
                     Image(systemName: "line.horizontal.3")
                         .foregroundColor(Color("VicinityNavy"))
-                }.padding([.top, .trailing], 30)
+                }.padding([.trailing], 30)
             }
             
             HStack{
@@ -81,7 +83,7 @@ extension ProfilePageView {
                         .scaledToFill()
                         .clipShape(Circle())
                         .frame(width: 100, height: 100)
-                        .padding(.leading, 30)
+                        //.padding(.leading, 15)
                 }
                 
                 // profile full name
@@ -90,7 +92,7 @@ extension ProfilePageView {
                     .padding(.leading, 15)
                     
             }
-            .padding(.top, 30)
+            .padding(.top, 15)
         }
     }
     
@@ -119,8 +121,8 @@ extension ProfilePageView {
             
                 
         }
-        .padding()
-        .position(x: 150, y: 60)
+        .padding(.top, 20)
+        //.position(x: 150, y: 60)
         .frame(height: 80)
         
     }
@@ -154,7 +156,7 @@ extension ProfilePageView {
                 }
             }
         }.padding(.top, 14)
-        .overlay(Divider().offset(x:0,y: 28))
+        .overlay(Divider().offset(x:0,y: 27))
     }
     
     var postsView: some View {

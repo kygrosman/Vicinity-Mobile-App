@@ -49,6 +49,7 @@ struct IndividualPostView: View {
                     } label: {
                         Image(systemName: viewModel.post.saved ?? false ? "bookmark.fill" : "bookmark")
                             .foregroundColor(Color("VicinityBlue"))
+                            
                     }
                     if showComment {
                         Button {
@@ -66,37 +67,38 @@ struct IndividualPostView: View {
                 //tags (between 3 and 5, sale and plus 21 only show up if set to true)
                 Text(viewModel.post.type)
                     .font(.subheadline).bold()
-                    .frame(width: viewModel.post.type.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)), height: 32)
+                    .frame(width: viewModel.post.type.widthOfString(usingFont: UIFont.systemFont(ofSize: 20))+1, height: 32)
                     .foregroundColor(.orange)
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.orange,lineWidth: 1.5 ))
                 Text(viewModel.post.cost)
                     .font(.subheadline).bold()
-                    .frame(width: (viewModel.post.cost.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)) * 2), height: 32)
+                    .frame(width: (viewModel.post.cost.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)) + 10), height: 32)
                     .foregroundColor(.green)
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.green,lineWidth:1.5))
                 if viewModel.post.sale {
                     Text("SALE")
                         .font(.subheadline).bold()
-                        .frame(width: 60, height: 32)
+                        .frame(width: 50, height: 32)
                         .foregroundColor(.red)
                         .overlay(RoundedRectangle(cornerRadius: 20).stroke(.red,lineWidth: 1.5))
 
                 }
                 Text(viewModel.post.distance)
                     .font(.subheadline).bold()
-                    .frame(width: viewModel.post.distance.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)), height: 32)
+                    .frame(width: viewModel.post.distance.widthOfString(usingFont: UIFont.systemFont(ofSize: 20))+1, height: 32)
                     .foregroundColor(.blue)
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.blue,lineWidth: 1.5))
                 if viewModel.post.plus21 {
-                    Text("+21")  .font(.subheadline).bold()
-                        .frame(width: 60, height: 32)
+                    Text("21+")  .font(.subheadline).bold()
+                        .frame(width: 40, height: 32)
                         .foregroundColor(.black)
                         .overlay(RoundedRectangle(cornerRadius: 20).stroke(.black,lineWidth: 1.5))
                 }
                 
-            }.padding()
+            }.padding([.top, .bottom], 7)
             
             Text(viewModel.post.postbody).multilineTextAlignment(.leading).font(Font.custom("Inter-Italic", size: 18))
+                .padding(.leading, 5)
             
             if (viewModel.post.imageURL != "") {
                 KFImage(URL(string: (viewModel.post.imageURL!)))
@@ -104,7 +106,7 @@ struct IndividualPostView: View {
                     .scaledToFill()
                     //.padding(.leading, 30)
             }
-        }
+        }.padding(.bottom, 20)
         
         Divider()
     }
