@@ -16,7 +16,6 @@ struct IndividualPostView: View {
     @State private var comments = [Comment]()
     @State private var seeFullScreenPost = false
     @State private var showComment: Bool
-
     
     init(post: Post, showComment: Bool) {
         self.viewModel = IndividualPostViewModel(post: post)
@@ -26,6 +25,7 @@ struct IndividualPostView: View {
     
     var body: some View {
         NavigationLink(destination: IndividualPostForCommentsView(post: viewModel.post), isActive: $seeFullScreenPost) { EmptyView() }
+                
         VStack(alignment: .leading) {
             HStack {
                 if (viewModel.post.user?.profileImageUrl == nil || viewModel.post.anon == true) {
@@ -39,7 +39,7 @@ struct IndividualPostView: View {
                         //.padding(.leading, 30)
                 }
                 Text(viewModel.post.anon ? "anon" : viewModel.post.user?.username ?? "anon")
-                Text(convertTimestampIntoString(currTime:viewModel.post.timestamp)).font(.caption).foregroundColor(Color.gray)
+                
                 Spacer()
                 VStack {
                     Button {
@@ -104,11 +104,16 @@ struct IndividualPostView: View {
                 KFImage(URL(string: (viewModel.post.imageURL!)))
                     .resizable()
                     .scaledToFill()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     //.padding(.leading, 30)
+                    
             }
-        }.padding(.bottom, 20)
-        
-        Divider()
+            
+            Text("Posted on \(convertTimestampIntoString(currTime:viewModel.post.timestamp))")
+                .font(.caption)
+                .foregroundColor(Color.gray)
+                .padding(.top, 7)
+        }.padding(.top, 7)
     }
     
     func convertTimestampIntoString(currTime: Timestamp) -> String {
@@ -133,8 +138,9 @@ extension String {
     }
 }
 
-/*struct IndividualPostView_Previews: PreviewProvider {
+/*
+struct IndividualPostView_Previews: PreviewProvider {
     static var previews: some View {
         IndividualPostView()
     }
-} */
+}*/

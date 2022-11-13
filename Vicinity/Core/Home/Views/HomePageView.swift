@@ -25,12 +25,43 @@ struct HomePageView: View {
                 
             }.padding(.bottom, 5)
             
+            
             ScrollView {
                 LazyVStack {
                     ForEach(homePageViewModel.posts) {post in
-                        IndividualPostView(post: post, showComment: true).padding(.init(top: 2, leading: 10, bottom: 10, trailing: 10)) }
+                        IndividualPostView(post: post, showComment: true).padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
+                        
+                        /*
+                         This ZStack acts as the divider between posts
+                        
+                         It's three rectangles manipaulted to make it look
+                         like each post is layered on top of a background,
+                         and then layered on a white rectangle, but really
+                         they're just divided by some funky shapes
+                         */
+                        ZStack(alignment: .top) {
+                            Rectangle()
+                                .foregroundColor(Color("VicinityBlue"))
+                                .frame(width: UIScreen.screenWidth, height: 40)
+                                .padding(.top, 5)
+                            RoundedRectangle(cornerRadius: 30)
+                                .foregroundColor(.white)
+                                .frame(width: UIScreen.screenWidth, height: 40)
+                                .offset(y: -40/2)
+                                .clipped()
+                            RoundedRectangle(cornerRadius: 30)
+                                .foregroundColor(.white)
+                                .frame(width: UIScreen.screenWidth, height: 40)
+                                .offset(y: 40/2)
+                                .clipped()
+                                .padding(.top, 10)
+                        }
+                    }
                 }
             }
+            
+            
+            
 
         }.navigationBarTitleDisplayMode(.inline)
     }

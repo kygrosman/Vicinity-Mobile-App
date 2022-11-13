@@ -19,46 +19,44 @@ struct EditProfileView: View {
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        //ZStack(alignment: .topLeading) {
+        VStack {
             VStack(alignment: .leading) {
-                header
+                header.padding(.leading, 30)
                 content
-                
-                Button {
-                    let newUN = username != authViewModel.currentUser?.username
-                    let newPP = selectedImage != nil
-                    // change all the updated content into firebase
-                    if (newPP && newUN) {
-                        //update prof pic
-                        authViewModel.updateProfPic(selectedImage!)
-                        
-                        // update prof details
-                        authViewModel.updateProfDetails(username)
-                    } else if (newUN) {
-                        // update prof details
-                        authViewModel.updateProfDetails(username)
-                    } else if (newPP) {
-                        //update prof pic
-                        authViewModel.updateProfPic(selectedImage!)
-                    }
-                    
-                    authViewModel.showMenu.toggle()
-                    
-                    self.presentation.wrappedValue.dismiss()
-                    
-                } label: {
-                    Text("Save").fontWeight(.heavy)
-                }
-                .foregroundColor(.white)
-                .frame(width: 256, height: 40, alignment: .center)
-                .background(Color("VicinityNavy"))
-                .cornerRadius(30)
-                .padding(.top, 30)
-                
-                Spacer() // pushes everything up
             }
+            
+            Button {
+                let newUN = username != authViewModel.currentUser?.username
+                let newPP = selectedImage != nil
+                // change all the updated content into firebase
+                if (newPP && newUN) {
+                    //update prof pic
+                    authViewModel.updateProfPic(selectedImage!)
+                    
+                    // update prof details
+                    authViewModel.updateProfDetails(username)
+                } else if (newUN) {
+                    // update prof details
+                    authViewModel.updateProfDetails(username)
+                } else if (newPP) {
+                    //update prof pic
+                    authViewModel.updateProfPic(selectedImage!)
+                }
+                
+                self.presentation.wrappedValue.dismiss()
+                
+            } label: {
+                Text("Save").fontWeight(.heavy)
+            }
+            .foregroundColor(.white)
+            .frame(width: 256, height: 40)
+            .background(Color("VicinityNavy"))
+            .cornerRadius(30)
+            .padding([.top], 30)
+            
+            Spacer() // pushes everything up
         }
-        //.ignoresSafeArea()
         .navigationBarHidden(false)
     }
 }
@@ -70,7 +68,6 @@ extension EditProfileView {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 199, height: 40)
-                //.position(x: UIScreen.screenWidth - 285, y: UIScreen.screenHeight - 860)
         }
         //.padding(.leading, 15)
     }

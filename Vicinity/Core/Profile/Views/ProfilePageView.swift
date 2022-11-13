@@ -19,6 +19,7 @@ struct ProfilePageView: View {
     @State private var anon = false
     @State private var selectionFilter: PostsFilterViewModel = .mine
     
+    
     @EnvironmentObject var authViewModel: AuthViewModel
     @ObservedObject var profViewModel: ProfileViewModel
     @Namespace var animation
@@ -28,6 +29,7 @@ struct ProfilePageView: View {
     }
     
     var body: some View {
+        
         VStack(alignment: .leading) {
             Group {
                 headerView.padding(.bottom, 15)
@@ -64,9 +66,7 @@ extension ProfilePageView {
                 
                 // side menu button
                 Button {
-                    withAnimation(.easeInOut) {
-                        authViewModel.showMenu.toggle()
-                    }
+                    authViewModel.showProfileSideMenu.toggle()
                 } label: {
                     Image(systemName: "line.horizontal.3")
                         .foregroundColor(Color("VicinityNavy"))
@@ -86,6 +86,7 @@ extension ProfilePageView {
                         //.padding(.leading, 15)
                 }
                 
+                // FIX FOR PREVIEW
                 // profile full name
                 Text("\(profViewModel.user.fullname)")
                     .font(.system(size:20))
@@ -105,6 +106,7 @@ extension ProfilePageView {
                 Text("Username")
                     .font(.system(size:15))
                     .foregroundColor(Color.gray)
+                // FIX FOR PREVIEW
                 Text("@\(profViewModel.user.username)")
                     .font(.system(size:20))
             }
@@ -114,6 +116,7 @@ extension ProfilePageView {
                 Text("Email")
                     .font(.system(size:15))
                     .foregroundColor(Color.gray)
+                // FIX FOR PREVIEW
                 Text("\(profViewModel.user.email)")
                     .font(.system(size:20))
             }

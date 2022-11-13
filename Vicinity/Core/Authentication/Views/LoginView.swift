@@ -77,7 +77,7 @@ struct LoginView: View {
                         {
                             error_msg = login[1] as! String
                             showAlert = true
-                        }
+                        } 
                         
                     }, label: {
                         Text("Sign In").fontWeight(.heavy)

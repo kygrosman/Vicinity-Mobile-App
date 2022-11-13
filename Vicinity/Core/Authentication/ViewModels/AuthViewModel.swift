@@ -11,7 +11,7 @@ import SwiftEmailValidator
 
 class AuthViewModel: ObservableObject {
     
-    @Published var showMenu = false
+    @Published var showProfileSideMenu = false
     @Published var userSession: FirebaseAuth.User?
     
     private let service = UserService()
@@ -75,6 +75,7 @@ class AuthViewModel: ObservableObject {
         if (err) {return [false, descrip]}
         self.fetchuserData()
         return [true, ""]
+        self.reInitUser()
     }
     
     // -- SINGUP FUNCTION
@@ -160,6 +161,7 @@ class AuthViewModel: ObservableObject {
         if (err) {return [false, descrip]}
         self.fetchuserData()
         return [true, ""]
+        self.reInitUser()
     }
     
     func confirmEmail() {
