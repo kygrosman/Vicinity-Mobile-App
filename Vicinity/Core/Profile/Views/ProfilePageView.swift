@@ -163,7 +163,7 @@ extension ProfilePageView {
     }
     
     var postsView: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             LazyVStack {
                 ForEach(profViewModel.posts(forFilter: self.selectionFilter)) {post in
                     IndividualPostView(post: post, showComment: true).padding(.init(top: 2, leading: 10, bottom: 10, trailing: 10))

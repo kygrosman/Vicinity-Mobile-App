@@ -13,6 +13,8 @@ struct HomePageView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    
+    
     var body: some View {
         VStack(alignment: .leading) {
             ZStack(alignment: .bottomLeading) {
@@ -26,7 +28,7 @@ struct HomePageView: View {
             }.padding(.bottom, 5)
             
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 LazyVStack {
                     ForEach(homePageViewModel.posts) {post in
                         IndividualPostView(post: post, showComment: true).padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
@@ -66,6 +68,8 @@ struct HomePageView: View {
         }.navigationBarTitleDisplayMode(.inline)
     }
 }
+
+
 
 struct HomePageView_Previews: PreviewProvider {
     static var previews: some View {
