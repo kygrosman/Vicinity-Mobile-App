@@ -7,17 +7,22 @@ This project is for a social app designed for Johns Hopkins Univeristy students 
 
 # Updated Mockups
 **Home Page**
+
 (image)
 
 **Posting Process**
 - Pick posting options
-(insert image of question/recommendation tab)
+
+(image)
 
 - Question Posting Page
-(iamge)
+
+(image)
 
 - Recommend Posting Page
+
 (image)
 
 **Profile Page**
+
 (image)
