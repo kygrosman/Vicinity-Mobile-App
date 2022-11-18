@@ -112,7 +112,8 @@ struct IndividualPostView: View {
             Text("Posted on \(convertTimestampIntoString(currTime:viewModel.post.timestamp))")
                 .font(.caption)
                 .foregroundColor(Color.gray)
-                .padding(.top, 7)
+                .padding([.top, .leading], 7)
+                
         }.padding(.top, 7)
     }
     
