@@ -49,6 +49,33 @@ struct PostService {
             }
     }
     
+    func fetchPostsFilteredDistance(forFilteredDistance distanceChoice: String, completion: @escaping([Post]) -> Void) {
+        Firestore.firestore().collection("posts").whereField("distance", isEqualTo: distanceChoice)
+            .getDocuments { snapshot, error in
+                guard let documents = snapshot?.documents else {return}
+                let posts = documents.compactMap({ try? $0.data(as: Post.self)} )
+                completion(posts.sorted(by: {$0.timestamp.dateValue() > $1.timestamp.dateValue() }))
+            }
+    }
+    
+    func fetchPostsFilteredCost(forFilteredCost costChoice: String, completion: @escaping([Post]) -> Void) {
+        Firestore.firestore().collection("posts").whereField("cost", isEqualTo: costChoice)
+            .getDocuments { snapshot, error in
+                guard let documents = snapshot?.documents else {return}
+                let posts = documents.compactMap({ try? $0.data(as: Post.self)} )
+                completion(posts.sorted(by: {$0.timestamp.dateValue() > $1.timestamp.dateValue() }))
+            }
+    }
+    
+    func fetchPostsFilteredEventType(forFilteredType typeChoice: String, completion: @escaping([Post]) -> Void) {
+        Firestore.firestore().collection("posts").whereField("type", isEqualTo: typeChoice)
+            .getDocuments { snapshot, error in
+                guard let documents = snapshot?.documents else {return}
+                let posts = documents.compactMap({ try? $0.data(as: Post.self)} )
+                completion(posts.sorted(by: {$0.timestamp.dateValue() > $1.timestamp.dateValue() }))
+            }
+    }
+    
     func fetchPostsForUser(forUid uid: String, completion: @escaping([Post]) -> Void) {
         Firestore.firestore().collection("posts").whereField("uid", isEqualTo: uid)
             .getDocuments { snapshot, error in

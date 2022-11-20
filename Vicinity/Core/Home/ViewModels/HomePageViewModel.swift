@@ -15,23 +15,45 @@ class HomePageViewModel: ObservableObject {
     @Published var posts = [Post]()
     let service = PostService()
     let userService = UserService()
+    var typeString: String
+    var costString: String
+    var distanceString: String
     
-    init() {
-        fetchPosts()
+    
+    init(type: String, cost: String, distance: String) {
+        self.typeString = type
+        self.costString = cost
+        self.distanceString = distance
+        fetchPosts(type: typeString, cost: costString, distance: distanceString)
     }
     
-    func fetchPosts() {
-        service.fetchPosts() { posts in
-            self.posts = posts
-            
-            for i in 0 ..< posts.count {
-                let uid = posts[i].uid
-                self.userService.fetchUserData(withuid: uid) { user in
-                    self.posts[i].user = user
+    func fetchPosts(type: String, cost: String, distance: String) {
+        if (type == "" && cost == "" && distance == "") {
+            service.fetchPosts() { posts in
+                self.posts = posts
+                
+                for i in 0 ..< posts.count {
+                    let uid = posts[i].uid
+                    self.userService.fetchUserData(withuid: uid) { user in
+                        self.posts[i].user = user
+                    }
                 }
+                
             }
-            
+        } else {
+            service.fetchPosts() { posts in
+                self.posts = posts
+                
+                for i in 0 ..< posts.count {
+                    let uid = posts[i].uid
+                    self.userService.fetchUserData(withuid: uid) { user in
+                        self.posts[i].user = user
+                    }
+                }
+                
+            }
         }
+        
     }
     
 
