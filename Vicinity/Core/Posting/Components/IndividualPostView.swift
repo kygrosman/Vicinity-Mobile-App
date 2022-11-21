@@ -25,7 +25,7 @@ struct IndividualPostView: View {
     
     var body: some View {
         NavigationLink(destination: IndividualPostForCommentsView(post: viewModel.post), isActive: $seeFullScreenPost) { EmptyView() }
-                
+        
         VStack(alignment: .leading) {
             HStack {
                 if (viewModel.post.user?.profileImageUrl == nil || viewModel.post.anon == true) {

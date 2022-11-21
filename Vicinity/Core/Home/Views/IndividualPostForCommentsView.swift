@@ -22,7 +22,10 @@ struct IndividualPostForCommentsView: View {
     
     var body: some View {
         NavigationLink(destination: HomeView(), isActive: $p) { EmptyView() }
-        IndividualPostView(post: self.viewModel.post, showComment: false).padding(.init(top: 0, leading: 10, bottom: 10, trailing: 10))
+        ScrollView {
+            IndividualPostView(post: self.viewModel.post, showComment: false).padding(.init(top: 0, leading: 10, bottom: 10, trailing: 10))
+        }
+        //IndividualPostView(post: self.viewModel.post, showComment: false).padding(.init(top: 0, leading: 10, bottom: 10, trailing: 10))
         Spacer()
         
         VStack {

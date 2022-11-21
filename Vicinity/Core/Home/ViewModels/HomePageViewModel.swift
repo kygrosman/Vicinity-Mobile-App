@@ -31,28 +31,48 @@ class HomePageViewModel: ObservableObject {
         if (type == "" && cost == "" && distance == "") {
             service.fetchPosts() { posts in
                 self.posts = posts
-                
                 for i in 0 ..< posts.count {
                     let uid = posts[i].uid
                     self.userService.fetchUserData(withuid: uid) { user in
                         self.posts[i].user = user
                     }
                 }
-                
             }
         } else {
-            service.fetchPosts() { posts in
-                self.posts = posts
-                
-                for i in 0 ..< posts.count {
-                    let uid = posts[i].uid
-                    self.userService.fetchUserData(withuid: uid) { user in
-                        self.posts[i].user = user
+            if (type != "") {
+                service.fetchPostsFilteredEventType(forFilteredType: type) { posts in
+                    self.posts = posts
+                    for i in 0 ..< posts.count {
+                        let uid = posts[i].uid
+                        self.userService.fetchUserData(withuid: uid) { user in
+                            self.posts[i].user = user
+                        }
                     }
                 }
-                
+            } else if (cost != "") {
+                service.fetchPostsFilteredCost(forFilteredCost: cost) { posts in
+                    self.posts = posts
+                    for i in 0 ..< posts.count {
+                        let uid = posts[i].uid
+                        self.userService.fetchUserData(withuid: uid) { user in
+                            self.posts[i].user = user
+                        }
+                    }
+                }
+            } else {
+                service.fetchPostsFilteredDistance(forFilteredDistance: distance) { posts in
+                    self.posts = posts
+                    for i in 0 ..< posts.count {
+                        let uid = posts[i].uid
+                        self.userService.fetchUserData(withuid: uid) { user in
+                            self.posts[i].user = user
+                        }
+                    }
+                }
             }
+
         }
+
         
     }
     
