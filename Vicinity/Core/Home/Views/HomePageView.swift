@@ -12,7 +12,9 @@ struct HomePageView: View {
 
     @State var chosenTags = ["TYPE","COST","DISTANCE"]
     
-    @ObservedObject var homePageViewModel = HomePageViewModel(type: "", cost: "", distance: "")
+    @State var refresh: Bool = false
+    
+    @ObservedObject var homePageViewModel : HomePageViewModel = HomePageViewModel(type: "", cost: "", distance: "")
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -50,6 +52,7 @@ struct HomePageView: View {
                     ForEach(0..<tagMap[0].options.count) { option in
                         Button(action: {
                             chosenTags[0] = tagMap[0].options[option]
+                            self.update(type: chosenTags[0], distance: "", cost: "")
                         }, label: {
                             Text(tagMap[0].options[option])
                         })
@@ -79,6 +82,7 @@ struct HomePageView: View {
                     ForEach(0..<tagMap[1].options.count) { option in
                         Button(action: {
                             chosenTags[1] = tagMap[1].options[option]
+                            self.update(type: "", distance: "", cost: chosenTags[1])
                         }, label: {
                             Text(tagMap[1].options[option])
                         })
@@ -112,6 +116,7 @@ struct HomePageView: View {
                     ForEach(0..<tagMap[2].options.count) { option in
                         Button(action: {
                             chosenTags[2] = tagMap[2].options[option]
+                            self.update(type: "", distance: chosenTags[2], cost: "")
                         }, label: {
                             Text(tagMap[2].options[option])
                         })
@@ -179,7 +184,16 @@ struct HomePageView: View {
 
         }.navigationBarTitleDisplayMode(.inline)
     }
+    
+
+    func update(type: String, distance: String, cost: String) {
+        homePageViewModel.fetchPosts(type: type, cost: cost, distance: distance)
+        
+    }
 }
+
+
+
 
 
 
