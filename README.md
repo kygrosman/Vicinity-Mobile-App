@@ -5,7 +5,7 @@ This project is for a social app designed for Johns Hopkins Univeristy students 
 - Ask questions for other students to answer
 - Post anonyously to maintain privacy
 
-# Updated Mockups
+# Updated Images
 **Home Page**
 
 (image)
