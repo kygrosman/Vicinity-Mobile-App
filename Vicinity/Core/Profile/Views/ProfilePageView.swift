@@ -167,7 +167,28 @@ extension ProfilePageView {
             LazyVStack {
                 ForEach(profViewModel.posts(forFilter: self.selectionFilter)) {post in
                     IndividualPostView(post: post, showComment: true).padding(.init(top: 2, leading: 10, bottom: 10, trailing: 10))
+                    
+                    //code taken from Kyle's implementation of the main feed
+                    ZStack(alignment: .top) {
+                        Rectangle()
+                            .foregroundColor(Color("VicinityBlue"))
+                            .frame(width: UIScreen.screenWidth, height: 40)
+                            .padding(.top, 5)
+                        RoundedRectangle(cornerRadius: 30)
+                            .foregroundColor(.white)
+                            .frame(width: UIScreen.screenWidth, height: 40)
+                            .offset(y: -40/2)
+                            .clipped()
+                        RoundedRectangle(cornerRadius: 30)
+                            .foregroundColor(.white)
+                            .frame(width: UIScreen.screenWidth, height: 40)
+                            .offset(y: 40/2)
+                            .clipped()
+                            .padding(.top, 10)
+                    }
+
                 }
+
             }
         }
 
