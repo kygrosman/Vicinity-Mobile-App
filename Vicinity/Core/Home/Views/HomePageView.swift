@@ -12,7 +12,7 @@ struct HomePageView: View {
 
     @State var chosenTags = ["TYPE","COST","DISTANCE"]
     
-    @State var refresh: Bool = false
+    @State var showClearFilterButton: Bool = false
     
     @ObservedObject var homePageViewModel : HomePageViewModel = HomePageViewModel(type: "", cost: "", distance: "")
     
@@ -53,6 +53,7 @@ struct HomePageView: View {
                         Button(action: {
                             chosenTags[0] = tagMap[0].options[option]
                             self.update(type: chosenTags[0], distance: "", cost: "")
+                            self.showClearFilterButton = true
                         }, label: {
                             Text(tagMap[0].options[option])
                         })
@@ -83,6 +84,7 @@ struct HomePageView: View {
                         Button(action: {
                             chosenTags[1] = tagMap[1].options[option]
                             self.update(type: "", distance: "", cost: chosenTags[1])
+                            self.showClearFilterButton = true
                         }, label: {
                             Text(tagMap[1].options[option])
                         })
@@ -117,6 +119,7 @@ struct HomePageView: View {
                         Button(action: {
                             chosenTags[2] = tagMap[2].options[option]
                             self.update(type: "", distance: chosenTags[2], cost: "")
+                            self.showClearFilterButton = true
                         }, label: {
                             Text(tagMap[2].options[option])
                         })
@@ -140,9 +143,27 @@ struct HomePageView: View {
                 }
                 
                 Spacer()
+                
+                if showClearFilterButton {
+                    Button {
+                        chosenTags = ["TYPE","COST","DISTANCE"]
+                        self.update(type: "", distance: "", cost: "")
+                        
+                    } label: {
+                        Text("clear chosen filter")
+                            .foregroundColor(.red)
+                    }
+                    .frame(width: 177, height: 40)
+                        .overlay(Capsule(style: .continuous)
+                            .stroke(.red, lineWidth: 3))
+                }
+                Spacer()
             }
             .padding(.top, 10)
             .padding(.leading, 20)
+            
+            
+            
             
             
             ScrollView(showsIndicators: false) {
@@ -188,7 +209,6 @@ struct HomePageView: View {
 
     func update(type: String, distance: String, cost: String) {
         homePageViewModel.fetchPosts(type: type, cost: cost, distance: distance)
-        
     }
 }
 
