@@ -11,6 +11,7 @@ import FirebaseStorage
 
 struct ImageUploader {
     
+    //function to upload image to firebase and get the url it is saved at
     static func uploadImage(image: UIImage, useCase: String, completion: @escaping(String) -> Void) {
         
         //compresses by half (decreases quality of image)

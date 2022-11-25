@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseFirestoreSwift
 
+//user service - class relating to fetching data from the users database
 struct UserService {
     
     func fetchUserData(withuid uid: String, completion: @escaping(User) -> Void) {

@@ -7,9 +7,10 @@
 
 import Firebase
 
+//post service - all functions relating to pulling from posts databases
 struct PostService {
     
-    
+    //upload post func
     func uploadPost(postbody: String, type: String, distance: String, cost: String, plus21: Bool, sale: Bool, anon: Bool, imageURL: String, completion: @escaping(Bool) -> Bool) {
             guard let uid = Auth.auth().currentUser?.uid else {return}
             let data = ["uid": uid,
@@ -23,12 +24,7 @@ struct PostService {
                     "imageURL": imageURL,
                     "timestamp": Timestamp(date: Date()),
                     "numComments": 0] as [String : Any]
-        print("hi hi", data.values)
-        if (imageURL != "") {
-            print("teehee")
-        } else {
-            print("rippers")
-        }
+
             Firestore.firestore().collection("posts").document().setData(data) { error in
             if let error = error {
                 print("DEBUG: failed to upload tweet with error: \(error.localizedDescription)")
@@ -40,6 +36,7 @@ struct PostService {
         
     }
     
+    //fetch posts function
     func fetchPosts(completion: @escaping([Post]) -> Void) {
         Firestore.firestore().collection("posts").order(by: "timestamp", descending: true)
             .getDocuments { snapshot, error in
@@ -49,6 +46,7 @@ struct PostService {
             }
     }
     
+    //functions to fetch posts but filtered by something
     func fetchPostsFilteredDistance(forFilteredDistance distanceChoice: String, completion: @escaping([Post]) -> Void) {
         Firestore.firestore().collection("posts").whereField("distance", isEqualTo: distanceChoice)
             .getDocuments { snapshot, error in

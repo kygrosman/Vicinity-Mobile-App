@@ -8,6 +8,9 @@
 import SwiftUI
 import Kingfisher
 
+
+//code to show every individual comment
+//gets users profile image and their username, and the comment itself 
 struct IndividualCommentView: View {
     let comment: Comment
     

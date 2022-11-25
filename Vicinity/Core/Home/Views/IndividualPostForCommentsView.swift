@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//displays post in full screen view 
 struct IndividualPostForCommentsView: View {
     @ObservedObject var viewModel: IndividualPostViewModel
     @ObservedObject var commentViewModel: CommentOnPostViewModel

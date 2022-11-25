@@ -10,7 +10,7 @@ import SwiftUI
 import Firebase
 import FirebaseFirestoreSwift
 
-
+//comment class
 struct Comment: Identifiable, Decodable {
     @DocumentID var id: String?
     let userID: String

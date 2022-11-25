@@ -10,7 +10,7 @@ import FirebaseFirestore
 import SwiftUI
 import FirebaseAuth
 
-
+//calls functions in the post service and returns sets of posts
 class HomePageViewModel: ObservableObject {
     @Published var posts = [Post]()
     let service = PostService()
