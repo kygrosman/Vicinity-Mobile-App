@@ -28,6 +28,32 @@ struct IndividualPostForCommentsView: View {
         }
         Spacer()
         
+        /*VStack {
+            
+            TextField("hi", text: $comment, prompt: Text("    leave a comment"))
+                .frame(height: 50)
+                .overlay(Rectangle().stroke(Color("VicinityNavy"),lineWidth:3))
+            Button(action: {
+                let _ = commentViewModel.postComment(post: viewModel.post, comment: comment)
+                self.commentViewModel.comments = self.commentViewModel.fetchComments(post: viewModel.post)
+                p = true
+            }, label: {
+                Text("post").foregroundColor(.black)
+                    .frame(width: 60, height: 32)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color("VicinityNavy"),lineWidth:3))
+                
+            })
+        }.padding(.init(top: 5, leading: 10, bottom: 0, trailing: 10))*/
+        
+        ScrollView {
+            LazyVStack(alignment: .leading) {
+                ForEach(self.commentViewModel.comments) {c in
+                    IndividualCommentView(comment: c) }
+            }.padding(.leading, 20)
+        
+            
+        }
+        
         VStack {
             /*TextEditor(text: $comment).foregroundColor(.gray)
                 .frame(height: 50)
@@ -46,13 +72,6 @@ struct IndividualPostForCommentsView: View {
                 
             })
         }.padding(.init(top: 5, leading: 10, bottom: 0, trailing: 10))
-        
-        ScrollView {
-            LazyVStack(alignment: .leading) {
-                ForEach(self.commentViewModel.comments) {c in
-                    IndividualCommentView(comment: c) }
-            }.padding(.leading, 20)
-        }
         
     }
 }
