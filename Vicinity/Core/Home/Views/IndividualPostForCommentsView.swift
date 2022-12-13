@@ -23,9 +23,9 @@ struct IndividualPostForCommentsView: View {
     
     var body: some View {
         NavigationLink(destination: HomeView(), isActive: $p) { EmptyView() }
-        ScrollView {
+        ScrollView() {
             IndividualPostView(post: self.viewModel.post, showComment: false).padding(.init(top: 0, leading: 10, bottom: 10, trailing: 10))
-        }
+        }.frame(height: calculateHeightNeeded(p: self.viewModel.post))
         Spacer()
         
         /*VStack {
@@ -50,14 +50,9 @@ struct IndividualPostForCommentsView: View {
                 ForEach(self.commentViewModel.comments) {c in
                     IndividualCommentView(comment: c) }
             }.padding(.leading, 20)
-        
-            
         }
         
         VStack {
-            /*TextEditor(text: $comment).foregroundColor(.gray)
-                .frame(height: 50)
-                .overlay(Rectangle().stroke(Color("VicinityNavy"),lineWidth:3))*/
             TextField("hi", text: $comment, prompt: Text("    leave a comment"))
                 .frame(height: 50)
                 .overlay(Rectangle().stroke(Color("VicinityNavy"),lineWidth:3))
@@ -73,5 +68,13 @@ struct IndividualPostForCommentsView: View {
             })
         }.padding(.init(top: 5, leading: 10, bottom: 0, trailing: 10))
         
+    }
+    
+    func calculateHeightNeeded(p: Post) -> CGFloat {
+        if (p.imageURL == "") {
+            return 180
+        } else {
+         return 350
+        }
     }
 }
